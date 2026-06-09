@@ -43,6 +43,16 @@ export default function AmbientBackground() {
           </div>
         ))}
       </div>
+
+      {/* Modern blueprint grid-axis lines */}
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-40">
+        <div className="hero-axis-line hero-axis-line-horizontal top-1/4" />
+        <div className="hero-axis-line hero-axis-line-horizontal top-1/2" />
+        <div className="hero-axis-line hero-axis-line-horizontal top-3/4" />
+        <div className="hero-axis-line hero-axis-line-vertical left-1/4" />
+        <div className="hero-axis-line hero-axis-line-vertical left-1/2" />
+        <div className="hero-axis-line hero-axis-line-vertical left-3/4" />
+      </div>
       
       {/* Ambient lighting effects */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/5 rounded-full filter blur-[120px] pointer-events-none z-10 animate-pulse-slow" />
@@ -50,3 +60,4 @@ export default function AmbientBackground() {
     </div>
   );
 }
+

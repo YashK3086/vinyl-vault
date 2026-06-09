@@ -44,20 +44,20 @@ export default function GatefoldSleeve({ activeRecord }) {
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-1.5">
-              <span className="text-[10px] font-bold text-amber-500 font-mono tracking-widest uppercase">
+              <span className="text-xs font-black text-amber-400 font-mono tracking-widest uppercase">
                 A-Side // Architecture & Engineering
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight font-display">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight font-display">
                 {activeRecord.title}
               </h2>
-              <p className="text-xs text-zinc-400 font-mono italic">
+              <p className="text-sm text-zinc-200 font-mono italic font-semibold">
                 {activeRecord.subtitle}
               </p>
             </div>
             
             <div className="text-right flex flex-col items-end">
-              <span className="text-xl font-bold text-zinc-500 font-mono">33⅓ RPM</span>
-              <span className="text-[9px] text-zinc-600 font-mono uppercase tracking-wider">STEREO / LP</span>
+              <span className="text-2xl font-black text-zinc-300 font-mono">33⅓ RPM</span>
+              <span className="text-xs text-zinc-400 font-mono uppercase tracking-wider font-semibold">STEREO / LP</span>
             </div>
           </div>
 
@@ -67,14 +67,14 @@ export default function GatefoldSleeve({ activeRecord }) {
           <div className="flex flex-col gap-5">
             {aSideTracks.map((track, index) => (
               <div key={index} className="flex gap-4 items-start group">
-                <div className="w-7 h-7 rounded bg-zinc-900 border border-zinc-800/80 flex items-center justify-center flex-shrink-0 text-zinc-500 font-mono text-[10px] font-bold shadow-inner group-hover:text-amber-500/90 group-hover:border-amber-500/30 transition-all">
+                <div className="w-8 h-8 rounded bg-zinc-900 border border-zinc-850 flex items-center justify-center flex-shrink-0 text-zinc-300 font-mono text-xs font-extrabold shadow-inner group-hover:text-amber-400 group-hover:border-amber-400/40 transition-all">
                   A{index + 1}
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <h4 className="text-xs font-bold text-zinc-200 tracking-wide font-mono uppercase">
+                  <h4 className="text-sm font-extrabold text-white tracking-wide font-mono uppercase">
                     {track.name.replace(/^A-Side:\s*/i, "")}
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed font-sans font-light">
+                  <p className="text-sm text-zinc-200 leading-relaxed font-sans font-medium">
                     {track.desc}
                   </p>
                 </div>
@@ -88,13 +88,13 @@ export default function GatefoldSleeve({ activeRecord }) {
           <div className="flex flex-col gap-6">
             {/* Header */}
             <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold text-amber-500 font-mono tracking-widest uppercase">
+              <span className="text-xs font-black text-amber-400 font-mono tracking-widest uppercase">
                 B-Side // Performance & Outcomes
               </span>
-              <h3 className="text-lg font-bold text-zinc-200 font-display">
+              <h3 className="text-xl font-extrabold text-white font-display">
                 Release Track Listings
               </h3>
-              <p className="text-xs text-zinc-500 font-mono">
+              <p className="text-sm text-zinc-300 font-mono">
                 System efficiency optimizations, audit responses, and user metrics.
               </p>
             </div>
@@ -105,14 +105,14 @@ export default function GatefoldSleeve({ activeRecord }) {
             <div className="flex flex-col gap-5">
               {bSideTracks.map((track, index) => (
                 <div key={index} className="flex gap-4 items-start group">
-                  <div className="w-7 h-7 rounded bg-zinc-900 border border-zinc-800/80 flex items-center justify-center flex-shrink-0 text-zinc-500 font-mono text-[10px] font-bold shadow-inner group-hover:text-amber-500/90 group-hover:border-amber-500/30 transition-all">
+                  <div className="w-8 h-8 rounded bg-zinc-900 border border-zinc-850 flex items-center justify-center flex-shrink-0 text-zinc-300 font-mono text-xs font-extrabold shadow-inner group-hover:text-amber-400 group-hover:border-amber-400/40 transition-all">
                     B{index + 1}
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <h4 className="text-xs font-bold text-zinc-200 tracking-wide font-mono uppercase">
+                    <h4 className="text-sm font-extrabold text-white tracking-wide font-mono uppercase">
                       {track.name.replace(/^B-Side:\s*/i, "")}
                     </h4>
-                    <p className="text-xs text-zinc-400 leading-relaxed font-sans font-light">
+                    <p className="text-sm text-zinc-200 leading-relaxed font-sans font-medium">
                       {track.desc}
                     </p>
                   </div>
@@ -123,25 +123,25 @@ export default function GatefoldSleeve({ activeRecord }) {
 
           {/* Credits / Personnel Section */}
           <div className="mt-8 pt-4 border-t border-zinc-800/80 flex flex-col gap-2.5">
-            <h5 className="text-[9px] font-bold tracking-widest text-zinc-500 uppercase font-mono">
+            <h5 className="text-xs font-black tracking-widest text-amber-400 uppercase font-mono">
               Personnel & Production Credits
             </h5>
             
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[10px] font-mono">
-              <div className="flex items-center gap-1.5 text-zinc-400">
-                <Terminal className="w-3 h-3 text-amber-500/70" />
-                <span className="text-zinc-500 font-semibold uppercase text-[9px]">Lead Dev:</span> 
-                <span className="truncate">Y. Khanna</span>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs font-mono">
+              <div className="flex items-center gap-2 text-zinc-200">
+                <Terminal className="w-4 h-4 text-amber-400" />
+                <span className="text-zinc-400 font-bold uppercase text-[10px]">Lead Dev:</span> 
+                <span className="truncate font-semibold text-white">Y. Khanna</span>
               </div>
-              <div className="flex items-center gap-1.5 text-zinc-400">
-                <Compass className="w-3 h-3 text-amber-500/70" />
-                <span className="text-zinc-500 font-semibold uppercase text-[9px]">Released:</span> 
-                <span>{activeRecord.releaseYear}</span>
+              <div className="flex items-center gap-2 text-zinc-200">
+                <Compass className="w-4 h-4 text-amber-400" />
+                <span className="text-zinc-400 font-bold uppercase text-[10px]">Released:</span> 
+                <span className="font-semibold text-white">{activeRecord.releaseYear}</span>
               </div>
-              <div className="flex items-center gap-1.5 text-zinc-400 col-span-2">
-                <Cpu className="w-3 h-3 text-amber-500/70 flex-shrink-0" />
-                <span className="text-zinc-500 font-semibold uppercase text-[9px] flex-shrink-0">Instruments:</span> 
-                <span className="text-zinc-400 truncate text-[9.5px]">
+              <div className="flex items-center gap-2 text-zinc-200 col-span-2">
+                <Cpu className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span className="text-zinc-400 font-bold uppercase text-[10px] flex-shrink-0">Instruments:</span> 
+                <span className="text-white truncate font-semibold text-[11px]">
                   {activeRecord.tags.join(", ")}
                 </span>
               </div>

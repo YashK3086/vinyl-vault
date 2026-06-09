@@ -28,11 +28,11 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
           <div key={category} className="flex flex-col gap-3 relative w-full">
             {/* Category Label (Vintage dividers tab style) */}
             <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-amber-500/80 font-mono flex items-center gap-2">
-                <span className="w-1.5 h-3 bg-amber-500 rounded-sm"></span>
+              <h3 className="text-base font-extrabold uppercase tracking-widest text-amber-400 font-mono flex items-center gap-2">
+                <span className="w-2 h-4.5 bg-amber-400 rounded-sm"></span>
                 {category}
               </h3>
-              <span className="text-xs text-zinc-500 font-mono">{records.length} Release(s)</span>
+              <span className="text-sm text-zinc-200 font-bold font-mono">{records.length} Release(s)</span>
             </div>
 
             {/* Hollow shelf background */}
@@ -85,26 +85,46 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                     >
                       {/* Vinyl Disc (slides out upward behind the sleeve on hover) */}
                       <motion.div
-                        className="absolute left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center z-0 shadow-lg"
+                        className="absolute left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-zinc-905 border border-zinc-800 flex items-center justify-center z-0 shadow-lg"
                         animate={{
                           y: discY,
                           opacity: discOpacity,
-                          scale: discScale
+                          scale: discScale,
+                          rotate: isDiscOut ? 360 : 0
                         }}
-                        transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                        transition={{ type: "spring", stiffness: 220, damping: 18 }}
                       >
-                        <div className="w-4 h-4 rounded-full border border-zinc-700 bg-zinc-950 flex items-center justify-center">
+                        {/* Grooves visual detail */}
+                        <div className="absolute inset-[3px] rounded-full border border-zinc-800/40 opacity-30" />
+                        <div className="absolute inset-[6px] rounded-full border border-zinc-850/40 opacity-35" />
+                        
+                        <div className="w-5 h-5 rounded-full border border-zinc-700 bg-zinc-950 flex items-center justify-center relative overflow-hidden">
+                          {/* Inner color ring */}
                           <div 
-                            className="w-1.5 h-1.5 rounded-full" 
+                            className="absolute inset-[2px] rounded-full opacity-35" 
                             style={{ backgroundColor: record.labelColor }}
                           />
+                          <span className="text-[8px] font-black text-white font-mono z-10 scale-95 select-none">
+                            {(() => {
+                              const map = {
+                                "smart-serverless-music-app": "AI",
+                                "ai-translator-web-app": "TR",
+                                "automated-blue-green-pipeline": "DO",
+                                "devops-monitoring-system": "MO",
+                                "iot-security-stream-cipher": "LO",
+                                "healthcare-devsecops": "SO",
+                                "corporate-visitor-data-warehouse": "DB"
+                              };
+                              return map[record.id] || "LP";
+                            })()}
+                          </span>
                         </div>
                         <Disc className="w-5 h-5 text-zinc-600/40 absolute animate-spin-slow pointer-events-none" />
                       </motion.div>
 
                       {/* The Vinyl Sleeve Jacket */}
                       <motion.div
-                        className={`relative w-12 h-52 rounded-sm bg-gradient-to-b ${record.color} p-[1px] shadow-lg flex flex-col justify-between items-center z-10 border border-black/40 overflow-hidden`}
+                        className={`relative w-12 h-52 rounded-sm ${record.color} p-[1px] shadow-lg flex flex-col justify-between items-center z-10 border border-black/40 overflow-hidden`}
                         animate={{
                           y: yValue,
                           x: xValue,
@@ -120,7 +140,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         {/* Spine text (Vertical title, read bottom-to-top) */}
                         <div className="flex-1 flex items-center justify-center py-4 w-full h-full overflow-hidden">
                           <span 
-                            className="text-[10px] font-bold tracking-wider uppercase text-zinc-950/80 font-mono truncate max-w-[130px] whitespace-nowrap rotate-180 select-none"
+                            className="text-[11px] font-black tracking-wider uppercase text-zinc-950 font-mono truncate max-w-[130px] whitespace-nowrap rotate-180 select-none"
                             style={{ writingMode: "vertical-rl" }}
                           >
                             {record.title}
@@ -128,7 +148,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         </div>
 
                         {/* Spine bottom info (Release Year) */}
-                        <div className="py-2 text-[9px] font-bold text-zinc-950/60 font-mono border-t border-black/10 w-full text-center z-10">
+                        <div className="py-2 text-[10px] font-black text-zinc-950 font-mono border-t border-black/10 w-full text-center z-10">
                           {record.releaseYear}
                         </div>
                       </motion.div>
@@ -151,26 +171,26 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.8, y: 10 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute bottom-full mb-20 left-1/2 -translate-x-1/2 w-48 p-2.5 rounded-lg bg-zinc-900/95 border border-zinc-800 text-left pointer-events-none z-30 shadow-2xl flex flex-col gap-1.5"
+                            className="absolute bottom-full mb-20 left-1/2 -translate-x-1/2 w-52 p-3 rounded-lg bg-zinc-900 border border-zinc-700 text-left pointer-events-none z-30 shadow-2xl flex flex-col gap-2"
                           >
-                            <div className="text-[11px] font-bold text-zinc-300 font-mono uppercase tracking-wider truncate">
+                            <div className="text-xs font-extrabold text-white font-mono uppercase tracking-wider truncate">
                               {record.title}
                             </div>
-                            <div className="text-[9px] text-zinc-500 font-mono mb-1">
+                            <div className="text-[10.5px] text-zinc-300 font-semibold font-mono mb-0.5">
                               {record.subtitle}
                             </div>
                             <div className="flex flex-wrap gap-1">
                               {record.tags.slice(0, 3).map((tag) => (
                                 <span 
                                   key={tag} 
-                                  className="text-[8px] font-semibold font-mono bg-zinc-800 text-amber-500/90 px-1.5 py-0.5 rounded border border-zinc-700/50 flex items-center gap-0.5"
+                                  className="text-[9.5px] font-bold font-mono bg-zinc-800 text-amber-400 px-1.5 py-0.5 rounded border border-zinc-700 flex items-center gap-0.5"
                                 >
-                                  <Tag className="w-2 h-2" />
+                                  <Tag className="w-2.5 h-2.5" />
                                   {tag}
                                 </span>
                               ))}
                               {record.tags.length > 3 && (
-                                <span className="text-[8px] font-semibold font-mono bg-zinc-800 text-zinc-400 px-1 py-0.5 rounded">
+                                <span className="text-[9px] font-bold font-mono bg-zinc-800 text-zinc-300 px-1 py-0.5 rounded border border-zinc-750">
                                   +{record.tags.length - 3}
                                 </span>
                               )}

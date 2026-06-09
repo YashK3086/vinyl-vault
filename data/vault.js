@@ -51,7 +51,7 @@ export const VINYL_VAULT = [
     subtitle: "Context-Filtered Streaming App",
     category: "Full-Stack & AI",
     releaseYear: 2024,
-    color: "from-emerald-600 via-teal-500 to-cyan-600",
+    color: "bg-emerald-600",
     labelColor: "#059669", // emerald-600 hex for SVG styling
     tags: ["Next.js", "SageMaker", "AWS Glue", "Lambda", "PySpark", "Librosa", "DynamoDB", "Python"],
     tracks: [
@@ -79,7 +79,7 @@ export const VINYL_VAULT = [
     subtitle: "Speech Recognition & Translation",
     category: "Full-Stack & AI",
     releaseYear: 2025,
-    color: "from-pink-500 via-rose-500 to-red-600",
+    color: "bg-rose-500",
     labelColor: "#ec4899", // pink-500 hex
     tags: ["JavaScript", "AI Translation", "Deep Learning", "Web Speech API", "React", "Node.js"],
     tracks: [
@@ -103,7 +103,7 @@ export const VINYL_VAULT = [
     subtitle: "Zero-Downtime Cloud Deployment",
     category: "DevOps & Cloud",
     releaseYear: 2024,
-    color: "from-blue-600 via-indigo-500 to-purple-600",
+    color: "bg-blue-600",
     labelColor: "#2563eb", // blue-600 hex
     tags: ["AWS EKS", "Jenkins", "Terraform", "Argo Rollouts", "GitOps", "Prometheus", "Slack API"],
     tracks: [
@@ -127,7 +127,7 @@ export const VINYL_VAULT = [
     subtitle: "Prometheus & Grafana Infrastructure",
     category: "DevOps & Cloud",
     releaseYear: 2026,
-    color: "from-cyan-500 via-sky-500 to-blue-600",
+    color: "bg-cyan-600",
     labelColor: "#06b6d4", // cyan-500 hex
     tags: ["Prometheus", "Grafana", "Node Exporter", "Docker", "Alertmanager", "System Metrics"],
     tracks: [
@@ -151,7 +151,7 @@ export const VINYL_VAULT = [
     subtitle: "256-bit Microcontroller Encryption",
     category: "Security & IoT",
     releaseYear: 2023,
-    color: "from-amber-600 via-red-500 to-rose-600",
+    color: "bg-amber-500",
     labelColor: "#d97706", // amber-600 hex
     tags: ["ESP32", "ChaCha20", "LoRa", "Cryptography", "C++", "Microcontrollers", "Agile"],
     tracks: [
@@ -175,7 +175,7 @@ export const VINYL_VAULT = [
     subtitle: "SAST/DAST & Compliance Gates",
     category: "Security & IoT",
     releaseYear: 2026,
-    color: "from-rose-600 via-pink-500 to-red-600",
+    color: "bg-rose-600",
     labelColor: "#e11d48", // rose-600 hex
     tags: ["DevSecOps", "SAST/DAST", "Compliance", "Docker", "GitHub Actions", "SonarQube", "Trivy"],
     tracks: [
@@ -199,7 +199,7 @@ export const VINYL_VAULT = [
     subtitle: "BCNF Database System",
     category: "Data & AI",
     releaseYear: 2023,
-    color: "from-violet-600 via-purple-500 to-fuchsia-600",
+    color: "bg-purple-600",
     labelColor: "#7c3aed", // violet-600 hex
     tags: ["SQL", "Data Warehousing", "ETL Triggers", "Database Tuning", "Schema Design", "PostgreSQL"],
     tracks: [

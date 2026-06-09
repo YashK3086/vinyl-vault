@@ -175,24 +175,32 @@ export default function TurntableDeck({ activeRecord }) {
       >
         {/* Metallic top plate textures & details */}
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/10 via-transparent to-black/50 pointer-events-none animate-pulse-slow" />
-        <div className="absolute top-4 left-4 flex gap-1.5 opacity-60">
-          <div className="w-2.5 h-2.5 rounded-full bg-zinc-700 shadow-inner" />
-          <div className="w-2.5 h-2.5 rounded-full bg-zinc-700 shadow-inner" />
+        {/* Professional Active Status LED */}
+        <div className="absolute top-4 left-4 flex items-center gap-2.5 bg-zinc-950/90 px-3 py-1.5 rounded border border-zinc-800 select-none cursor-help group z-20">
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.9)] animate-pulse" />
+          <span className="font-mono text-[9px] font-extrabold uppercase tracking-wider text-zinc-200">
+            OPPORTUNITIES ACTIVE
+          </span>
+          {/* Tooltip */}
+          <div className="absolute left-0 top-full mt-1.5 w-52 p-3 rounded-lg bg-zinc-950 border border-zinc-700 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 text-[10.5px] font-mono text-zinc-300 text-left leading-relaxed">
+            <span className="text-white font-black block mb-1 uppercase text-xs">SYSTEM ONLINE</span>
+            Actively seeking roles in Backend, DevOps, and Cloud Infrastructure.
+          </div>
         </div>
         
         {/* Brand/Model text */}
-        <div className="absolute bottom-5 left-6 font-mono text-[9px] uppercase tracking-widest text-zinc-600 select-none">
+        <div className="absolute bottom-5 left-6 font-mono text-[10.5px] uppercase tracking-widest text-zinc-400 select-none font-semibold">
           SL-1200 PORTFOLIO // DIRECT DRIVE
         </div>
 
         {/* LED Indicator Light */}
         <div className="absolute bottom-5 right-6 flex items-center gap-2 select-none">
           <div 
-            className={`w-2 h-2 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.5)] transition-colors duration-300 ${
-              isPlaying ? "bg-amber-500 animate-pulse" : "bg-red-600"
+            className={`w-2.5 h-2.5 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.7)] transition-colors duration-300 ${
+              isPlaying ? "bg-amber-400 animate-pulse" : "bg-red-500"
             }`}
           />
-          <span className="font-mono text-[8px] uppercase tracking-wider text-zinc-500">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-300 font-bold">
             {isPlaying ? "ON AIR" : "STDBY"}
           </span>
         </div>
@@ -203,14 +211,14 @@ export default function TurntableDeck({ activeRecord }) {
         </div>
 
         {/* Speed Selector Buttons */}
-        <div className="absolute bottom-5 left-1/3 flex gap-2 z-20">
+        <div className="absolute bottom-5 left-1/3 flex gap-2.5 z-20">
           <button 
             onClick={() => setRpm(33)}
             disabled={!activeRecord}
-            className={`px-2.5 py-1 rounded font-mono text-[9px] border transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded font-mono text-[11px] border transition-all cursor-pointer ${
               rpm === 33 
-                ? "bg-zinc-800 text-amber-500 border-amber-500/40 font-bold" 
-                : "bg-zinc-950 text-zinc-500 border-zinc-800 hover:text-zinc-300"
+                ? "bg-zinc-800 text-amber-400 border-amber-400/50 font-black" 
+                : "bg-zinc-950 text-zinc-300 border-zinc-800 hover:text-zinc-100 hover:border-zinc-700"
             } disabled:opacity-30 disabled:cursor-not-allowed`}
           >
             33
@@ -218,10 +226,10 @@ export default function TurntableDeck({ activeRecord }) {
           <button 
             onClick={() => setRpm(45)}
             disabled={!activeRecord}
-            className={`px-2.5 py-1 rounded font-mono text-[9px] border transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded font-mono text-[11px] border transition-all cursor-pointer ${
               rpm === 45 
-                ? "bg-zinc-800 text-amber-500 border-amber-500/40 font-bold" 
-                : "bg-zinc-950 text-zinc-500 border-zinc-800 hover:text-zinc-300"
+                ? "bg-zinc-800 text-amber-400 border-amber-400/50 font-black" 
+                : "bg-zinc-950 text-zinc-300 border-zinc-800 hover:text-zinc-100 hover:border-zinc-700"
             } disabled:opacity-30 disabled:cursor-not-allowed`}
           >
             45
@@ -257,9 +265,9 @@ export default function TurntableDeck({ activeRecord }) {
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="absolute inset-4 rounded-full bg-zinc-900 border border-zinc-800 flex flex-col items-center justify-center p-6 text-center select-none"
               >
-                <div className="absolute inset-0 rounded-full border-4 border-dashed border-zinc-800/40 opacity-40 animate-spin-slow" />
-                <RotateCw className="w-8 h-8 text-zinc-700 mb-3 animate-pulse" />
-                <p className="text-zinc-500 font-mono text-[11px] max-w-[200px] leading-relaxed">
+                <div className="absolute inset-0 rounded-full border-4 border-dashed border-zinc-800/60 opacity-50 animate-spin-slow" />
+                <RotateCw className="w-9 h-9 text-zinc-500 mb-3.5 animate-pulse" />
+                <p className="text-zinc-200 font-mono text-xs max-w-[220px] leading-relaxed font-semibold">
                   Select a record from the shelves to spin your experience.
                 </p>
               </motion.div>
@@ -288,19 +296,19 @@ export default function TurntableDeck({ activeRecord }) {
                   
                   {/* Record Paper Label (Center) */}
                   <div 
-                    className={`w-[36%] aspect-square rounded-full p-[2px] bg-gradient-to-tr ${activeRecord.color} shadow-lg z-20 flex flex-col items-center justify-center text-center overflow-hidden border border-black/30`}
+                    className={`w-[38%] aspect-square rounded-full p-[2px] ${activeRecord.color} shadow-lg z-20 flex flex-col items-center justify-center text-center overflow-hidden border border-black/30`}
                   >
-                    <div className="w-full h-full rounded-full bg-zinc-950/40 backdrop-blur-[2px] flex flex-col items-center justify-center p-2 relative">
+                    <div className="w-full h-full rounded-full bg-zinc-950/50 backdrop-blur-[2px] flex flex-col items-center justify-center p-2.5 relative">
                       {/* Project Title */}
-                      <span className="text-[6.5px] font-bold text-white uppercase font-mono tracking-tight leading-none text-center max-w-[80px] truncate mb-0.5">
+                      <span className="text-[7.5px] font-extrabold text-white uppercase font-mono tracking-tight leading-none text-center max-w-[85px] truncate mb-0.5">
                         {activeRecord.title}
                       </span>
                       {/* Year / Format */}
-                      <span className="text-[5.5px] font-medium text-zinc-300 font-mono scale-90">
+                      <span className="text-[6.5px] font-bold text-zinc-200 font-mono scale-90">
                         {activeRecord.releaseYear} // LP
                       </span>
                       {/* Categories */}
-                      <span className="text-[4.5px] font-bold text-amber-400 font-mono tracking-widest uppercase scale-75 mt-1 border-t border-white/10 pt-1">
+                      <span className="text-[5.5px] font-black text-amber-400 font-mono tracking-widest uppercase scale-75 mt-1.5 border-t border-white/20 pt-1">
                         {activeRecord.category}
                       </span>
                       
@@ -398,17 +406,17 @@ export default function TurntableDeck({ activeRecord }) {
         {/* Interactive sound control trigger */}
         <button
           onClick={handleMuteToggle}
-          className="flex items-center gap-1.5 opacity-60 hover:opacity-100 hover:text-amber-500 cursor-pointer transition-all font-mono text-[9px] tracking-wider text-zinc-400 uppercase select-none"
+          className="flex items-center gap-2 opacity-90 hover:opacity-100 hover:text-amber-400 cursor-pointer transition-all font-mono text-[10.5px] tracking-wider text-zinc-200 uppercase select-none"
         >
           {isMuted ? (
             <>
-              <VolumeX className="w-3.5 h-3.5 text-rose-500" />
-              <span>MUTED</span>
+              <VolumeX className="w-4 h-4 text-rose-450" />
+              <span className="font-extrabold">MUTED</span>
             </>
           ) : (
             <>
-              <Volume2 className="w-3.5 h-3.5 text-emerald-500" />
-              <span>AUDIO ON ({activeSpinSpeedText})</span>
+              <Volume2 className="w-4 h-4 text-emerald-450" />
+              <span className="font-extrabold">AUDIO ON ({activeSpinSpeedText})</span>
             </>
           )}
         </button>
