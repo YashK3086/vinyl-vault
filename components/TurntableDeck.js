@@ -5,6 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause, RotateCw, Volume2, VolumeX } from "lucide-react";
 import vinylAudioEngine from "../utils/audioSynthesizer";
 
+const limitWords = (str, limit = 3) => {
+  if (!str) return "";
+  const words = str.trim().split(/\s+/);
+  if (words.length <= limit) return str;
+  return words.slice(0, limit).join(" ");
+};
+
 export default function TurntableDeck({ activeRecord }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [rpm, setRpm] = useState(33); // 33 RPM or 45 RPM
@@ -301,7 +308,7 @@ export default function TurntableDeck({ activeRecord }) {
                     <div className="w-full h-full rounded-full bg-zinc-950/50 backdrop-blur-[2px] flex flex-col items-center justify-center p-2.5 relative">
                       {/* Project Title */}
                       <span className="text-[7.5px] font-extrabold text-white uppercase font-mono tracking-tight leading-none text-center max-w-[85px] truncate mb-0.5">
-                        {activeRecord.title}
+                        {limitWords(activeRecord.title)}
                       </span>
                       {/* Year / Format */}
                       <span className="text-[6.5px] font-bold text-zinc-200 font-mono scale-90">

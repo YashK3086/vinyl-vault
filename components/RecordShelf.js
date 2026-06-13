@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { VINYL_VAULT } from "../data/vault";
 import { Disc, Tag } from "lucide-react";
 
+const limitWords = (str, limit = 3) => {
+  if (!str) return "";
+  const words = str.trim().split(/\s+/);
+  if (words.length <= limit) return str;
+  return words.slice(0, limit).join(" ");
+};
+
 export default function RecordShelf({ activeRecord, setActiveRecord }) {
   const [hoveredRecordId, setHoveredRecordId] = useState(null);
 
@@ -143,7 +150,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                             className="text-[11px] font-black tracking-wider uppercase text-zinc-950 font-mono truncate max-w-[130px] whitespace-nowrap rotate-180 select-none"
                             style={{ writingMode: "vertical-rl" }}
                           >
-                            {record.title}
+                            {limitWords(record.title)}
                           </span>
                         </div>
 
@@ -174,7 +181,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                             className="absolute bottom-full mb-20 left-1/2 -translate-x-1/2 w-52 p-3 rounded-lg bg-zinc-900 border border-zinc-700 text-left pointer-events-none z-30 shadow-2xl flex flex-col gap-2"
                           >
                             <div className="text-xs font-extrabold text-white font-mono uppercase tracking-wider truncate">
-                              {record.title}
+                              {limitWords(record.title)}
                             </div>
                             <div className="text-[10.5px] text-zinc-300 font-semibold font-mono mb-0.5">
                               {record.subtitle}

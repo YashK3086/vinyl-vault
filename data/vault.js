@@ -4,7 +4,7 @@
 export const FAVORITE_BANDS = [
   {
     name: "Pink Floyd",
-    album: "The Dark Side of the Moon",
+    album: "Dark Side Moon",
     coverUrl: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=600&auto=format&fit=crop",
   },
   {
@@ -34,7 +34,7 @@ export const FAVORITE_BANDS = [
   },
   {
     name: "Queen",
-    album: "A Night at the Opera",
+    album: "Night at Opera",
     coverUrl: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=600&auto=format&fit=crop",
   },
   {
@@ -47,12 +47,12 @@ export const FAVORITE_BANDS = [
 export const VINYL_VAULT = [
   {
     id: "smart-serverless-music-app",
-    title: "Smart Serverless SaaS Music App",
+    title: "Serverless Music App",
     subtitle: "Context-Filtered Streaming App",
     category: "Full-Stack & AI",
     releaseYear: 2024,
-    color: "bg-emerald-600",
-    labelColor: "#059669", // emerald-600 hex for SVG styling
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex for SVG styling
     tags: ["Next.js", "SageMaker", "AWS Glue", "Lambda", "PySpark", "Librosa", "DynamoDB", "Python"],
     tracks: [
       {
@@ -75,12 +75,12 @@ export const VINYL_VAULT = [
   },
   {
     id: "ai-translator-web-app",
-    title: "AI Translator Web Application",
+    title: "AI Translator App",
     subtitle: "Speech Recognition & Translation",
     category: "Full-Stack & AI",
     releaseYear: 2025,
-    color: "bg-rose-500",
-    labelColor: "#ec4899", // pink-500 hex
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex
     tags: ["JavaScript", "AI Translation", "Deep Learning", "Web Speech API", "React", "Node.js"],
     tracks: [
       {
@@ -99,12 +99,12 @@ export const VINYL_VAULT = [
   },
   {
     id: "automated-blue-green-pipeline",
-    title: "Automated Blue-Green SaaS CI/CD Pipeline",
+    title: "Blue-Green CI/CD Pipeline",
     subtitle: "Zero-Downtime Cloud Deployment",
     category: "DevOps & Cloud",
     releaseYear: 2024,
-    color: "bg-blue-600",
-    labelColor: "#2563eb", // blue-600 hex
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex
     tags: ["AWS EKS", "Jenkins", "Terraform", "Argo Rollouts", "GitOps", "Prometheus", "Slack API"],
     tracks: [
       {
@@ -127,8 +127,8 @@ export const VINYL_VAULT = [
     subtitle: "Prometheus & Grafana Infrastructure",
     category: "DevOps & Cloud",
     releaseYear: 2026,
-    color: "bg-cyan-600",
-    labelColor: "#06b6d4", // cyan-500 hex
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex
     tags: ["Prometheus", "Grafana", "Node Exporter", "Docker", "Alertmanager", "System Metrics"],
     tracks: [
       {
@@ -147,12 +147,12 @@ export const VINYL_VAULT = [
   },
   {
     id: "iot-security-stream-cipher",
-    title: "IoT Security: Stream Cipher for LoRa E2EE",
+    title: "IoT Security Cipher",
     subtitle: "256-bit Microcontroller Encryption",
     category: "Security & IoT",
     releaseYear: 2023,
-    color: "bg-amber-500",
-    labelColor: "#d97706", // amber-600 hex
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex
     tags: ["ESP32", "ChaCha20", "LoRa", "Cryptography", "C++", "Microcontrollers", "Agile"],
     tracks: [
       {
@@ -175,8 +175,8 @@ export const VINYL_VAULT = [
     subtitle: "SAST/DAST & Compliance Gates",
     category: "Security & IoT",
     releaseYear: 2026,
-    color: "bg-rose-600",
-    labelColor: "#e11d48", // rose-600 hex
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex
     tags: ["DevSecOps", "SAST/DAST", "Compliance", "Docker", "GitHub Actions", "SonarQube", "Trivy"],
     tracks: [
       {
@@ -195,12 +195,12 @@ export const VINYL_VAULT = [
   },
   {
     id: "corporate-visitor-data-warehouse",
-    title: "Corporate Visitor Data Warehouse",
+    title: "Visitor Data Warehouse",
     subtitle: "BCNF Database System",
     category: "Data & AI",
     releaseYear: 2023,
-    color: "bg-purple-600",
-    labelColor: "#7c3aed", // violet-600 hex
+    color: "bg-red-600",
+    labelColor: "#dc2626", // red-600 hex
     tags: ["SQL", "Data Warehousing", "ETL Triggers", "Database Tuning", "Schema Design", "PostgreSQL"],
     tracks: [
       {

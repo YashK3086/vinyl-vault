@@ -14,15 +14,11 @@ export default function AmbientBackground() {
         {FAVORITE_BANDS.map((band, idx) => (
           <div 
             key={`${band.name}-${idx}`} 
-            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40"
+            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40 bg-red-600"
+            aria-label={`${band.name} - ${band.album}`}
+            role="img"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={band.coverUrl} 
-              alt={`${band.name} - ${band.album}`}
-              className="object-cover w-full h-full filter grayscale contrast-125"
-              loading="lazy"
-            />
+            <div className="absolute inset-0 bg-red-600" />
             <div className="absolute inset-0 bg-black/40" />
           </div>
         ))}
@@ -30,15 +26,11 @@ export default function AmbientBackground() {
         {FAVORITE_BANDS.map((band, idx) => (
           <div 
             key={`${band.name}-dup-${idx}`} 
-            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40 hidden md:block"
+            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40 hidden md:block bg-red-600"
+            aria-label={`${band.name} - ${band.album}`}
+            role="img"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-              src={band.coverUrl} 
-              alt={`${band.name} - ${band.album}`}
-              className="object-cover w-full h-full filter grayscale contrast-125"
-              loading="lazy"
-            />
+            <div className="absolute inset-0 bg-red-600" />
             <div className="absolute inset-0 bg-black/40" />
           </div>
         ))}

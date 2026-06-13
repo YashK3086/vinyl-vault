@@ -4,6 +4,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Music, AlertCircle, Compass, HardDrive, Cpu, Terminal } from "lucide-react";
 
+const limitWords = (str, limit = 3) => {
+  if (!str) return "";
+  const words = str.trim().split(/\s+/);
+  if (words.length <= limit) return str;
+  return words.slice(0, limit).join(" ");
+};
+
 export default function GatefoldSleeve({ activeRecord }) {
   if (!activeRecord) {
     return (
@@ -48,7 +55,7 @@ export default function GatefoldSleeve({ activeRecord }) {
                 A-Side // Architecture & Engineering
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight font-display">
-                {activeRecord.title}
+                {limitWords(activeRecord.title)}
               </h2>
               <p className="text-sm text-zinc-200 font-mono italic font-semibold">
                 {activeRecord.subtitle}
