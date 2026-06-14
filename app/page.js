@@ -83,7 +83,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="min-h-screen w-full relative flex flex-col justify-between overflow-x-hidden"
+            className="min-h-screen w-full relative flex flex-col justify-between"
           >
             {/* 1. Ambient Background Grid */}
             <AmbientBackground />
