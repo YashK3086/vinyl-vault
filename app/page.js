@@ -189,7 +189,7 @@ export default function Home() {
 
             {/* Direct access to PDF resume stored locally */}
             <a 
-              href="/Resume (5).pdf"
+              href="/Resume (7).pdf"
               target="_blank"
               className="flex items-center gap-2 px-4.5 py-2.5 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-sm sm:text-base font-mono"
             >
