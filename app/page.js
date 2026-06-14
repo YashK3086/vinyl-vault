@@ -21,6 +21,15 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("crate-a"); // 'crate-a' | 'crate-b' | 'crate-c'
   const [isLoading, setIsLoading] = useState(true);
   const [copiedText, setCopiedText] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleCopy = async (text, type) => {
     try {
@@ -93,27 +102,27 @@ export default function Home() {
       <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 pb-6 pt-0 max-w-7xl mx-auto">
         
         {/* Header Navigation */}
-        <header className="sticky top-0 z-50 w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/50 pt-6 pb-4 mb-8 bg-zinc-950/90 backdrop-blur-md">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-amber-600/80 flex items-center justify-center text-zinc-950 shadow-[0_0_18px_rgba(217,119,6,0.3)] animate-spin-slow">
-              <Disc className="w-6 h-6 font-bold" />
+        <header className={`sticky top-0 z-50 w-full flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 pb-4 mb-8 transition-all duration-200 ${isScrolled ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-700/80 shadow-lg" : "bg-zinc-950 border-b border-zinc-700"}`}>
+          <div className="flex items-center gap-4.5">
+            <div className="w-14 h-14 rounded-full bg-amber-600/80 flex items-center justify-center text-zinc-950 shadow-[0_0_24px_rgba(217,119,6,0.35)] animate-spin-slow">
+              <Disc className="w-8 h-8 font-bold" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-lg sm:text-2xl font-black tracking-wider text-zinc-300 font-display flex items-center gap-1.5 leading-none">
+              <h1 className="text-2xl sm:text-4xl font-black tracking-wider text-zinc-300 font-display flex items-center gap-1.5 leading-none">
                 Yashvardhan Khanna
               </h1>
-              <span className="text-xs sm:text-sm font-bold font-mono tracking-widest text-zinc-500 mt-2 uppercase">
+              <span className="text-sm sm:text-base font-bold font-mono tracking-widest text-zinc-500 mt-2 uppercase">
                 Open for Jamming!
               </span>
 
               {/* Copyable Contact Buttons */}
-              <div className="flex flex-wrap items-center gap-2 mt-3 font-mono text-[9px] select-none">
+              <div className="flex flex-wrap items-center gap-2.5 mt-3.5 font-mono text-xs select-none">
                 <button 
                   onClick={() => handleCopy("yashvardhankhanna360@gmail.com", "email")}
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Copy Email ID"
                 >
-                  <Mail className="w-3.5 h-3.5" />
+                  <Mail className="w-4 h-4" />
                   <span>{copiedText === "email" ? "Copied ID!" : "Get Email"}</span>
                 </button>
 
@@ -121,10 +130,10 @@ export default function Home() {
                   href="https://www.linkedin.com/in/yashvardhan-khanna-985b51353/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Open LinkedIn Profile"
                 >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
                   </svg>
                   <span>LinkedIn</span>
@@ -132,10 +141,10 @@ export default function Home() {
 
                 <button 
                   onClick={() => handleCopy("+919772292339", "phone")}
-                  className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Copy Phone Number"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-4 h-4" />
                   <span>{copiedText === "phone" ? "Copied!" : "Get Phone"}</span>
                 </button>
               </div>
@@ -143,15 +152,15 @@ export default function Home() {
           </div>
 
           {/* Social Profiles */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-3">
             <a 
               href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1a1412] border border-zinc-800/50 hover:border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
+              className="flex items-center justify-center w-11 h-11 rounded-lg bg-[#1a1412] border border-zinc-700 hover:border-zinc-600 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
               aria-label="GitHub Profile"
             >
-              <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-5.5 h-5.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
               </svg>
             </a>
@@ -160,10 +169,10 @@ export default function Home() {
               href={linkedinLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1a1412] border border-zinc-800/50 hover:border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
+              className="flex items-center justify-center w-11 h-11 rounded-lg bg-[#1a1412] border border-zinc-700 hover:border-zinc-600 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
               aria-label="LinkedIn Profile"
             >
-              <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-5.5 h-5.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
               </svg>
             </a>
@@ -172,19 +181,19 @@ export default function Home() {
               href={credlyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1a1412] border border-zinc-800/50 hover:border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
+              className="flex items-center justify-center w-11 h-11 rounded-lg bg-[#1a1412] border border-zinc-700 hover:border-zinc-600 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
               aria-label="Credly Portfolio"
             >
-              <AwardIcon className="w-4.5 h-4.5 text-zinc-500 hover:text-zinc-300" />
+              <AwardIcon className="w-5.5 h-5.5 text-zinc-500 hover:text-zinc-300" />
             </a>
 
             {/* Direct access to PDF resume stored locally */}
             <a 
               href="/Resume (5).pdf"
               target="_blank"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-sm font-mono"
+              className="flex items-center gap-2 px-4.5 py-2.5 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-sm sm:text-base font-mono"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4.5 h-4.5" />
               <span className="hidden sm:inline">Resume</span>
             </a>
           </div>
@@ -193,7 +202,7 @@ export default function Home() {
         {/* 2. Startup Landing Section: Biography & Details about Yashvardhan */}
         <ScrollReveal>
           <section className="w-full mb-10">
-            <div className="w-full rounded-2xl glass-panel-glow border-zinc-800/50 p-6 sm:p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden">
+            <div className="w-full rounded-2xl glass-panel-glow border border-zinc-700 p-6 sm:p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden">
               
               {/* Ambient subtle vinyl graphic on background */}
               <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full border-[10px] border-zinc-850/10 opacity-30 pointer-events-none hidden md:block" />
@@ -247,22 +256,22 @@ export default function Home() {
                   {/* Tech Badges Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
                     
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
                       <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Full-Stack Engineering</span>
                       <span className="text-sm text-zinc-300 font-semibold leading-relaxed">Next.js, React.js, Node.js, JavaScript, HTML/CSS, Java</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
                       <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Cloud Orchestration</span>
                       <span className="text-sm text-zinc-300 font-semibold leading-relaxed">AWS (EKS, Lambda, S3, Cognito), Terraform, Jenkins, GitOps</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
                       <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Data Science & AI</span>
                       <span className="text-sm text-zinc-300 font-semibold leading-relaxed">Python, PySpark, Librosa Audio Analysis, SageMaker KNN Models</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
                       <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Security & Tools</span>
                       <span className="text-sm text-zinc-300 font-semibold leading-relaxed">ESP32 Cryptography (ChaCha20), LoRa E2EE, ArgoCD, Prometheus</span>
                     </div>
@@ -271,7 +280,7 @@ export default function Home() {
                 </div>
 
                 {/* Education teaser banner */}
-                <div className="p-4 rounded-xl bg-[#1a1412] border border-zinc-800/50 flex items-center justify-between gap-4">
+                <div className="p-4 rounded-xl bg-[#1a1412] border border-zinc-700 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-amber-600/80 animate-pulse flex-shrink-0" />
                     <span className="text-xs font-mono text-zinc-300">
@@ -342,7 +351,7 @@ export default function Home() {
       </div>
 
       {/* Retro Store Footer */}
-      <footer className="w-full z-10 border-t border-zinc-800/50 bg-zinc-950 py-6 text-center">
+      <footer className="w-full z-10 border-t border-zinc-700 bg-zinc-950 py-6 text-center">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs font-semibold font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
             HANDCRAFTED BY YASHVARDHAN KHANNA // © 2026 ALL RIGHTS RESERVED

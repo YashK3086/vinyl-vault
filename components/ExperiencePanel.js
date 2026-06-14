@@ -9,10 +9,10 @@ export default function ExperiencePanel() {
   const { education, certifications, leadershipAchievements } = EXPERIENCE_CERTIFICATES;
 
   return (
-    <div className="w-full relative rounded-2xl overflow-hidden glass-panel border-zinc-800/50 p-[1px]">
+    <div className="w-full relative rounded-2xl overflow-hidden glass-panel border-zinc-700 p-[1px]">
       
       {/* Background texture wrapper */}
-      <div className="w-full bg-[#1a1412]/80 p-6 sm:p-8 flex flex-col gap-8 relative overflow-hidden rounded-2xl">
+      <div className="w-full bg-[#1a1412] p-6 sm:p-8 flex flex-col gap-8 relative overflow-hidden rounded-2xl">
         
         {/* Poster Grid Borders overlay (Classic retro gig flyer design) */}
         <div className="absolute inset-4 border border-zinc-800/30 pointer-events-none z-0" />
@@ -39,7 +39,7 @@ export default function ExperiencePanel() {
           <div className="flex flex-col items-center gap-3 z-10 w-full">
             <div className="flex items-center gap-2">
               <span className="text-zinc-650 text-xs">✦</span>
-              <h3 className="text-sm font-extrabold font-mono uppercase tracking-widest text-amber-600/80 bg-zinc-950 border border-zinc-800/50 px-4 py-1.5 rounded-full">
+              <h3 className="text-sm font-extrabold font-mono uppercase tracking-widest text-amber-600/80 bg-zinc-950 border border-zinc-700 px-4 py-1.5 rounded-full">
                 THE HEADLINERS
               </h3>
               <span className="text-zinc-650 text-xs">✦</span>
@@ -79,7 +79,7 @@ export default function ExperiencePanel() {
           <div className="flex flex-col items-center gap-4 z-10 w-full border-t border-dashed border-zinc-950 pt-6">
             <div className="flex items-center gap-2">
               <span className="text-zinc-650 text-xs">★</span>
-              <h3 className="text-sm font-extrabold font-mono uppercase tracking-widest text-amber-600/80 bg-zinc-950 border border-zinc-800/50 px-4 py-1.5 rounded-full">
+              <h3 className="text-sm font-extrabold font-mono uppercase tracking-widest text-amber-600/80 bg-zinc-950 border border-zinc-700 px-4 py-1.5 rounded-full">
                 SUPPORTING ACTS
               </h3>
               <span className="text-zinc-650 text-xs">★</span>
@@ -120,7 +120,7 @@ export default function ExperiencePanel() {
           <div className="flex flex-col items-center gap-4 z-10 w-full border-t border-dashed border-zinc-950 pt-6">
             <div className="flex items-center gap-2">
               <span className="text-zinc-650 text-xs">✦</span>
-              <h3 className="text-sm font-extrabold font-mono uppercase tracking-widest text-amber-600/80 bg-zinc-950 border border-zinc-800/50 px-4 py-1.5 rounded-full">
+              <h3 className="text-sm font-extrabold font-mono uppercase tracking-widest text-amber-600/80 bg-zinc-950 border border-zinc-700 px-4 py-1.5 rounded-full">
                 FESTIVAL FEATURES
               </h3>
               <span className="text-zinc-650 text-xs">✦</span>
@@ -130,7 +130,7 @@ export default function ExperiencePanel() {
               {leadershipAchievements.map((lead, idx) => (
                 <div 
                   key={idx} 
-                  className="flex flex-col items-center gap-2 bg-zinc-950/40 border border-zinc-800/50 p-4.5 rounded-xl hover:border-zinc-700/80 hover:scale-102 transition-all"
+                  className="flex flex-col items-center gap-2 bg-zinc-950 border border-zinc-700 p-4.5 rounded-xl hover:border-zinc-650 hover:scale-102 transition-all"
                 >
                   <Award className="w-5 h-5 text-amber-600/80 mb-1" />
                   <h4 className="text-sm font-extrabold text-zinc-300 uppercase font-mono tracking-wider">

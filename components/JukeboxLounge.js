@@ -14,8 +14,8 @@ export default function JukeboxLounge() {
       className="w-full flex flex-col gap-8"
     >
       {/* Listening Room Header */}
-      <div className="w-full p-6 rounded-2xl bg-[#1a1412]/80 border border-zinc-800/40 backdrop-blur-sm shadow-md flex items-center gap-4">
-        <div className="w-14 h-14 rounded-xl bg-zinc-950 border border-zinc-800/50 flex items-center justify-center text-amber-600/80 shadow-inner flex-shrink-0">
+      <div className="w-full p-6 rounded-2xl bg-[#1a1412] border border-zinc-700 shadow-md flex items-center gap-4">
+        <div className="w-14 h-14 rounded-xl bg-zinc-950 border border-zinc-700 flex items-center justify-center text-amber-600/80 shadow-inner flex-shrink-0">
           <Headphones className="w-7 h-7 animate-bounce" />
         </div>
         <div className="flex flex-col">
@@ -34,13 +34,13 @@ export default function JukeboxLounge() {
         {/* Retro Jukebox Display Panel (Left/Center - Col Span 8) */}
         <ScrollReveal className="col-span-1 md:col-span-8 w-full">
           {/* Main Jukebox Cabinet */}
-          <div className="relative w-full rounded-2xl bg-[#1a1412]/80 border border-zinc-800/40 p-6 sm:p-8 flex flex-col gap-6 shadow-2xl overflow-hidden min-h-[420px]">
+          <div className="relative w-full rounded-2xl bg-[#1a1412] border border-zinc-700 p-6 sm:p-8 flex flex-col gap-6 shadow-2xl overflow-hidden min-h-[420px]">
             {/* Ambient yellow neon tube light overlay */}
             <div className="absolute top-0 bottom-0 left-0 w-1 bg-amber-600/80 opacity-70 shadow-[0_0_8px_rgba(217,119,6,0.5)]" />
             <div className="absolute top-0 bottom-0 right-0 w-1 bg-amber-600/80 opacity-70 shadow-[0_0_8px_rgba(217,119,6,0.5)]" />
             
             {/* Top Lightup Sign */}
-            <div className="w-full py-2.5 bg-zinc-950 border border-zinc-800/50 rounded-lg flex items-center justify-center shadow-inner relative overflow-hidden select-none">
+            <div className="w-full py-2.5 bg-zinc-950 border border-zinc-700 rounded-lg flex items-center justify-center shadow-inner relative overflow-hidden select-none">
               <div className="absolute inset-0 bg-amber-600/5 filter blur-sm animate-pulse" />
               <span className="text-sm font-extrabold font-mono tracking-[0.3em] text-amber-600/80 uppercase glow-text-amber flex items-center gap-2">
                 <Radio className="w-4.5 h-4.5" /> SELECT-A-TRACK JUKEBOX
@@ -48,10 +48,10 @@ export default function JukeboxLounge() {
             </div>
 
             {/* Inactive Jukebox Main Display Screen */}
-            <div className="flex-1 rounded-xl bg-zinc-950 border border-zinc-800/40 p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+            <div className="flex-1 rounded-xl bg-zinc-950 border border-zinc-700 p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-radial-gradient from-zinc-800/20 to-transparent pointer-events-none" />
               
-              <div className="w-20 h-20 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center mb-4 text-zinc-500 relative">
+              <div className="w-20 h-20 rounded-full bg-zinc-950 border border-zinc-700 flex items-center justify-center mb-4 text-zinc-500 relative">
                 <div className="absolute inset-0 rounded-full border-2 border-dashed border-zinc-800/60 animate-spin-slow" />
                 <Disc className="w-9 h-9 animate-pulse" />
               </div>
@@ -95,13 +95,13 @@ export default function JukeboxLounge() {
         <ScrollReveal delay={0.15} className="col-span-1 md:col-span-4 w-full">
           <div className="flex flex-col gap-6 w-full">
             
-            <div className="w-full p-5 rounded-2xl bg-[#1a1412]/80 border border-zinc-800/40 flex flex-col gap-4 shadow-xl">
+            <div className="w-full p-5 rounded-2xl bg-[#1a1412] border border-zinc-700 flex flex-col gap-4 shadow-xl">
               <h3 className="text-xs font-black font-mono uppercase tracking-widest text-amber-600/80 border-b border-zinc-900/40 pb-2">
                 Streaming Hubs
               </h3>
               
               {/* Spotify Platform Link */}
-              <div className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-800/40 hover:border-emerald-600/40 flex items-center justify-between group cursor-not-allowed opacity-75 transition-all">
+              <div className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-700 hover:border-emerald-600/40 flex items-center justify-between group cursor-not-allowed opacity-75 transition-all">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center text-emerald-600 shadow-inner group-hover:text-emerald-400">
                     {/* Inline Spotify SVG */}
@@ -118,7 +118,7 @@ export default function JukeboxLounge() {
               </div>
 
               {/* Apple Music Platform Link */}
-              <div className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-800/40 hover:border-rose-600/40 flex items-center justify-between group cursor-not-allowed opacity-75 transition-all">
+              <div className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-700 hover:border-rose-600/40 flex items-center justify-between group cursor-not-allowed opacity-75 transition-all">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center text-rose-500 shadow-inner group-hover:text-rose-400">
                     <Music className="w-5 h-5" />
@@ -134,8 +134,8 @@ export default function JukeboxLounge() {
             </div>
 
             {/* Retro Vinyl Record Stand */}
-            <div className="w-full p-5 rounded-2xl bg-[#1a1412]/80 border border-zinc-800/40 flex flex-col items-center gap-3 shadow-xl relative overflow-hidden text-center">
-              <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-1">
+            <div className="w-full p-5 rounded-2xl bg-[#1a1412] border border-zinc-700 flex flex-col items-center gap-3 shadow-xl relative overflow-hidden text-center">
+              <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-zinc-300 mb-1">
                 <Headphones className="w-5 h-5" />
               </div>
               <h4 className="text-sm font-extrabold text-zinc-300 font-mono uppercase tracking-wider">

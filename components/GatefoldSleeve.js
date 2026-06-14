@@ -14,8 +14,8 @@ const limitWords = (str, limit = 3) => {
 export default function GatefoldSleeve({ activeRecord }) {
   if (!activeRecord) {
     return (
-      <div className="w-full h-full min-h-[400px] rounded-2xl border border-zinc-800/50 bg-[#1a1412]/30 backdrop-blur-sm flex flex-col items-center justify-center p-8 text-center select-none">
-        <div className="w-16 h-16 rounded-full bg-zinc-950/60 border border-zinc-800/50 flex items-center justify-center mb-4 text-zinc-600">
+      <div className="w-full h-full min-h-[400px] rounded-2xl border border-zinc-700 bg-[#1a1412] flex flex-col items-center justify-center p-8 text-center select-none">
+        <div className="w-16 h-16 rounded-full bg-zinc-950 border border-zinc-700 flex items-center justify-center mb-4 text-zinc-650">
           <Music className="w-6 h-6 animate-pulse" />
         </div>
         <h4 className="text-zinc-500 font-mono text-sm font-semibold tracking-wider uppercase mb-2">
@@ -41,13 +41,13 @@ export default function GatefoldSleeve({ activeRecord }) {
       className="w-full flex flex-col gap-6"
     >
       {/* The Opened Cardboard Gatefold Sleeve Folder */}
-      <div className="w-full rounded-2xl overflow-hidden bg-[#1c1614] border border-zinc-800/40 shadow-2xl flex flex-col md:flex-row relative">
+      <div className="w-full rounded-2xl overflow-hidden bg-[#1c1614] border border-zinc-700 shadow-2xl flex flex-col md:flex-row relative">
         
         {/* Cardboard Spine Fold Accent Line */}
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-black/40 border-r border-zinc-800/50 hidden md:block z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-black/40 border-r border-zinc-700 hidden md:block z-20 pointer-events-none" />
 
         {/* Panel 1: A-Side (Liner Notes / Implementation) */}
-        <div className="flex-1 p-6 sm:p-8 flex flex-col gap-6 border-b border-zinc-800/40 md:border-b-0 md:border-r border-black/20 z-10 bg-transparent">
+        <div className="flex-1 p-6 sm:p-8 flex flex-col gap-6 border-b border-zinc-700 md:border-b-0 md:border-r border-black/20 z-10 bg-transparent">
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-1.5">
@@ -68,13 +68,13 @@ export default function GatefoldSleeve({ activeRecord }) {
             </div>
           </div>
 
-          <div className="border-t border-zinc-800/60 my-1" />
+          <div className="border-t border-zinc-700 my-1" />
 
           {/* Tracks List (A-Side details) */}
           <div className="flex flex-col gap-5">
             {aSideTracks.map((track, index) => (
               <div key={index} className="flex gap-4 items-start group">
-                <div className="w-8 h-8 rounded bg-zinc-950 border border-zinc-800/50 flex items-center justify-center flex-shrink-0 text-zinc-300 font-mono text-xs font-extrabold shadow-inner group-hover:text-amber-650 group-hover:border-amber-600/40 transition-all">
+                <div className="w-8 h-8 rounded bg-zinc-950 border border-zinc-700 flex items-center justify-center flex-shrink-0 text-zinc-300 font-mono text-xs font-extrabold shadow-inner group-hover:text-amber-650 group-hover:border-amber-600/40 transition-all">
                   A{index + 1}
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -106,13 +106,13 @@ export default function GatefoldSleeve({ activeRecord }) {
               </p>
             </div>
 
-            <div className="border-t border-zinc-800/60 my-1" />
+            <div className="border-t border-zinc-700 my-1" />
 
             {/* Tracks List (B-Side details) */}
             <div className="flex flex-col gap-5">
               {bSideTracks.map((track, index) => (
                 <div key={index} className="flex gap-4 items-start group">
-                  <div className="w-8 h-8 rounded bg-zinc-950 border border-zinc-800/50 flex items-center justify-center flex-shrink-0 text-zinc-300 font-mono text-xs font-extrabold shadow-inner group-hover:text-amber-650 group-hover:border-amber-600/40 transition-all">
+                  <div className="w-8 h-8 rounded bg-zinc-950 border border-zinc-700 flex items-center justify-center flex-shrink-0 text-zinc-300 font-mono text-xs font-extrabold shadow-inner group-hover:text-amber-650 group-hover:border-amber-600/40 transition-all">
                     B{index + 1}
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -129,7 +129,7 @@ export default function GatefoldSleeve({ activeRecord }) {
           </div>
 
           {/* Credits / Personnel Section */}
-          <div className="mt-8 pt-4 border-t border-zinc-800/80 flex flex-col gap-2.5">
+          <div className="mt-8 pt-4 border-t border-zinc-700 flex flex-col gap-2.5">
             <h5 className="text-xs font-black tracking-widest text-amber-600/80 uppercase font-mono">
               Personnel & Production Credits
             </h5>
