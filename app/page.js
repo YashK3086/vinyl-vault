@@ -22,6 +22,47 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [copiedText, setCopiedText] = useState("");
 
+  const handleCopy = async (text, type) => {
+    try {
+      if (typeof window !== "undefined" && typeof document !== "undefined" && document.hasFocus() && navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        setCopiedText(type);
+        setTimeout(() => setCopiedText(""), 2000);
+      } else {
+        fallbackCopyText(text);
+        setCopiedText(type);
+        setTimeout(() => setCopiedText(""), 2000);
+      }
+    } catch (err) {
+      console.warn("Navigator clipboard failed, trying fallback:", err);
+      try {
+        fallbackCopyText(text);
+        setCopiedText(type);
+        setTimeout(() => setCopiedText(""), 2000);
+      } catch (fallbackErr) {
+        console.error("Copy fallback failed:", fallbackErr);
+      }
+    }
+  };
+
+  const fallbackCopyText = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand("copy");
+    } catch (err) {
+      console.error("execCommand fallback failed:", err);
+    }
+    document.body.removeChild(textArea);
+  };
+
   // Social Links read from LINKS.TXT
   const githubLink = "https://github.com/YashK3086";
   const linkedinLink = "https://www.linkedin.com/in/yashvardhan-khanna-985b51353/";
@@ -68,11 +109,7 @@ export default function Home() {
               {/* Copyable Contact Buttons */}
               <div className="flex flex-wrap items-center gap-2 mt-3 font-mono text-[9px] select-none">
                 <button 
-                  onClick={() => {
-                    navigator.clipboard.writeText("yashvardhankhanna360@gmail.com");
-                    setCopiedText("email");
-                    setTimeout(() => setCopiedText(""), 2000);
-                  }}
+                  onClick={() => handleCopy("yashvardhankhanna360@gmail.com", "email")}
                   className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Copy Email ID"
                 >
@@ -94,11 +131,7 @@ export default function Home() {
                 </a>
 
                 <button 
-                  onClick={() => {
-                    navigator.clipboard.writeText("+919772292339");
-                    setCopiedText("phone");
-                    setTimeout(() => setCopiedText(""), 2000);
-                  }}
+                  onClick={() => handleCopy("+919772292339", "phone")}
                   className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Copy Phone Number"
                 >
