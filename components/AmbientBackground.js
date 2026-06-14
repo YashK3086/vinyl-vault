@@ -10,28 +10,36 @@ export default function AmbientBackground() {
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/90 via-zinc-950/80 to-zinc-950/95 z-10" />
 
       {/* Grid of album arts */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 p-6 opacity-[0.06] blur-[3px] scale-105 h-full w-full">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 p-6 opacity-[0.03] blur-[1px] fixed inset-0 pointer-events-none mix-blend-luminosity scale-105 h-full w-full">
         {FAVORITE_BANDS.map((band, idx) => (
           <div 
             key={`${band.name}-${idx}`} 
-            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40 bg-red-600"
-            aria-label={`${band.name} - ${band.album}`}
-            role="img"
+            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40"
           >
-            <div className="absolute inset-0 bg-red-600" />
-            <div className="absolute inset-0 bg-black/40" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={band.coverUrl} 
+              alt={`${band.name} - ${band.album}`}
+              className="object-cover w-full h-full filter grayscale contrast-125"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-black/45" />
           </div>
         ))}
         {/* Duplicate list to fill space on larger viewports if needed */}
         {FAVORITE_BANDS.map((band, idx) => (
           <div 
             key={`${band.name}-dup-${idx}`} 
-            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40 hidden md:block bg-red-600"
-            aria-label={`${band.name} - ${band.album}`}
-            role="img"
+            className="relative aspect-square w-full overflow-hidden rounded-md border border-zinc-800/40 hidden md:block"
           >
-            <div className="absolute inset-0 bg-red-600" />
-            <div className="absolute inset-0 bg-black/40" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={band.coverUrl} 
+              alt={`${band.name} - ${band.album}`}
+              className="object-cover w-full h-full filter grayscale contrast-125"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-black/45" />
           </div>
         ))}
       </div>

@@ -52,16 +52,16 @@ export default function Home() {
       <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
         
         {/* Header Navigation */}
-        <header className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/80 pb-6 mb-8 select-none">
+        <header className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/50 pb-6 mb-8 select-none">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center text-zinc-950 shadow-[0_0_18px_rgba(245,158,11,0.5)] animate-spin-slow">
+            <div className="w-10 h-10 rounded-full bg-amber-600/80 flex items-center justify-center text-zinc-950 shadow-[0_0_18px_rgba(217,119,6,0.3)] animate-spin-slow">
               <Disc className="w-6 h-6 font-bold" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-lg sm:text-2xl font-black tracking-wider text-white font-display flex items-center gap-1.5 leading-none">
+              <h1 className="text-lg sm:text-2xl font-black tracking-wider text-zinc-300 font-display flex items-center gap-1.5 leading-none">
                 Yashvardhan Khanna
               </h1>
-              <span className="text-xs sm:text-sm font-bold font-mono tracking-widest text-zinc-100 mt-2 uppercase">
+              <span className="text-xs sm:text-sm font-bold font-mono tracking-widest text-zinc-500 mt-2 uppercase">
                 Open for Jamming!
               </span>
             </div>
@@ -73,7 +73,7 @@ export default function Home() {
               href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-650 text-zinc-200 hover:text-amber-400 hover:scale-105 transition-all"
+              className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1a1412] border border-zinc-800/50 hover:border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
               aria-label="GitHub Profile"
             >
               <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +85,7 @@ export default function Home() {
               href={linkedinLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-650 text-zinc-200 hover:text-amber-400 hover:scale-105 transition-all"
+              className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1a1412] border border-zinc-800/50 hover:border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
               aria-label="LinkedIn Profile"
             >
               <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -97,17 +97,17 @@ export default function Home() {
               href={credlyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-650 text-zinc-200 hover:text-amber-400 hover:scale-105 transition-all"
+              className="flex items-center justify-center w-9 h-9 rounded-lg bg-[#1a1412] border border-zinc-800/50 hover:border-zinc-700 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
               aria-label="Credly Portfolio"
             >
-              <AwardIcon className="w-4.5 h-4.5 text-zinc-200" />
+              <AwardIcon className="w-4.5 h-4.5 text-zinc-500 hover:text-zinc-300" />
             </a>
 
             {/* Direct access to PDF resume stored locally */}
             <a 
               href="/Resume (5).pdf"
               target="_blank"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(245,158,11,0.5)] hover:scale-105 transition-all text-sm font-mono"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-sm font-mono"
             >
               <FileText className="w-4 h-4" />
               <span className="hidden sm:inline">Resume</span>
@@ -118,45 +118,45 @@ export default function Home() {
         {/* 2. Startup Landing Section: Biography & Details about Yashvardhan */}
         <ScrollReveal>
           <section className="w-full mb-10 select-none">
-            <div className="w-full rounded-2xl glass-panel-glow border-zinc-800/80 p-6 sm:p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden">
+            <div className="w-full rounded-2xl glass-panel-glow border-zinc-800/50 p-6 sm:p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden">
               
               {/* Ambient subtle vinyl graphic on background */}
-              <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full border-[10px] border-zinc-900/20 opacity-30 pointer-events-none hidden md:block" />
+              <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full border-[10px] border-zinc-850/10 opacity-30 pointer-events-none hidden md:block" />
               
               {/* Bio Left Column: Portrait Slot & Details */}
-              <div className="flex flex-col gap-4 max-w-[320px] w-full border-b border-zinc-800/60 md:border-b-0 md:border-r md:pr-8 border-black/20 pb-6 md:pb-0">
+              <div className="flex flex-col gap-4 max-w-[320px] w-full border-b border-zinc-800/30 md:border-b-0 md:border-r md:pr-8 border-black/20 pb-6 md:pb-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-xl bg-zinc-900 border border-amber-400/50 flex items-center justify-center text-amber-400 shadow-[0_0_18px_rgba(245,158,11,0.3)] flex-shrink-0 font-extrabold font-mono text-xl glow-text-amber">
+                  <div className="w-14 h-14 rounded-xl bg-zinc-950 border border-zinc-800/50 flex items-center justify-center text-amber-600/80 shadow-[0_0_18px_rgba(217,119,6,0.25)] flex-shrink-0 font-extrabold font-mono text-xl glow-text-amber">
                     YK
                   </div>
                   <div className="flex flex-col">
-                    <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-wider">
+                    <h2 className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-wider">
                       Yashvardhan Khanna
                     </h2>
-                    <span className="text-xs font-bold font-mono text-amber-400 uppercase tracking-widest mt-0.5">
+                    <span className="text-xs font-bold font-mono text-zinc-500 uppercase tracking-widest mt-0.5">
                       Cloud Architect & Dev
                     </span>
                   </div>
                 </div>
 
                 {/* Bio summary paragraph */}
-                <p className="text-base text-white leading-relaxed font-medium">
+                <p className="text-base text-zinc-300 leading-relaxed font-medium">
                   Bridging serverless automation pipelines and secure IoT infrastructures with the rhythmic precision of a vinyl DJ. Building scalable systems that play without skip.
                 </p>
 
                 {/* Contact Grid */}
-                <div className="flex flex-col gap-2.5 mt-2 font-mono text-xs text-zinc-200">
+                <div className="flex flex-col gap-2.5 mt-2 font-mono text-xs text-zinc-300">
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-amber-400" />
-                    <span className="font-semibold">Bangalore, India</span>
+                    <MapPin className="w-4 h-4 text-zinc-500" />
+                    <span className="font-semibold text-zinc-300">Bangalore, India</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-amber-400" />
-                    <a href="mailto:yashvardhankhanna360@gmail.com" className="hover:text-amber-300 font-semibold transition-colors">yashvardhankhanna360@gmail.com</a>
+                    <Mail className="w-4 h-4 text-zinc-500" />
+                    <a href="mailto:yashvardhankhanna360@gmail.com" className="hover:text-amber-600/80 font-semibold transition-colors text-zinc-300">yashvardhankhanna360@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-amber-400" />
-                    <span className="font-semibold">+91 9772292339</span>
+                    <Phone className="w-4 h-4 text-zinc-500" />
+                    <span className="font-semibold text-zinc-300">+91 9772292339</span>
                   </div>
                 </div>
               </div>
@@ -165,42 +165,42 @@ export default function Home() {
               <div className="flex-1 flex flex-col justify-between gap-6">
                 
                 <div className="flex flex-col gap-3">
-                  <span className="text-xs font-black text-amber-400 font-mono tracking-widest uppercase">
+                  <span className="text-xs font-black text-zinc-500 font-mono tracking-widest uppercase">
                     Technical Core Competencies
                   </span>
                   
                   {/* Tech Badges Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
                     
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-400 font-mono uppercase">Full-Stack Engineering</span>
-                      <span className="text-sm text-white font-semibold leading-relaxed">Next.js, React.js, Node.js, JavaScript, HTML/CSS, Java</span>
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Full-Stack Engineering</span>
+                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">Next.js, React.js, Node.js, JavaScript, HTML/CSS, Java</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-400 font-mono uppercase">DevOps & Cloud Orchestration</span>
-                      <span className="text-sm text-white font-semibold leading-relaxed">AWS (EKS, Lambda, S3, Cognito), Terraform, Jenkins, GitOps</span>
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Cloud Orchestration</span>
+                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">AWS (EKS, Lambda, S3, Cognito), Terraform, Jenkins, GitOps</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-400 font-mono uppercase">Data Science & AI</span>
-                      <span className="text-sm text-white font-semibold leading-relaxed">Python, PySpark, Librosa Audio Analysis, SageMaker KNN Models</span>
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Data Science & AI</span>
+                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">Python, PySpark, Librosa Audio Analysis, SageMaker KNN Models</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-400 font-mono uppercase">Security & Tools</span>
-                      <span className="text-sm text-white font-semibold leading-relaxed">ESP32 Cryptography (ChaCha20), LoRa E2EE, ArgoCD, Prometheus</span>
+                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950/40 border border-zinc-800/50 bento-card-hover">
+                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Security & Tools</span>
+                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">ESP32 Cryptography (ChaCha20), LoRa E2EE, ArgoCD, Prometheus</span>
                     </div>
 
                   </div>
                 </div>
 
                 {/* Education teaser banner */}
-                <div className="p-4 rounded-xl bg-amber-400/5 border border-amber-400/20 flex items-center justify-between gap-4">
+                <div className="p-4 rounded-xl bg-[#1a1412] border border-zinc-800/50 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <Sparkles className="w-5 h-5 text-amber-400 animate-pulse flex-shrink-0" />
-                    <span className="text-xs font-mono text-zinc-100">
-                      B.Tech Student at <strong className="text-white font-bold">SRM Institute of Science & Technology</strong> (Cloud Computing, 2023-2027)
+                    <Sparkles className="w-5 h-5 text-amber-600/80 animate-pulse flex-shrink-0" />
+                    <span className="text-xs font-mono text-zinc-300">
+                      B.Tech Student at <strong className="text-zinc-300 font-bold">SRM Institute of Science & Technology</strong> (Cloud Computing, 2023-2027)
                     </span>
                   </div>
                   <button 
@@ -209,7 +209,7 @@ export default function Home() {
                       const element = document.getElementById("audio-receiver-console");
                       if (element) element.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="flex items-center gap-1.5 text-xs font-extrabold text-amber-400 uppercase font-mono hover:text-amber-300 cursor-pointer flex-shrink-0"
+                    className="flex items-center gap-1.5 text-xs font-extrabold text-amber-600/80 uppercase font-mono hover:text-amber-650 cursor-pointer flex-shrink-0"
                   >
                     View Details <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -267,13 +267,13 @@ export default function Home() {
       </div>
 
       {/* Retro Store Footer */}
-      <footer className="w-full z-10 border-t border-zinc-900 bg-zinc-950/80 py-6 text-center select-none">
+      <footer className="w-full z-10 border-t border-zinc-800/50 bg-zinc-950 py-6 text-center select-none">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-semibold font-mono text-zinc-400 uppercase tracking-widest">
+          <p className="text-xs font-semibold font-mono text-zinc-500 uppercase tracking-widest">
             HANDCRAFTED BY YASHVARDHAN KHANNA // © 2026 ALL RIGHTS RESERVED
           </p>
-          <p className="text-[10.5px] font-semibold font-mono text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping" />
+          <p className="text-[10.5px] font-semibold font-mono text-zinc-500 uppercase tracking-wider flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-ping" />
             STATION 360 // NEXT.js + TAILWIND CSS v4 + FRAMER MOTION
           </p>
         </div>
