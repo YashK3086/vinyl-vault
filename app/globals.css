@@ -192,23 +192,48 @@ body {
 }
 
 /* Lenis Scroll Smoothness Root */
-html.lenis,
-html.lenis body {
+html.lenis, html.lenis body {
   height: auto;
 }
-
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
-
 .lenis.lenis-smooth [data-lenis-prevent] {
-  overflow: clip;
+  overscroll-behavior: contain;
 }
-
 .lenis.lenis-stopped {
   overflow: hidden;
 }
-
-.lenis.lenis-smooth iframe {
+.lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* Enable this on body to hide the default browser cursor */
+body.cursor-ready, body.cursor-ready * {
+  cursor: none;
+}
+.cursor, .cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  transform: translate(-50%, -50%); /* Centered on the pointer */
+  will-change: transform;
+}
+.cursor {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  mix-blend-mode: difference;
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
 }

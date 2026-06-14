@@ -1,89 +1,92 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export default function CustomCursor() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Position motion values
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  // Spring options for smooth pointer trailing
-  const springConfig = { stiffness: 400, damping: 28 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+const CustomCursor = () => {
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    // Only run on desktop/touchscreen detection
+    // Only run on desktop/non-touch devices
     const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    if (isTouchDevice) {
+      setIsTouch(true);
+      return;
+    }
 
-    setIsVisible(true);
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
+    if (!cursor || !cursorRing) return;
 
-    const moveCursor = (e) => {
-      cursorX.set(e.clientX - 16); // offset half of cursor width (w-8 = 32px)
-      cursorY.set(e.clientY - 16);
+    // Apply the class to hide default cursor
+    document.body.classList.add("cursor-ready");
+
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    const onMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // Direct positioning for core dot
+      cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
     };
 
-    const handleMouseOver = (e) => {
-      const target = e.target;
-      const isInteractive = 
-        target.tagName === "A" || 
-        target.tagName === "BUTTON" || 
-        target.closest("a") || 
-        target.closest("button") || 
-        target.closest(".cursor-pointer") ||
-        target.classList.contains("cursor-pointer");
-      
-      setIsHovered(!!isInteractive);
+    // Frame update tick for smooth ring movement
+    let rafId;
+    const tick = () => {
+      ringX += (mouseX - ringX) * 0.15; // 0.15 controls lag speed
+      ringY += (mouseY - ringY) * 0.15;
+      cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+      rafId = requestAnimationFrame(tick);
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mousemove", onMouseMove);
+    tick();
+
+    // Scale effects on hover
+    const handleMouseEnter = () => {
+      cursor.style.width = "14px";
+      cursor.style.height = "14px";
+      cursorRing.style.width = "52px";
+      cursorRing.style.height = "52px";
+    };
+
+    const handleMouseLeave = () => {
+      cursor.style.width = "10px";
+      cursor.style.height = "10px";
+      cursorRing.style.width = "36px";
+      cursorRing.style.height = "36px";
+    };
+
+    const addHoverStates = () => {
+      const links = document.querySelectorAll("a, button, [role='button'], .interactive-hover");
+      links.forEach((el) => {
+        el.addEventListener("mouseenter", handleMouseEnter);
+        el.addEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+
+    addHoverStates();
+
+    // Observe DOM mutations to bind new dynamic buttons/links
+    const observer = new MutationObserver(addHoverStates);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(rafId);
+      document.body.classList.remove("cursor-ready");
+      observer.disconnect();
     };
-  }, [cursorX, cursorY]);
+  }, []);
 
-  if (!isVisible) return null;
+  if (isTouch) return null;
 
   return (
     <>
-      {/* Outer Ring Trailing Circle */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber-600/40 pointer-events-none z-50 mix-blend-screen hidden md:block flex items-center justify-center"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-        }}
-        animate={{
-          scale: isHovered ? 1.5 : 1,
-          borderColor: isHovered ? "rgba(217, 119, 6, 0.8)" : "rgba(217, 119, 6, 0.4)",
-          backgroundColor: isHovered ? "rgba(217, 119, 6, 0.05)" : "rgba(217, 119, 6, 0)"
-        }}
-        transition={{ type: "spring", stiffness: 350, damping: 25 }}
-      >
-        {/* Inner Glowing Core Dot */}
-        <motion.div
-          className="w-1.5 h-1.5 bg-amber-600 rounded-full shadow-[0_0_8px_rgba(217,119,6,0.6)]"
-          animate={{
-            scale: isHovered ? 1.3 : 1
-          }}
-        />
-
-        {/* Record needle pivot line inside trailing ring */}
-        <motion.div 
-          className="absolute top-1/2 left-1/2 w-3 h-[1px] bg-amber-600/60 origin-left"
-          animate={{ rotate: isHovered ? 360 : 0 }}
-          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-          style={{ x: "-50%", y: "-50%" }}
-        />
-      </motion.div>
+      <div className="cursor" />
+      <div className="cursor-ring" />
     </>
   );
-}
+};
+
+export default CustomCursor;

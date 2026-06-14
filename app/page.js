@@ -11,7 +11,6 @@ import Preloader from "../components/Preloader";
 import MixerFader from "../components/MixerFader";
 import CustomCursor from "../components/CustomCursor";
 import ScrollReveal from "../components/ScrollReveal";
-import { ReactLenis } from "lenis/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Disc, FileText, Sparkles, Phone, Mail, MapPin, Radio, Library, Trophy, Music, ArrowRight } from "lucide-react";
 
@@ -37,7 +36,7 @@ export default function Home() {
       </AnimatePresence>
 
       {!isLoading && (
-        <ReactLenis root options={{ lerp: 0.08, duration: 1.2, syncTouch: true }}>
+        <>
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -279,7 +278,7 @@ export default function Home() {
         </div>
       </footer>
           </motion.div>
-        </ReactLenis>
+        </>
       )}
     </>
   );
