@@ -274,8 +274,8 @@ export default function TurntableDeck({ activeRecord }) {
               >
                 <div className="absolute inset-0 rounded-full border-4 border-dashed border-zinc-800/30 opacity-50 animate-spin-slow" />
                 <RotateCw className="w-9 h-9 text-zinc-500 mb-3.5 animate-pulse" />
-                <p className="text-zinc-300 font-mono text-xs max-w-[220px] leading-relaxed font-semibold">
-                  Select a record from the shelves to spin your experience.
+                <p className="text-zinc-300 font-mono text-[11px] max-w-[220px] leading-relaxed font-semibold">
+                  Select a record from the shelves to play the vinyl and display the project details below.
                 </p>
               </motion.div>
             ) : (

@@ -20,6 +20,7 @@ export default function Home() {
   const [activeRecord, setActiveRecord] = useState(null);
   const [activeSection, setActiveSection] = useState("crate-a"); // 'crate-a' | 'crate-b' | 'crate-c'
   const [isLoading, setIsLoading] = useState(true);
+  const [copiedText, setCopiedText] = useState("");
 
   // Social Links read from LINKS.TXT
   const githubLink = "https://github.com/YashK3086";
@@ -41,7 +42,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="min-h-screen w-full relative flex flex-col justify-between overflow-x-hidden select-none"
+            className="min-h-screen w-full relative flex flex-col justify-between overflow-x-hidden"
           >
             {/* 1. Ambient Background Grid */}
             <AmbientBackground />
@@ -51,7 +52,7 @@ export default function Home() {
       <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
         
         {/* Header Navigation */}
-        <header className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/50 pb-6 mb-8 select-none">
+        <header className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/50 pb-6 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-amber-600/80 flex items-center justify-center text-zinc-950 shadow-[0_0_18px_rgba(217,119,6,0.3)] animate-spin-slow">
               <Disc className="w-6 h-6 font-bold" />
@@ -63,6 +64,48 @@ export default function Home() {
               <span className="text-xs sm:text-sm font-bold font-mono tracking-widest text-zinc-500 mt-2 uppercase">
                 Open for Jamming!
               </span>
+
+              {/* Copyable Contact Buttons */}
+              <div className="flex flex-wrap items-center gap-2 mt-3 font-mono text-[9px] select-none">
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText("yashvardhankhanna360@gmail.com");
+                    setCopiedText("email");
+                    setTimeout(() => setCopiedText(""), 2000);
+                  }}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  title="Copy Email ID"
+                >
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>{copiedText === "email" ? "Copied ID!" : "Get Email"}</span>
+                </button>
+
+                <a 
+                  href="https://www.linkedin.com/in/yashvardhan-khanna-985b51353/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  title="Open LinkedIn Profile"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText("+919772292339");
+                    setCopiedText("phone");
+                    setTimeout(() => setCopiedText(""), 2000);
+                  }}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-800/50 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  title="Copy Phone Number"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>{copiedText === "phone" ? "Copied!" : "Get Phone"}</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -116,7 +159,7 @@ export default function Home() {
 
         {/* 2. Startup Landing Section: Biography & Details about Yashvardhan */}
         <ScrollReveal>
-          <section className="w-full mb-10 select-none">
+          <section className="w-full mb-10">
             <div className="w-full rounded-2xl glass-panel-glow border-zinc-800/50 p-6 sm:p-8 flex flex-col md:flex-row gap-8 relative overflow-hidden">
               
               {/* Ambient subtle vinyl graphic on background */}
@@ -266,7 +309,7 @@ export default function Home() {
       </div>
 
       {/* Retro Store Footer */}
-      <footer className="w-full z-10 border-t border-zinc-800/50 bg-zinc-950 py-6 text-center select-none">
+      <footer className="w-full z-10 border-t border-zinc-800/50 bg-zinc-950 py-6 text-center">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs font-semibold font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
             HANDCRAFTED BY YASHVARDHAN KHANNA // © 2026 ALL RIGHTS RESERVED
