@@ -90,10 +90,10 @@ export default function Home() {
 
 
       {/* Main Content Area */}
-      <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto">
+      <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 pb-6 pt-0 max-w-7xl mx-auto">
         
         {/* Header Navigation */}
-        <header className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/50 pb-6 mb-8">
+        <header className="sticky top-0 z-50 w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-zinc-800/50 pt-6 pb-4 mb-8 bg-zinc-950/90 backdrop-blur-md">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-amber-600/80 flex items-center justify-center text-zinc-950 shadow-[0_0_18px_rgba(217,119,6,0.3)] animate-spin-slow">
               <Disc className="w-6 h-6 font-bold" />
