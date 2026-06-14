@@ -39,6 +39,11 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                 <span className="w-2 h-4.5 bg-amber-600/80 rounded-sm"></span>
                 {category}
               </h3>
+              {category === "Cloud & DevOps" && !activeRecord && (
+                <span className="text-[10px] font-mono font-black text-[#5c4033] bg-[#fdf6e2] px-2 py-0.5 rounded border border-[#eadaa6] animate-pulse tracking-wide select-none">
+                  👈 Click a record spine to play it!
+                </span>
+              )}
               <span className="text-sm text-zinc-500 font-bold font-mono">{records.length} Release(s)</span>
             </div>
 

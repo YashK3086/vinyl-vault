@@ -21,13 +21,39 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   // Motion value for visual knob Y positioning
   const y = useMotionValue(currentIndex * 76);
 
+  const [hasInteracted, setHasInteracted] = React.useState(false);
+
+  // Check sessionStorage on mount
+  useEffect(() => {
+    if (sessionStorage.getItem("vinyl-vault-nav-interacted")) {
+      setHasInteracted(true);
+    }
+  }, []);
+
+  const markInteracted = () => {
+    setHasInteracted(true);
+    sessionStorage.setItem("vinyl-vault-nav-interacted", "true");
+  };
+
   // Sync state changes back to fader knob position with smooth animation
   useEffect(() => {
-    animate(y, currentIndex * 76, {
-      type: "spring",
-      stiffness: 300,
-      damping: 20
-    });
+    if (!sessionStorage.getItem("vinyl-vault-nav-interacted")) {
+      // Trigger visual jiggle on mount to guide the user's eye
+      const timer = setTimeout(() => {
+        animate(y, 76, { duration: 0.5, ease: "easeInOut" }).then(() => {
+          setTimeout(() => {
+            animate(y, currentIndex * 76, { type: "spring", stiffness: 200, damping: 15 });
+          }, 300);
+        });
+      }, 1500);
+      return () => clearTimeout(timer);
+    } else {
+      animate(y, currentIndex * 76, {
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      });
+    }
   }, [activeSection, currentIndex, y]);
 
   // Handle snapping on drag end
@@ -41,6 +67,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
     );
     
     setActiveSection(sections[closestIndex]);
+    markInteracted();
     
     // Snap to snap point smoothly
     animate(y, closestIndex * 76, {
@@ -52,6 +79,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
 
   const handleTrackClick = (idx) => {
     setActiveSection(sections[idx]);
+    markInteracted();
     animate(y, idx * 76, {
       type: "spring",
       stiffness: 300,
@@ -60,7 +88,14 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-6 p-5 rounded-2xl bg-[#1a1412] border border-zinc-800/50 shadow-xl w-full">
+    <div className="flex flex-col md:flex-row items-center gap-6 p-5 rounded-2xl bg-[#1a1412] border border-zinc-800/50 shadow-xl w-full relative">
+      
+      {/* Studio Masking Tape Onboarding Label */}
+      {!hasInteracted && (
+        <div className="absolute -top-3.5 right-6 md:right-10 rotate-[-1deg] bg-[#fdf6e2] text-[#5c4033] px-3.5 py-1 text-[9.5px] font-mono font-black shadow-md border-y border-[#eadaa6] select-none uppercase tracking-widest z-20 animate-pulse">
+          🔥 drag fader or click channels below to explore!
+        </div>
+      )}
       
       {/* Visual Mixer Strip Branding */}
       <div className="flex flex-row md:flex-col justify-between md:justify-center items-center gap-3 w-full md:w-auto md:border-r md:border-zinc-850/45 md:pr-6 md:min-h-[180px]">
@@ -160,10 +195,10 @@ export default function MixerFader({ activeSection, setActiveSection }) {
               <div 
                 key={sec}
                 onClick={() => handleTrackClick(idx)}
-                className={`group flex items-center justify-between p-2 rounded-xl border transition-all cursor-pointer ${
+                className={`group flex items-center justify-between p-2 rounded-xl border transition-all duration-300 hover:translate-x-1.5 cursor-pointer ${
                   isActive 
                     ? "bg-zinc-950 border-amber-600/30 shadow-md" 
-                    : "bg-transparent border-transparent hover:bg-zinc-950/20 hover:border-zinc-850"
+                    : "bg-transparent border-transparent hover:bg-zinc-950/20 hover:border-zinc-800/40"
                 }`}
               >
                 <div className="flex flex-col gap-0.5">
