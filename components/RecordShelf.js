@@ -43,7 +43,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
             </div>
 
             {/* Hollow shelf background */}
-            <div className="relative h-72 w-full bg-[#1a1412] rounded-t-lg border-t border-x border-zinc-800/50 overflow-visible flex items-end px-6 pb-2 pt-6 shadow-inner">
+            <div className="relative h-72 w-full bg-[#1a1412] border-y border-zinc-800/50 overflow-visible flex items-end px-6 pb-2 pt-6 shadow-inner">
               
               {/* The records container */}
               <div className="flex items-end gap-3 sm:gap-4 md:gap-5 h-full overflow-visible z-10">
@@ -131,7 +131,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
 
                       {/* The Vinyl Sleeve Jacket */}
                       <motion.div
-                        className={`relative w-12 h-52 rounded-sm ${record.color} p-[1px] shadow-lg flex flex-col justify-between items-center z-10 border border-black/40 overflow-hidden`}
+                        className={`relative w-12 h-52 rounded-sm bg-zinc-900 p-[1px] shadow-lg flex flex-col justify-between items-center z-10 border border-zinc-800/50 overflow-hidden`}
                         animate={{
                           y: yValue,
                           x: xValue,
@@ -147,7 +147,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         {/* Spine text (Vertical title, read bottom-to-top) */}
                         <div className="flex-1 flex items-center justify-center py-4 w-full h-full overflow-hidden">
                           <span 
-                            className="text-[11px] font-black tracking-wider uppercase text-zinc-950 font-mono truncate max-w-[130px] whitespace-nowrap rotate-180 select-none"
+                            className="text-[11px] font-black tracking-wider uppercase text-zinc-300 font-mono truncate max-w-[130px] whitespace-nowrap rotate-180 select-none"
                             style={{ writingMode: "vertical-rl" }}
                           >
                             {limitWords(record.title)}
@@ -155,7 +155,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         </div>
 
                         {/* Spine bottom info (Release Year) */}
-                        <div className="py-2 text-[10px] font-black text-zinc-950 font-mono border-t border-black/10 w-full text-center z-10">
+                        <div className="py-2 text-[10px] font-black text-zinc-500 font-mono border-t border-zinc-800/50 w-full text-center z-10">
                           {record.releaseYear}
                         </div>
                       </motion.div>

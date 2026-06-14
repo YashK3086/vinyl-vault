@@ -168,7 +168,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
               >
                 <div className="flex flex-col gap-0.5">
                   <span className={`text-xs font-extrabold font-mono tracking-wider transition-colors ${
-                    isActive ? "text-amber-600/80 glow-text-amber" : "text-zinc-555 group-hover:text-zinc-300"
+                    isActive ? "text-amber-600/80 glow-text-amber" : "text-zinc-500 group-hover:text-zinc-300"
                   }`}>
                     {titles[sec]}
                   </span>

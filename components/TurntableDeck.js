@@ -178,7 +178,7 @@ export default function TurntableDeck({ activeRecord }) {
         ref={plinthRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative w-full max-w-[500px] aspect-square rounded-2xl bg-[#1a1412] border-2 border-zinc-800/50 p-6 shadow-2xl flex items-center justify-center overflow-hidden"
+        className="relative w-full max-w-[500px] aspect-square rounded-2xl bg-zinc-900/90 border border-zinc-800/60 p-6 shadow-2xl flex items-center justify-center overflow-hidden"
       >
         {/* Metallic top plate textures & details */}
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-850/10 via-transparent to-black/50 pointer-events-none animate-pulse-slow" />
@@ -437,7 +437,7 @@ export default function TurntableDeck({ activeRecord }) {
             return (
               <motion.div
                 key={i}
-                className="w-[3px] bg-gradient-to-t from-zinc-800 to-amber-600/80 rounded-t-[1px]"
+                className="w-[3px] bg-gradient-to-t from-zinc-800 to-amber-600/70 rounded-t-[1px]"
                 animate={isColumnAnimating ? {
                   height: [`${baseHeight}%`, `${Math.max(10, baseHeight - 40)}%`, `${Math.min(100, baseHeight + 35)}%`, `${baseHeight}%`]
                 } : { height: "10%" }}

@@ -24,6 +24,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Global Selection Style */
+::selection {
+  background-color: rgba(120, 53, 4, 0.3);
+  color: #fde68a;
+}
+
 /* Custom Scrollbar styling for retro/cyberpunk record crate vibe */
 ::-webkit-scrollbar {
   width: 6px;
@@ -31,16 +37,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(9, 9, 11, 0.5);
+  background: #09090b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(39, 39, 42, 0.8);
+  background: #27272a;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(63, 63, 70, 1);
+  background: #3f3f46;
 }
 
 /* Realistic Vinyl Grooves Texture */

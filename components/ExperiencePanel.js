@@ -12,7 +12,7 @@ export default function ExperiencePanel() {
     <div className="w-full relative rounded-2xl overflow-hidden glass-panel border-zinc-800/50 p-[1px]">
       
       {/* Background texture wrapper */}
-      <div className="w-full bg-[#1a1412] p-6 sm:p-8 flex flex-col gap-8 relative overflow-hidden rounded-2xl">
+      <div className="w-full bg-[#1a1412]/80 p-6 sm:p-8 flex flex-col gap-8 relative overflow-hidden rounded-2xl">
         
         {/* Poster Grid Borders overlay (Classic retro gig flyer design) */}
         <div className="absolute inset-4 border border-zinc-800/30 pointer-events-none z-0" />

@@ -56,21 +56,21 @@ export default function CustomCursor() {
     <>
       {/* Outer Ring Trailing Circle */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber-500/40 pointer-events-none z-50 mix-blend-screen hidden md:block flex items-center justify-center"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber-600/40 pointer-events-none z-50 mix-blend-screen hidden md:block flex items-center justify-center"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
         }}
         animate={{
           scale: isHovered ? 1.5 : 1,
-          borderColor: isHovered ? "rgba(245, 158, 11, 0.8)" : "rgba(245, 158, 11, 0.4)",
-          backgroundColor: isHovered ? "rgba(245, 158, 11, 0.05)" : "rgba(245, 158, 11, 0)"
+          borderColor: isHovered ? "rgba(217, 119, 6, 0.8)" : "rgba(217, 119, 6, 0.4)",
+          backgroundColor: isHovered ? "rgba(217, 119, 6, 0.05)" : "rgba(217, 119, 6, 0)"
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}
       >
         {/* Inner Glowing Core Dot */}
         <motion.div
-          className="w-1.5 h-1.5 bg-amber-500 rounded-full shadow-[0_0_8px_#f59e0b]"
+          className="w-1.5 h-1.5 bg-amber-600 rounded-full shadow-[0_0_8px_rgba(217,119,6,0.6)]"
           animate={{
             scale: isHovered ? 1.3 : 1
           }}
@@ -78,7 +78,7 @@ export default function CustomCursor() {
 
         {/* Record needle pivot line inside trailing ring */}
         <motion.div 
-          className="absolute top-1/2 left-1/2 w-3 h-[1px] bg-amber-500/60 origin-left"
+          className="absolute top-1/2 left-1/2 w-3 h-[1px] bg-amber-600/60 origin-left"
           animate={{ rotate: isHovered ? 360 : 0 }}
           transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
           style={{ x: "-50%", y: "-50%" }}

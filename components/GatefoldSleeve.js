@@ -41,13 +41,13 @@ export default function GatefoldSleeve({ activeRecord }) {
       className="w-full flex flex-col gap-6"
     >
       {/* The Opened Cardboard Gatefold Sleeve Folder */}
-      <div className="w-full rounded-2xl overflow-hidden glass-panel-glow border-zinc-800/50 shadow-2xl flex flex-col md:flex-row relative">
+      <div className="w-full rounded-2xl overflow-hidden bg-[#1c1614] border border-zinc-800/40 shadow-2xl flex flex-col md:flex-row relative">
         
         {/* Cardboard Spine Fold Accent Line */}
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-black/40 border-r border-zinc-800/50 hidden md:block z-20 pointer-events-none" />
 
         {/* Panel 1: A-Side (Liner Notes / Implementation) */}
-        <div className="flex-1 p-6 sm:p-8 flex flex-col gap-6 border-b border-zinc-800/50 md:border-b-0 md:border-r border-black/20 z-10 bg-gradient-to-br from-[#1a1412]/90 to-zinc-950/80">
+        <div className="flex-1 p-6 sm:p-8 flex flex-col gap-6 border-b border-zinc-800/40 md:border-b-0 md:border-r border-black/20 z-10 bg-transparent">
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-1.5">
@@ -81,7 +81,7 @@ export default function GatefoldSleeve({ activeRecord }) {
                   <h4 className="text-sm font-extrabold text-zinc-300 tracking-wide font-mono uppercase">
                     {track.name.replace(/^A-Side:\s*/i, "")}
                   </h4>
-                  <p className="text-sm text-zinc-350 leading-relaxed font-sans font-medium">
+                  <p className="text-sm text-zinc-500 leading-relaxed font-sans font-medium">
                     {track.desc}
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export default function GatefoldSleeve({ activeRecord }) {
         </div>
 
         {/* Panel 2: B-Side (Outcomes & System Metrics) */}
-        <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between gap-6 z-10 bg-gradient-to-br from-[#1a1412]/80 to-zinc-950/90">
+        <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between gap-6 z-10 bg-transparent">
           <div className="flex flex-col gap-6">
             {/* Header */}
             <div className="flex flex-col gap-1">
@@ -119,7 +119,7 @@ export default function GatefoldSleeve({ activeRecord }) {
                     <h4 className="text-sm font-extrabold text-zinc-300 tracking-wide font-mono uppercase">
                       {track.name.replace(/^B-Side:\s*/i, "")}
                     </h4>
-                    <p className="text-sm text-zinc-350 leading-relaxed font-sans font-medium">
+                    <p className="text-sm text-zinc-500 leading-relaxed font-sans font-medium">
                       {track.desc}
                     </p>
                   </div>

@@ -55,8 +55,8 @@ export default function AmbientBackground() {
       </div>
       
       {/* Ambient lighting effects */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/5 rounded-full filter blur-[120px] pointer-events-none z-10 animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full filter blur-[120px] pointer-events-none z-10 animate-pulse-slow" />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-600/5 rounded-full filter blur-[120px] pointer-events-none z-10 animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-96 h-96 bg-amber-600/5 rounded-full filter blur-[120px] pointer-events-none z-10 animate-pulse-slow" />
     </div>
   );
 }

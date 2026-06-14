@@ -269,10 +269,10 @@ export default function Home() {
       {/* Retro Store Footer */}
       <footer className="w-full z-10 border-t border-zinc-800/50 bg-zinc-950 py-6 text-center select-none">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-semibold font-mono text-zinc-500 uppercase tracking-widest">
+          <p className="text-xs font-semibold font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
             HANDCRAFTED BY YASHVARDHAN KHANNA // © 2026 ALL RIGHTS RESERVED
           </p>
-          <p className="text-[10.5px] font-semibold font-mono text-zinc-500 uppercase tracking-wider flex items-center gap-2">
+          <p className="text-[10.5px] font-semibold font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-wider flex items-center gap-2 cursor-default">
             <span className="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-ping" />
             STATION 360 // NEXT.js + TAILWIND CSS v4 + FRAMER MOTION
           </p>
