@@ -91,11 +91,9 @@ export default function MixerFader({ activeSection, setActiveSection }) {
     <div className="flex flex-col md:flex-row items-center gap-6 p-5 rounded-2xl bg-[#1a1412] border border-zinc-800/50 shadow-xl w-full relative">
       
       {/* Studio Masking Tape Onboarding Label */}
-      {!hasInteracted && (
-        <div className="absolute -top-3.5 right-6 md:right-10 rotate-[-1deg] bg-[#fdf6e2] text-[#5c4033] px-3.5 py-1 text-[9.5px] font-mono font-black shadow-md border-y border-[#eadaa6] select-none uppercase tracking-widest z-20 animate-pulse">
-          🔥 drag fader or click channels below to explore!
-        </div>
-      )}
+      <div className="absolute -top-3.5 right-6 md:right-10 rotate-[-1deg] bg-[#fdf6e2] text-[#5c4033] px-3.5 py-1 text-[9.5px] font-mono font-black shadow-md border-y border-[#eadaa6] select-none uppercase tracking-widest z-20 animate-pulse">
+        🔥 drag fader or click channels below to explore!
+      </div>
       
       {/* Visual Mixer Strip Branding */}
       <div className="flex flex-row md:flex-col justify-between md:justify-center items-center gap-3 w-full md:w-auto md:border-r md:border-zinc-850/45 md:pr-6 md:min-h-[180px]">
