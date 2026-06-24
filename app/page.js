@@ -12,6 +12,7 @@ import MixerFader from "../components/MixerFader";
 import CustomCursor from "../components/CustomCursor";
 import ScrollReveal from "../components/ScrollReveal";
 import { AnimatePresence, motion } from "framer-motion";
+import HeroSection from "../components/HeroSection";
 import { Disc, FileText, Sparkles, Phone, Mail, MapPin, Radio, Library, Trophy, Music, ArrowRight } from "lucide-react";
 
 
@@ -25,7 +26,8 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const threshold = typeof window !== "undefined" ? window.innerHeight - 80 : 700;
+      setIsScrolled(window.scrollY > threshold);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -97,8 +99,10 @@ export default function Home() {
             {/* 1. Ambient Background Grid */}
             <AmbientBackground />
 
+            {/* Full-Screen Hero Landing Section */}
+            <HeroSection handleCopy={handleCopy} copiedText={copiedText} />
 
-      {/* Main Content Area */}
+            {/* Main Content Area */}
       <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 pb-6 pt-0 max-w-7xl mx-auto">
         
         {/* Header Navigation */}

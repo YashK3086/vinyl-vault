@@ -1,0 +1,163 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, FileText, ArrowRight, Disc, ChevronDown } from "lucide-react";
+
+export default function HeroSection({ handleCopy, copiedText }) {
+  const scrollToConsole = () => {
+    const consoleElement = document.getElementById("audio-receiver-console");
+    if (consoleElement) {
+      consoleElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="min-h-screen w-full relative flex flex-col justify-between bg-zinc-950 px-6 sm:px-12 py-8 overflow-hidden">
+      
+      {/* 1. Ambient Background Glows & Vinyl SVG silhouette */}
+      <div className="absolute inset-0 bg-radial-gradient from-zinc-900 via-zinc-950 to-black pointer-events-none" />
+      <div className="absolute top-1/4 -right-24 w-96 h-96 rounded-full bg-amber-600/5 filter blur-[100px] pointer-events-none animate-pulse-slow" />
+      
+      {/* Giant spinning ambient vinyl vector */}
+      <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[55%] h-[80%] opacity-15 pointer-events-none hidden md:block select-none">
+        <motion.div
+          className="w-full h-full"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 32, ease: "linear" }}
+        >
+          <svg viewBox="0 0 500 500" className="w-full h-full text-amber-600/40 drop-shadow-[0_0_15px_rgba(217,119,6,0.15)]">
+            <circle cx="250" cy="250" r="240" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" />
+            <circle cx="250" cy="250" r="225" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="250" cy="250" r="195" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+            <circle cx="250" cy="250" r="165" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+            <circle cx="250" cy="250" r="135" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+            <circle cx="250" cy="250" r="105" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+            <circle cx="250" cy="250" r="75" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="250" cy="250" r="12" fill="none" stroke="currentColor" strokeWidth="2" />
+          </svg>
+        </motion.div>
+      </div>
+
+      {/* 2. Top Header Navigation on Hero */}
+      <div className="w-full flex items-center justify-between z-10 max-w-7xl mx-auto">
+        <div className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-lg bg-zinc-950 border border-zinc-800 flex items-center justify-center text-amber-600/80 shadow-[0_0_12px_rgba(217,119,6,0.2)] animate-spin-slow">
+            <Disc className="w-6 h-6" />
+          </div>
+          <span className="font-mono text-sm font-black tracking-widest text-zinc-300">YK / SYSTEM</span>
+        </div>
+        
+        {/* Contact links / Resume */}
+        <div className="flex items-center gap-4">
+          <a 
+            href="/Resume (7).pdf"
+            target="_blank"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold shadow-[0_0_12px_rgba(217,119,6,0.15)] hover:scale-102 active:scale-98 transition-all text-xs font-mono uppercase tracking-wider"
+          >
+            <FileText className="w-4 h-4" />
+            <span>Download Resume</span>
+          </a>
+        </div>
+      </div>
+
+      {/* 3. Main Content: Name, Subtitles, Details */}
+      <div className="w-full max-w-7xl mx-auto z-10 flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+          
+          {/* Left Column: Big Typography and Info */}
+          <div className="col-span-12 md:col-span-8 flex flex-col gap-6 md:gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col gap-2"
+            >
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black font-display tracking-tight text-zinc-200 leading-none">
+                Yashvardhan<br />Khanna
+              </h1>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="flex flex-col gap-3"
+            >
+              <h3 className="text-xl sm:text-2xl font-bold font-mono text-amber-600/80 uppercase tracking-wide">
+                Cloud Architect & DevOps Engineer
+              </h3>
+              <p className="text-base sm:text-lg text-zinc-400 font-sans leading-relaxed max-w-xl font-medium">
+                SRM Institute of Science & Technology undergraduate specializing in engineering low-latency serverless pipelines, secure cloud orchestration, and automated GitOps infrastructure. Precise system engineering, built to scale and play without skipping.
+              </p>
+            </motion.div>
+
+            {/* Quick Actions & Copiables */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-3.5 mt-2 select-none"
+            >
+              <button 
+                onClick={() => handleCopy("yashvardhankhanna360@gmail.com", "email")}
+                className="flex items-center gap-2 px-4 py-2.5 rounded bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-350 hover:text-zinc-200 transition-all cursor-pointer font-mono text-xs font-bold uppercase"
+                title="Copy Email ID"
+              >
+                <Mail className="w-4 h-4" />
+                <span>{copiedText === "email" ? "Copied ID!" : "Get Email"}</span>
+              </button>
+
+              <button 
+                onClick={() => handleCopy("+919772292339", "phone")}
+                className="flex items-center gap-2 px-4 py-2.5 rounded bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-350 hover:text-zinc-200 transition-all cursor-pointer font-mono text-xs font-bold uppercase"
+                title="Copy Phone Number"
+              >
+                <Phone className="w-4 h-4" />
+                <span>{copiedText === "phone" ? "Copied!" : "Get Phone"}</span>
+              </button>
+
+              <button 
+                onClick={scrollToConsole}
+                className="flex items-center gap-2 px-5 py-2.5 rounded bg-amber-600/10 hover:bg-amber-600/25 border border-amber-600/30 hover:border-amber-600/60 text-amber-500 hover:text-amber-400 transition-all cursor-pointer font-mono text-xs font-bold uppercase shadow-sm"
+              >
+                <span>Enter Jukebox Vault</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Roles Header (Like Anant's site style) */}
+          <div className="col-span-12 md:col-span-4 flex flex-col md:items-end justify-center text-left md:text-right border-t border-zinc-800/40 md:border-t-0 pt-6 md:pt-0">
+            <span className="text-xs font-black text-zinc-550 font-mono tracking-widest uppercase mb-1">Specialties</span>
+            <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal">
+              Serverless Dev
+            </span>
+            <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1">
+              Infrastructure
+            </span>
+            <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1">
+              CI/CD Pipelines
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 4. Bottom Footer/Scroll Down Area */}
+      <div className="w-full flex items-center justify-between z-10 max-w-7xl mx-auto pt-6 border-t border-zinc-900/60 select-none">
+        <span className="font-mono text-[10.5px] uppercase tracking-widest text-zinc-600">YK // STATION 360 SOURCE CHANNEL</span>
+        
+        {/* Scroll indicator animation */}
+        <button 
+          onClick={scrollToConsole}
+          className="flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer group font-mono text-xs font-bold uppercase"
+        >
+          <span>Scroll to Play</span>
+          <ChevronDown className="w-4 h-4 animate-bounce group-hover:text-amber-500 transition-colors" />
+        </button>
+      </div>
+
+    </section>
+  );
+}
