@@ -201,18 +201,6 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   return (
     <div className="flex flex-col md:flex-row items-center gap-6 p-5 rounded-2xl bg-[#1a1412] border border-zinc-800/50 shadow-xl w-full relative font-sans">
       
-      {/* Studio Masking Tape Onboarding Label & Swirly Arrow */}
-      {!hasInteracted && (
-        <div className="absolute -top-14 left-[50%] md:left-[30%] -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none select-none">
-          <div className="bg-[#fdf6e2] text-[#5c4033] px-3 py-1 text-[9.5px] font-mono font-black shadow-md border border-[#eadaa6] uppercase tracking-widest rotate-[-1deg] animate-pulse">
-            🔥 drag fader!
-          </div>
-          <svg className="w-8 h-8 text-[#fdf6e2]/60 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M 4,2 C 14,0 18,8 12,12 C 6,16 8,8 14,20 L 14,22 M 11,19 L 14,22 L 17,19" />
-          </svg>
-        </div>
-      )}
-      
       {/* Visual Mixer Strip Branding */}
       <div className="flex flex-row md:flex-col justify-between md:justify-center items-center gap-3 w-full md:w-auto md:border-r md:border-zinc-850/45 md:pr-6 md:min-h-[210px]">
         <div className="flex items-center gap-2.5">
@@ -241,6 +229,16 @@ export default function MixerFader({ activeSection, setActiveSection }) {
         
         {/* Fader Console Module (Col Span 5 on desktop) */}
         <div className="col-span-12 md:col-span-5 flex items-center justify-center gap-6 py-2 relative pr-0 md:pr-4 md:border-r md:border-zinc-850/45 h-[212px]">
+          
+          {/* Studio Masking Tape Onboarding Label & Swirly Arrow (Always Visible, Center Aligned) */}
+          <div className="absolute -top-14 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none select-none">
+            <div className="bg-[#fdf6e2] text-[#5c4033] px-3 py-1 text-[9.5px] font-mono font-black shadow-md border border-[#eadaa6] uppercase tracking-widest rotate-[-1deg] animate-pulse">
+              🔥 drag fader!
+            </div>
+            <svg className="w-8 h-8 text-[#fdf6e2]/60 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M 4,2 C 14,0 18,8 12,12 C 6,16 8,8 14,20 L 14,22 M 11,19 L 14,22 L 17,19" />
+            </svg>
+          </div>
           
           {/* Left Flanking: EQ/Gain Knobs */}
           <div className="flex flex-col justify-between h-full py-1">
