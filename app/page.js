@@ -112,30 +112,30 @@ export default function Home() {
               <Disc className="w-8 h-8 font-bold" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-2xl sm:text-4xl font-black tracking-wider text-zinc-300 font-display flex items-center gap-1.5 leading-none">
+              <h1 className="text-3xl sm:text-5xl font-black tracking-wider text-zinc-300 font-display flex items-center gap-1.5 leading-none">
                 Yashvardhan Khanna
               </h1>
-              <span className="text-sm sm:text-base font-bold font-mono tracking-widest text-zinc-500 mt-2 uppercase">
+              <span className="text-base sm:text-lg font-bold font-mono tracking-widest text-zinc-500 mt-2.5 uppercase">
                 Open for Jamming!
               </span>
 
               {/* Copyable Contact Buttons */}
-              <div className="flex flex-wrap items-center gap-2.5 mt-3.5 font-mono text-xs select-none">
+              <div className="flex flex-wrap items-center gap-2.5 mt-4 font-mono text-sm select-none">
                 <button 
                   onClick={() => handleCopy("yashvardhankhanna360@gmail.com", "email")}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-450 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Copy Email ID"
                 >
-                  <Mail className="w-4 h-4" />
+                  <Mail className="w-4.5 h-4.5" />
                   <span>{copiedText === "email" ? "Copied ID!" : "Get Email"}</span>
                 </button>
 
                 <button 
                   onClick={() => handleCopy("+919772292339", "phone")}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-400 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded bg-[#1a1412] hover:bg-zinc-900 border border-zinc-700 hover:border-zinc-650 text-zinc-450 hover:text-zinc-200 transition-all cursor-pointer font-bold uppercase select-none"
                   title="Copy Phone Number"
                 >
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-4.5 h-4.5" />
                   <span>{copiedText === "phone" ? "Copied!" : "Get Phone"}</span>
                 </button>
               </div>
@@ -182,9 +182,9 @@ export default function Home() {
             <a 
               href="/Resume (7).pdf"
               target="_blank"
-              className="flex items-center gap-2 px-4.5 py-2.5 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-sm sm:text-base font-mono"
+              className="flex items-center gap-2 px-5 py-3 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-base sm:text-lg font-mono"
             >
-              <FileText className="w-4.5 h-4.5" />
+              <FileText className="w-5 h-5" />
               <span className="hidden sm:inline">Resume</span>
             </a>
           </div>
@@ -199,38 +199,38 @@ export default function Home() {
               <div className="absolute -right-16 -bottom-16 w-64 h-64 rounded-full border-[10px] border-zinc-850/10 opacity-30 pointer-events-none hidden md:block" />
               
               {/* Bio Left Column: Portrait Slot & Details */}
-              <div className="flex flex-col gap-4 max-w-[320px] w-full border-b border-zinc-800/30 md:border-b-0 md:border-r md:pr-8 border-black/20 pb-6 md:pb-0">
+              <div className="flex flex-col gap-4.5 max-w-[340px] w-full border-b border-zinc-800/30 md:border-b-0 md:border-r md:pr-8 border-black/20 pb-6 md:pb-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-xl bg-zinc-950 border border-zinc-800/50 flex items-center justify-center text-amber-600/80 shadow-[0_0_18px_rgba(217,119,6,0.25)] flex-shrink-0 font-extrabold font-mono text-xl glow-text-amber">
+                  <div className="w-14 h-14 rounded-xl bg-zinc-950 border border-zinc-800/50 flex items-center justify-center text-amber-600/80 shadow-[0_0_18px_rgba(217,119,6,0.25)] flex-shrink-0 font-extrabold font-mono text-2xl glow-text-amber">
                     YK
                   </div>
                   <div className="flex flex-col">
-                    <h2 className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-wider">
+                    <h2 className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-wider">
                       Yashvardhan Khanna
                     </h2>
-                    <span className="text-xs font-bold font-mono text-zinc-500 uppercase tracking-widest mt-0.5">
+                    <span className="text-sm font-bold font-mono text-zinc-500 uppercase tracking-widest mt-0.5">
                       Cloud Architect & Dev
                     </span>
                   </div>
                 </div>
 
                 {/* Bio summary paragraph */}
-                <p className="text-base text-zinc-300 leading-relaxed font-medium">
+                <p className="text-lg text-zinc-300 leading-relaxed font-medium">
                   Bridging serverless automation pipelines and secure IoT infrastructures with the rhythmic precision of a vinyl DJ. Building scalable systems that play without skip.
                 </p>
 
                 {/* Contact Grid */}
-                <div className="flex flex-col gap-2.5 mt-2 font-mono text-xs text-zinc-300">
+                <div className="flex flex-col gap-2.5 mt-2 font-mono text-sm text-zinc-300">
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-zinc-500" />
+                    <MapPin className="w-4.5 h-4.5 text-zinc-500" />
                     <span className="font-semibold text-zinc-300">Bangalore, India</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-zinc-500" />
+                    <Mail className="w-4.5 h-4.5 text-zinc-500" />
                     <a href="mailto:yashvardhankhanna360@gmail.com" className="hover:text-amber-600/80 font-semibold transition-colors text-zinc-300">yashvardhankhanna360@gmail.com</a>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-zinc-500" />
+                    <Phone className="w-4.5 h-4.5 text-zinc-500" />
                     <span className="font-semibold text-zinc-300">+91 9772292339</span>
                   </div>
                 </div>
@@ -240,31 +240,31 @@ export default function Home() {
               <div className="flex-1 flex flex-col justify-between gap-6">
                 
                 <div className="flex flex-col gap-3">
-                  <span className="text-xs font-black text-zinc-500 font-mono tracking-widest uppercase">
+                  <span className="text-sm font-black text-zinc-500 font-mono tracking-widest uppercase">
                     Technical Core Competencies
                   </span>
                   
                   {/* Tech Badges Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
                     
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Full-Stack Engineering</span>
-                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">Next.js, React.js, Node.js, JavaScript, HTML/CSS, Java</span>
+                    <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Full-Stack Engineering</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Next.js, React.js, Node.js, JavaScript, HTML/CSS, Java</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Cloud Orchestration</span>
-                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">AWS (EKS, Lambda, S3, Cognito), Terraform, Jenkins, GitOps</span>
+                    <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Cloud Orchestration</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EKS, Lambda, S3, Cognito), Terraform, Jenkins, GitOps</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Data Science & AI</span>
-                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">Python, PySpark, Librosa Audio Analysis, SageMaker KNN Models</span>
+                    <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Data Science & AI</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, PySpark, Librosa Audio Analysis, SageMaker KNN Models</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 p-4 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-xs font-extrabold text-amber-600/80 font-mono uppercase">Security & Tools</span>
-                      <span className="text-sm text-zinc-300 font-semibold leading-relaxed">ESP32 Cryptography (ChaCha20), LoRa E2EE, ArgoCD, Prometheus</span>
+                    <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Security & Tools</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">ESP32 Cryptography (ChaCha20), LoRa E2EE, ArgoCD, Prometheus</span>
                     </div>
 
                   </div>
@@ -273,8 +273,8 @@ export default function Home() {
                 {/* Education teaser banner */}
                 <div className="p-4 rounded-xl bg-[#1a1412] border border-zinc-700 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <Sparkles className="w-5 h-5 text-amber-600/80 animate-pulse flex-shrink-0" />
-                    <span className="text-xs font-mono text-zinc-300">
+                    <Sparkles className="w-5.5 h-5.5 text-amber-600/80 animate-pulse flex-shrink-0" />
+                    <span className="text-sm font-mono text-zinc-300 leading-relaxed">
                       B.Tech Student at <strong className="text-zinc-300 font-bold">SRM Institute of Science & Technology</strong> (Cloud Computing, 2023-2027)
                     </span>
                   </div>
@@ -284,7 +284,7 @@ export default function Home() {
                       const element = document.getElementById("audio-receiver-console");
                       if (element) element.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="flex items-center gap-1.5 text-xs font-extrabold text-amber-600/80 uppercase font-mono hover:text-amber-650 cursor-pointer flex-shrink-0"
+                    className="flex items-center gap-1.5 text-sm font-extrabold text-amber-600/80 uppercase font-mono hover:text-amber-650 cursor-pointer flex-shrink-0"
                   >
                     View Details <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -343,10 +343,10 @@ export default function Home() {
 
       <footer className="w-full z-10 border-t border-zinc-700 bg-zinc-950 py-6 text-center">
         <div className="w-full px-6 sm:px-12 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-base sm:text-lg font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
+          <p className="text-lg sm:text-xl font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
             YASHVARDHAN KHANNA'S VINYL-VAULT
           </p>
-          <p className="text-base sm:text-lg font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
+          <p className="text-lg sm:text-xl font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
             STATION 360
           </p>
         </div>

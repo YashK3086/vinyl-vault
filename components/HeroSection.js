@@ -73,7 +73,7 @@ export default function HeroSection({ handleCopy, copiedText }) {
               transition={{ duration: 0.6 }}
               className="flex flex-col gap-2"
             >
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black font-display tracking-tight text-zinc-200 leading-none">
+              <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black font-display tracking-tight text-zinc-200 leading-none">
                 Yashvardhan<br />Khanna
               </h1>
             </motion.div>
@@ -84,10 +84,10 @@ export default function HeroSection({ handleCopy, copiedText }) {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="flex flex-col gap-3"
             >
-              <h3 className="text-xl sm:text-2xl font-bold font-mono text-amber-600/80 uppercase tracking-wide">
+              <h3 className="text-2xl sm:text-3xl font-bold font-mono text-amber-600/80 uppercase tracking-wide">
                 Cloud Architect & DevOps Engineer
               </h3>
-              <p className="text-base sm:text-lg text-zinc-400 font-sans leading-relaxed max-w-xl font-medium">
+              <p className="text-lg sm:text-xl text-zinc-400 font-sans leading-relaxed max-w-2xl font-medium">
                 Computer Science and Engineering undergraduate specializing in engineering low-latency serverless pipelines, secure cloud orchestration, and automated GitOps infrastructure. Precise system engineering, built to scale and play without skipping.
               </p>
             </motion.div>
@@ -142,14 +142,14 @@ export default function HeroSection({ handleCopy, copiedText }) {
 
           {/* Right Column: Roles Header (Like Anant's site style) */}
           <div className="col-span-12 md:col-span-4 flex flex-col md:items-end justify-center text-left md:text-right border-t border-zinc-800/40 md:border-t-0 pt-6 md:pt-0">
-            <span className="text-sm sm:text-base font-black text-zinc-500 font-mono tracking-widest uppercase mb-2">Specialties</span>
-            <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal">
+            <span className="text-base sm:text-lg font-black text-zinc-500 font-mono tracking-widest uppercase mb-2">Specialties</span>
+            <span className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-widest leading-normal">
               Serverless Dev
             </span>
-            <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1">
+            <span className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1.5">
               Infrastructure
             </span>
-            <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1">
+            <span className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1.5">
               CI/CD Pipelines
             </span>
           </div>
@@ -163,7 +163,7 @@ export default function HeroSection({ handleCopy, copiedText }) {
         {/* Scroll indicator animation */}
         <button 
           onClick={scrollToConsole}
-          className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-350 transition-all cursor-pointer group font-mono text-sm sm:text-base font-extrabold uppercase tracking-wider"
+          className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-350 transition-all cursor-pointer group font-mono text-base sm:text-lg font-extrabold uppercase tracking-wider"
         >
           <span>Scroll to Play</span>
           <ChevronDown className="w-5 h-5 animate-bounce group-hover:text-amber-500 transition-colors" />

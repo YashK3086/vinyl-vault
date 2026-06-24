@@ -32,19 +32,22 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
         const hoveredRecordIndex = records.findIndex((r) => r.id === hoveredRecordId);
 
         return (
-          <div key={category} className="flex flex-col gap-3 relative w-full">
+          <div 
+            key={category} 
+            className={`flex flex-col gap-3 relative w-full ${hoveredRecordId && records.some(r => r.id === hoveredRecordId) ? "z-30" : "z-10"}`}
+          >
             {/* Category Label (Vintage dividers tab style) */}
             <div className="flex items-center justify-between border-b border-zinc-800/50 pb-2">
-              <h3 className="text-base font-extrabold uppercase tracking-widest text-amber-600/80 font-mono flex items-center gap-2">
-                <span className="w-2 h-4.5 bg-amber-600/80 rounded-sm"></span>
+              <h3 className="text-lg sm:text-xl font-extrabold uppercase tracking-widest text-amber-600/80 font-mono flex items-center gap-2">
+                <span className="w-2.5 h-5 bg-amber-600/80 rounded-sm"></span>
                 {category}
               </h3>
               {category === "Cloud & DevOps" && (
-                <span className="text-[10px] font-mono font-black text-[#5c4033] bg-[#fdf6e2] px-2 py-0.5 rounded border border-[#eadaa6] animate-pulse tracking-wide select-none">
+                <span className="text-[11px] sm:text-xs font-mono font-black text-[#5c4033] bg-[#fdf6e2] px-2 py-0.5 rounded border border-[#eadaa6] animate-pulse tracking-wide select-none">
                   👈 Click a record spine to play it & display project details!
                 </span>
               )}
-              <span className="text-sm text-zinc-500 font-bold font-mono">{records.length} Release(s)</span>
+              <span className="text-base text-zinc-500 font-bold font-mono">{records.length} Release(s)</span>
             </div>
 
             {/* Hollow shelf background */}
@@ -152,7 +155,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         {/* Spine text (Vertical title, read bottom-to-top) */}
                         <div className="flex-1 flex items-center justify-center py-4 w-full h-full overflow-hidden">
                           <span 
-                            className="text-[11px] font-black tracking-wider uppercase text-zinc-300 font-mono truncate max-w-[130px] whitespace-nowrap rotate-180 select-none"
+                            className="text-[12.5px] sm:text-sm font-black tracking-wider uppercase text-zinc-300 font-mono truncate max-w-[140px] whitespace-nowrap rotate-180 select-none"
                             style={{ writingMode: "vertical-rl" }}
                           >
                             {limitWords(record.title)}
@@ -160,7 +163,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         </div>
 
                         {/* Spine bottom info (Release Year) */}
-                        <div className="py-2 text-[10px] font-black text-zinc-500 font-mono border-t border-zinc-800/50 w-full text-center z-10">
+                        <div className="py-2 text-[11px] sm:text-xs font-black text-zinc-500 font-mono border-t border-zinc-800/50 w-full text-center z-10">
                           {record.releaseYear}
                         </div>
                       </motion.div>
@@ -183,27 +186,27 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.8, y: 10 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute bottom-full mb-20 left-1/2 -translate-x-1/2 w-52 p-3 rounded-lg bg-[#1a1412] border border-zinc-800/50 text-left pointer-events-none z-30 shadow-2xl flex flex-col gap-2"
+                            className="absolute bottom-full mb-16 left-1/2 -translate-x-1/2 w-60 p-4 rounded-xl bg-zinc-950 border border-amber-600/30 text-left pointer-events-none z-50 shadow-2xl flex flex-col gap-2.5"
                           >
-                            <div className="text-xs font-extrabold text-zinc-300 font-mono uppercase tracking-wider truncate">
-                              {limitWords(record.title)}
+                            <div className="text-xs font-black text-zinc-200 font-mono uppercase tracking-wider leading-snug">
+                              {record.title}
                             </div>
-                            <div className="text-[10.5px] text-zinc-500 font-semibold font-mono mb-0.5">
+                            <div className="text-[11px] text-zinc-400 font-semibold font-mono mb-1 leading-snug">
                               {record.subtitle}
                             </div>
-                            <div className="flex flex-wrap gap-1">
-                              {record.tags.slice(0, 3).map((tag) => (
+                            <div className="flex flex-wrap gap-1.5">
+                              {record.tags.slice(0, 4).map((tag) => (
                                 <span 
                                   key={tag} 
-                                  className="text-[9.5px] font-bold font-mono bg-zinc-950 text-amber-600/80 px-1.5 py-0.5 rounded border border-zinc-800/50 flex items-center gap-0.5"
+                                  className="text-[10px] font-bold font-mono bg-[#1a1412] text-amber-600/90 px-2 py-0.5 rounded border border-zinc-800/60 flex items-center gap-0.5"
                                 >
                                   <Tag className="w-2.5 h-2.5" />
                                   {tag}
                                 </span>
                               ))}
-                              {record.tags.length > 3 && (
-                                <span className="text-[9px] font-bold font-mono bg-zinc-950 text-zinc-500 px-1 py-0.5 rounded border border-zinc-800/50">
-                                  +{record.tags.length - 3}
+                              {record.tags.length > 4 && (
+                                <span className="text-[9.5px] font-bold font-mono bg-[#1a1412] text-zinc-500 px-1.5 py-0.5 rounded border border-zinc-800/60">
+                                  +{record.tags.length - 4}
                                 </span>
                               )}
                             </div>

@@ -222,7 +222,7 @@ export const EXPERIENCE_CERTIFICATES = {
       location: "Chennai, TN",
       degree: "B.Tech in Computer Science (Cloud Computing)",
       duration: "2023 – 2027",
-      grade: "First Class (70%+ Eligibility)"
+
     },
     {
       institution: "Delhi Public School",

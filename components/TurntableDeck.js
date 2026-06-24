@@ -185,18 +185,18 @@ export default function TurntableDeck({ activeRecord }) {
         {/* Professional Active Status LED */}
         <div className="absolute top-4 left-4 flex items-center gap-2.5 bg-zinc-950/90 px-3 py-1.5 rounded border border-zinc-800/50 select-none cursor-help group z-20">
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-600 shadow-[0_0_10px_rgba(5,150,105,0.6)] animate-pulse" />
-          <span className="font-mono text-[9px] font-extrabold uppercase tracking-wider text-zinc-300">
+          <span className="font-mono text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-zinc-300">
             OPPORTUNITIES ACTIVE
           </span>
           {/* Tooltip */}
-          <div className="absolute left-0 top-full mt-1.5 w-52 p-3 rounded-lg bg-[#1a1412] border border-zinc-800/50 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 text-[10.5px] font-mono text-zinc-500 text-left leading-relaxed">
-            <span className="text-zinc-300 font-black block mb-1 uppercase text-xs">SYSTEM ONLINE</span>
+          <div className="absolute left-0 top-full mt-1.5 w-56 p-3 rounded-lg bg-[#1a1412] border border-zinc-800/50 shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 text-[11px] sm:text-xs font-mono text-zinc-500 text-left leading-relaxed">
+            <span className="text-zinc-300 font-black block mb-1 uppercase text-xs sm:text-sm">SYSTEM ONLINE</span>
             Actively seeking roles in Backend, DevOps, and Cloud Infrastructure.
           </div>
         </div>
         
         {/* Brand/Model / Active Project Title */}
-        <div className="absolute bottom-5 left-6 max-w-[200px] sm:max-w-[240px] truncate font-mono text-[10.5px] uppercase tracking-widest text-zinc-500 select-none font-bold">
+        <div className="absolute bottom-5 left-6 max-w-[220px] sm:max-w-[260px] truncate font-mono text-xs sm:text-sm uppercase tracking-widest text-zinc-500 select-none font-bold">
           {activeRecord ? (
             <span className="text-amber-600/80 font-black">
               {activeRecord.title}
@@ -213,7 +213,7 @@ export default function TurntableDeck({ activeRecord }) {
               isPlaying ? "bg-amber-600/80 animate-pulse" : "bg-red-700"
             }`}
           />
-          <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-500 font-bold">
+          <span className="font-mono text-xs uppercase tracking-wider text-zinc-500 font-bold">
             {isPlaying ? "ON AIR" : "STDBY"}
           </span>
         </div>
@@ -228,7 +228,7 @@ export default function TurntableDeck({ activeRecord }) {
           <button 
             onClick={() => setRpm(33)}
             disabled={!activeRecord}
-            className={`px-3.5 py-1.5 rounded font-mono text-[11px] border transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded font-mono text-xs sm:text-sm border transition-all cursor-pointer ${
               rpm === 33 
                 ? "bg-zinc-900 text-amber-600/80 border-zinc-800/50 font-black" 
                 : "bg-zinc-950 text-zinc-500 border-zinc-800/50 hover:text-zinc-350 hover:border-zinc-700"
@@ -239,7 +239,7 @@ export default function TurntableDeck({ activeRecord }) {
           <button 
             onClick={() => setRpm(45)}
             disabled={!activeRecord}
-            className={`px-3.5 py-1.5 rounded font-mono text-[11px] border transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded font-mono text-xs sm:text-sm border transition-all cursor-pointer ${
               rpm === 45 
                 ? "bg-zinc-900 text-amber-600/80 border-zinc-800/50 font-black" 
                 : "bg-zinc-950 text-zinc-500 border-zinc-800/50 hover:text-zinc-350 hover:border-zinc-700"
@@ -280,7 +280,7 @@ export default function TurntableDeck({ activeRecord }) {
               >
                 <div className="absolute inset-0 rounded-full border-4 border-dashed border-zinc-800/30 opacity-50 animate-spin-slow" />
                 <RotateCw className="w-9 h-9 text-zinc-500 mb-3.5 animate-pulse" />
-                <p className="text-zinc-300 font-mono text-[11px] max-w-[220px] leading-relaxed font-semibold">
+                <p className="text-zinc-300 font-mono text-xs sm:text-sm max-w-[250px] leading-relaxed font-semibold">
                   Select a record from the shelves to play the vinyl and display the project details below.
                 </p>
               </motion.div>
@@ -424,12 +424,12 @@ export default function TurntableDeck({ activeRecord }) {
           {isMuted ? (
             <>
               <VolumeX className="w-4 h-4 text-rose-600" />
-              <span className="font-extrabold">MUTED</span>
+              <span className="font-extrabold text-xs sm:text-sm">MUTED</span>
             </>
           ) : (
             <>
               <Volume2 className="w-4 h-4 text-emerald-600" />
-              <span className="font-extrabold">AUDIO ON ({activeSpinSpeedText})</span>
+              <span className="font-extrabold text-xs sm:text-sm">AUDIO ON ({activeSpinSpeedText})</span>
             </>
           )}
         </button>

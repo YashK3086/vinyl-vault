@@ -19,10 +19,10 @@ export default function JukeboxLounge() {
           <Headphones className="w-7 h-7 animate-bounce" />
         </div>
         <div className="flex flex-col">
-          <h2 className="text-base font-extrabold uppercase tracking-wider text-zinc-300 font-mono">
+          <h2 className="text-lg sm:text-xl font-extrabold uppercase tracking-wider text-zinc-300 font-mono">
             Musical DNA & Lounge
           </h2>
-          <p className="text-sm text-zinc-500 mt-1 font-medium">
+          <p className="text-base text-zinc-500 mt-1 font-medium leading-relaxed">
             A space dedicated to the tracks, artists, and playlists that fuel my late-night coding sessions.
           </p>
         </div>
@@ -42,8 +42,8 @@ export default function JukeboxLounge() {
             {/* Top Lightup Sign */}
             <div className="w-full py-2.5 bg-zinc-950 border border-zinc-700 rounded-lg flex items-center justify-center shadow-inner relative overflow-hidden select-none">
               <div className="absolute inset-0 bg-amber-600/5 filter blur-sm animate-pulse" />
-              <span className="text-sm font-extrabold font-mono tracking-[0.3em] text-amber-600/80 uppercase glow-text-amber flex items-center gap-2">
-                <Radio className="w-4.5 h-4.5" /> SELECT-A-TRACK JUKEBOX
+              <span className="text-base font-extrabold font-mono tracking-[0.3em] text-amber-600/80 uppercase glow-text-amber flex items-center gap-2">
+                <Radio className="w-5 h-5" /> SELECT-A-TRACK JUKEBOX
               </span>
             </div>
 
@@ -56,10 +56,10 @@ export default function JukeboxLounge() {
                 <Disc className="w-9 h-9 animate-pulse" />
               </div>
 
-              <h3 className="text-base font-extrabold text-zinc-300 font-mono uppercase tracking-wider mb-2">
+              <h3 className="text-lg sm:text-xl font-extrabold text-zinc-300 font-mono uppercase tracking-wider mb-2">
                 Jukebox Offline // Awaiting Ingestion
               </h3>
-              <p className="text-sm text-zinc-500 max-w-[350px] leading-relaxed mb-6 font-medium">
+              <p className="text-base text-zinc-500 max-w-[400px] leading-relaxed mb-6 font-medium">
                 This console will list my favorite albums, current heavy rotations, and curated playlists soon.
               </p>
 
@@ -96,7 +96,7 @@ export default function JukeboxLounge() {
           <div className="flex flex-col gap-6 w-full">
             
             <div className="w-full p-5 rounded-2xl bg-[#1a1412] border border-zinc-700 flex flex-col gap-4 shadow-xl">
-              <h3 className="text-xs font-black font-mono uppercase tracking-widest text-amber-600/80 border-b border-zinc-900/40 pb-2">
+              <h3 className="text-sm font-black font-mono uppercase tracking-widest text-amber-600/80 border-b border-zinc-900/40 pb-2">
                 Streaming Hubs
               </h3>
               
@@ -112,8 +112,8 @@ export default function JukeboxLounge() {
                     <Music className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold text-zinc-300">Apple Music</span>
-                    <span className="text-xs text-zinc-500 font-mono font-medium">Open Profile</span>
+                    <span className="text-base font-bold text-zinc-300">Apple Music</span>
+                    <span className="text-xs sm:text-sm text-zinc-500 font-mono font-medium">Open Profile</span>
                   </div>
                 </div>
                 <Link className="w-4 h-4 text-zinc-500 group-hover:text-zinc-350" />
@@ -134,8 +134,8 @@ export default function JukeboxLounge() {
                     </svg>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold text-zinc-300">Spotify Profile</span>
-                    <span className="text-xs text-zinc-500 font-mono font-medium">Open Profile</span>
+                    <span className="text-base font-bold text-zinc-300">Spotify Profile</span>
+                    <span className="text-xs sm:text-sm text-zinc-500 font-mono font-medium">Open Profile</span>
                   </div>
                 </div>
                 <Link className="w-4 h-4 text-zinc-500 group-hover:text-zinc-350" />
@@ -148,13 +148,13 @@ export default function JukeboxLounge() {
               <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-zinc-300 mb-1">
                 <Headphones className="w-5 h-5" />
               </div>
-              <h4 className="text-sm font-extrabold text-zinc-300 font-mono uppercase tracking-wider">
+              <h4 className="text-base font-extrabold text-zinc-300 font-mono uppercase tracking-wider">
                 Listener Notes
               </h4>
-              <p className="text-xs text-zinc-500 leading-relaxed font-semibold font-mono">
+              <p className="text-sm text-zinc-500 leading-relaxed font-semibold font-mono">
                 "Music gives a soul to the universe, wings to the mind, flight to the imagination and life to everything."
               </p>
-              <span className="text-[10px] text-zinc-400 font-bold font-mono mt-1.5 uppercase tracking-widest">
+              <span className="text-xs sm:text-sm text-zinc-400 font-bold font-mono mt-1.5 uppercase tracking-widest">
                 — Plato
               </span>
             </div>
