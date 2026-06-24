@@ -73,7 +73,7 @@ function MixerKnob({ label, value = 0, onChange }) {
           {/* Indicator tick */}
           <div className="absolute top-0.5 left-1/2 -translate-x-1/2 w-[2px] h-[4px] bg-amber-650 rounded-full" />
         </div>
-        
+
         {/* Center dot cap */}
         <div className="absolute w-1.5 h-1.5 rounded-full bg-zinc-900 border border-zinc-800" />
       </div>
@@ -83,14 +83,14 @@ function MixerKnob({ label, value = 0, onChange }) {
 
 export default function MixerFader({ activeSection, setActiveSection }) {
   const containerRef = useRef(null);
-  
+
   // Snap heights: 180px total height for the track (90px per channel spacing)
   const trackHeight = 180;
   const sections = ["crate-a", "crate-b", "crate-c"];
-  
+
   // Find current index
   const currentIndex = sections.indexOf(activeSection);
-  
+
   // Motion value for visual fader Y positioning (90px steps)
   const y = useMotionValue(currentIndex * 90);
 
@@ -118,7 +118,11 @@ export default function MixerFader({ activeSection, setActiveSection }) {
       const timer = setTimeout(() => {
         animate(y, 90, { duration: 0.5, ease: "easeInOut" }).then(() => {
           setTimeout(() => {
-            animate(y, currentIndex * 90, { type: "spring", stiffness: 200, damping: 15 });
+            animate(y, currentIndex * 90, {
+              type: "spring",
+              stiffness: 200,
+              damping: 15,
+            });
           }, 300);
         });
       }, 1500);
@@ -127,7 +131,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
       animate(y, currentIndex * 90, {
         type: "spring",
         stiffness: 300,
-        damping: 20
+        damping: 20,
       });
     }
   }, [activeSection, currentIndex, y]);
@@ -136,14 +140,14 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   const handleDragEnd = (event, info) => {
     const dragY = y.get();
     const closestIndex = Math.min(2, Math.max(0, Math.round(dragY / 90)));
-    
+
     setActiveSection(sections[closestIndex]);
     markInteracted();
-    
+
     animate(y, closestIndex * 90, {
       type: "spring",
       stiffness: 300,
-      damping: 20
+      damping: 20,
     });
   };
 
@@ -153,17 +157,24 @@ export default function MixerFader({ activeSection, setActiveSection }) {
     animate(y, idx * 90, {
       type: "spring",
       stiffness: 300,
-      damping: 20
+      damping: 20,
     });
   };
 
   const handleGainChange = (newVal) => {
     setGainVal(newVal);
-    if (typeof window !== "undefined" && vinylAudioEngine.ctx && vinylAudioEngine.mainGain) {
+    if (
+      typeof window !== "undefined" &&
+      vinylAudioEngine.ctx &&
+      vinylAudioEngine.mainGain
+    ) {
       try {
         const factor = ((newVal + 135) / 270) * 1.5;
         if (vinylAudioEngine.isPlaying && !vinylAudioEngine.isMuted) {
-          vinylAudioEngine.mainGain.gain.setValueAtTime(factor * 0.8, vinylAudioEngine.ctx.currentTime);
+          vinylAudioEngine.mainGain.gain.setValueAtTime(
+            factor * 0.8,
+            vinylAudioEngine.ctx.currentTime,
+          );
         }
       } catch (e) {}
     }
@@ -191,7 +202,10 @@ export default function MixerFader({ activeSection, setActiveSection }) {
         gainNode.connect(ctx.destination);
         osc.frequency.setValueAtTime(freq, ctx.currentTime);
         gainNode.gain.setValueAtTime(0.04, ctx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.001,
+          ctx.currentTime + 0.05,
+        );
         osc.start();
         osc.stop(ctx.currentTime + 0.05);
       } catch (e) {}
@@ -200,7 +214,6 @@ export default function MixerFader({ activeSection, setActiveSection }) {
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-6 p-5 rounded-2xl bg-[#1a1412] border border-zinc-800/50 shadow-xl w-full relative font-sans">
-      
       {/* Visual Mixer Strip Branding */}
       <div className="flex flex-row md:flex-col justify-between md:justify-center items-center gap-3 w-full md:w-auto md:border-r md:border-zinc-850/45 md:pr-6 md:min-h-[210px]">
         <div className="flex items-center gap-2.5">
@@ -216,7 +229,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
             </span>
           </div>
         </div>
-        
+
         {/* Status display */}
         <div className="bg-zinc-950 border border-zinc-800/50 px-4 py-2 rounded font-mono text-sm text-zinc-350 flex items-center gap-1.5 md:mt-4">
           <span className="w-2 h-2 rounded-full bg-amber-600/80 animate-ping inline-block" />
@@ -226,20 +239,26 @@ export default function MixerFader({ activeSection, setActiveSection }) {
 
       {/* Main Fader Interface */}
       <div className="flex-1 grid grid-cols-12 items-center gap-6 w-full select-none">
-        
         {/* Fader Console Module (Col Span 5 on desktop) */}
         <div className="col-span-12 md:col-span-5 flex items-center justify-center gap-6 py-2 relative pr-0 md:pr-4 md:border-r md:border-zinc-850/45 h-[212px]">
-          
           {/* Studio Masking Tape Onboarding Label & Swirly Arrow (Always Visible, Center Aligned) */}
           <div className="absolute -top-14 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none select-none">
             <div className="bg-[#fdf6e2] text-[#5c4033] px-3 py-1 text-[9.5px] font-mono font-black shadow-md border border-[#eadaa6] uppercase tracking-widest rotate-[-1deg] animate-pulse">
               🔥 drag fader!
             </div>
-            <svg className="w-8 h-8 text-[#fdf6e2]/60 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              className="w-8 h-8 text-[#fdf6e2]/60 mt-0.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M 4,2 C 14,0 18,8 12,12 C 6,16 8,8 14,20 L 14,22 M 11,19 L 14,22 L 17,19" />
             </svg>
           </div>
-          
+
           {/* Left Flanking: EQ/Gain Knobs */}
           <div className="flex flex-col justify-between h-full py-1">
             <MixerKnob label="GAIN" value={0} onChange={handleGainChange} />
@@ -248,13 +267,13 @@ export default function MixerFader({ activeSection, setActiveSection }) {
           </div>
 
           {/* Center: The Fader Track */}
-          <div 
+          <div
             ref={containerRef}
             className="relative w-8 h-[212px] bg-zinc-950 rounded-lg border border-zinc-800/50 flex justify-center py-4 shadow-inner"
           >
             {/* Center metal slot track */}
             <div className="absolute top-4 bottom-4 w-1 bg-zinc-900 border-x border-zinc-800/50 rounded" />
-            
+
             {/* Level tick marks */}
             <div className="absolute inset-y-4 left-1 flex flex-col justify-between font-mono text-[9.5px] text-zinc-500 select-none pointer-events-none font-bold">
               <span>+6</span>
@@ -265,7 +284,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
               <span>-25</span>
               <span>-40</span>
             </div>
-            
+
             <div className="absolute inset-y-4 right-1 flex flex-col justify-between font-mono text-[9.5px] text-zinc-500 select-none pointer-events-none font-bold">
               <span>dB</span>
               <span>—</span>
@@ -288,7 +307,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
             >
               {/* Metallic center line */}
               <div className="w-full h-[2px] bg-amber-600/80 shadow-[0_0_6px_rgba(217,119,6,0.5)]" />
-              
+
               {/* Grip lines */}
               <div className="absolute top-1 w-3 h-[1px] bg-zinc-600/40" />
               <div className="absolute bottom-1 w-3 h-[1px] bg-zinc-600/40" />
@@ -298,7 +317,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
           {/* Right Flanking: Pan Knob & Solo/Mute Buttons */}
           <div className="flex flex-col justify-between h-full py-1">
             <MixerKnob label="PAN" value={0} />
-            
+
             {/* SOLO Button */}
             <div className="flex flex-col items-center gap-1 select-none">
               <span className="text-[8px] font-mono font-bold text-zinc-500 tracking-wider uppercase leading-none">
@@ -308,10 +327,10 @@ export default function MixerFader({ activeSection, setActiveSection }) {
                 onClick={handleSoloToggle}
                 className="w-7 h-7 rounded border border-zinc-800 bg-gradient-to-b from-zinc-850 to-zinc-950 flex flex-col items-center justify-center relative shadow-md hover:border-zinc-750 active:scale-95 transition-all cursor-pointer"
               >
-                <div 
+                <div
                   className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                    isSolo 
-                      ? "bg-amber-600 shadow-[0_0_5px_rgba(217,119,6,0.75)]" 
+                    isSolo
+                      ? "bg-amber-600 shadow-[0_0_5px_rgba(217,119,6,0.75)]"
                       : "bg-zinc-800"
                   }`}
                 />
@@ -327,50 +346,53 @@ export default function MixerFader({ activeSection, setActiveSection }) {
                 onClick={handleMuteToggle}
                 className="w-7 h-7 rounded border border-zinc-800 bg-gradient-to-b from-zinc-850 to-zinc-950 flex flex-col items-center justify-center relative shadow-md hover:border-zinc-750 active:scale-95 transition-all cursor-pointer"
               >
-                <div 
+                <div
                   className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                    isMuted 
-                      ? "bg-rose-650 shadow-[0_0_5px_rgba(225,29,72,0.75)] animate-pulse" 
+                    isMuted
+                      ? "bg-rose-650 shadow-[0_0_5px_rgba(225,29,72,0.75)] animate-pulse"
                       : "bg-zinc-800"
                   }`}
                 />
               </button>
             </div>
           </div>
-
         </div>
 
         {/* Channels / Section Labels & Clickable Toggles (Col Span 7 on desktop) */}
         <div className="col-span-12 md:col-span-7 flex flex-col justify-between h-[212px] py-1 pl-0 md:pl-2">
           {sections.map((sec, idx) => {
             const isActive = activeSection === sec;
-            
+
             const titles = {
-              "crate-a": "SOURCE A: PROJECT CRATES // 33 RPM",
-              "crate-b": "SOURCE B: GIG POSTER // EXPERIENCE",
-              "crate-c": "SOURCE C: LISTENING LOUNGE // JUKEBOX"
+              "crate-a": "SOURCE A: VINYL PLAYER & ALBUMS----PROJECTS",
+              "crate-b": "SOURCE B: EPK & TOUR RIDER----SKILLS & EXPERIENCE",
+              "crate-c": "SOURCE C: LISTENING LOUNGE----JUKEBOX",
             };
 
             const subtitles = {
               "crate-a": "Playable case-studies and coding records",
               "crate-b": "Accredited credentials and certificates",
-              "crate-c": "Favorite music records and artist lounge"
+              "crate-c": "Favorite music records and artist lounge",
             };
 
             return (
-              <div 
+              <div
                 key={sec}
                 onClick={() => handleTrackClick(idx)}
                 className={`group flex items-center justify-between py-2.5 px-4 rounded-xl border transition-all duration-300 hover:translate-x-2 cursor-pointer ${
-                  isActive 
-                    ? "bg-zinc-950 border-amber-600/30 shadow-md" 
+                  isActive
+                    ? "bg-zinc-950 border-amber-600/30 shadow-md"
                     : "bg-transparent border-transparent hover:bg-zinc-950/20 hover:border-zinc-800/40"
                 }`}
               >
                 <div className="flex flex-col gap-0.5">
-                  <span className={`text-sm sm:text-base font-extrabold font-mono tracking-wider transition-colors ${
-                    isActive ? "text-amber-600/80 glow-text-amber" : "text-zinc-500 group-hover:text-zinc-300"
-                  }`}>
+                  <span
+                    className={`text-sm sm:text-base font-extrabold font-mono tracking-wider transition-colors ${
+                      isActive
+                        ? "text-amber-600/80 glow-text-amber"
+                        : "text-zinc-500 group-hover:text-zinc-300"
+                    }`}
+                  >
                     {titles[sec]}
                   </span>
                   <span className="text-xs sm:text-sm text-zinc-300 font-sans font-semibold leading-relaxed">
@@ -380,10 +402,10 @@ export default function MixerFader({ activeSection, setActiveSection }) {
 
                 {/* Glowing LED status dot */}
                 <div className="flex items-center justify-center pl-3">
-                  <div 
+                  <div
                     className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      isActive 
-                        ? "bg-amber-600/80 shadow-[0_0_10px_rgba(217,119,6,0.5)] animate-pulse" 
+                      isActive
+                        ? "bg-amber-600/80 shadow-[0_0_10px_rgba(217,119,6,0.5)] animate-pulse"
                         : "bg-zinc-800"
                     }`}
                   />
@@ -392,9 +414,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
             );
           })}
         </div>
-
       </div>
-
     </div>
   );
 }
