@@ -103,7 +103,7 @@ export default function Home() {
             <HeroSection handleCopy={handleCopy} copiedText={copiedText} />
 
             {/* Main Content Area */}
-      <div className="w-full flex-1 flex flex-col z-10 px-4 sm:px-6 lg:px-8 pb-6 pt-0 max-w-7xl mx-auto">
+      <div className="w-full flex-1 flex flex-col z-10 px-6 sm:px-12 lg:px-16 pb-6 pt-0">
         
         {/* Header Navigation */}
         <header className={`sticky top-0 z-50 w-full flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 pb-4 mb-8 transition-all duration-200 ${isScrolled ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-700/80 shadow-lg" : "bg-zinc-950 border-b border-zinc-700"}`}>
@@ -341,9 +341,8 @@ export default function Home() {
 
       </div>
 
-      {/* Retro Store Footer */}
       <footer className="w-full z-10 border-t border-zinc-700 bg-zinc-950 py-6 text-center">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="w-full px-6 sm:px-12 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-base sm:text-lg font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
             YASHVARDHAN KHANNA'S VINYL-VAULT
           </p>
