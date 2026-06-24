@@ -175,6 +175,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                         transition={{ type: "spring", stiffness: 350, damping: 20 }}
                       />
 
+                      {/* Pop-up Tag Overlay on Hover */}
                       <AnimatePresence>
                         {isHovered && (
                           <motion.div
@@ -182,12 +183,12 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.8, y: 10 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute bottom-full mb-20 left-1/2 -translate-x-1/2 w-60 p-3.5 rounded-lg bg-[#140e0c] border border-zinc-750 text-left pointer-events-none z-30 shadow-2xl flex flex-col gap-2"
+                            className="absolute bottom-full mb-20 left-1/2 -translate-x-1/2 w-52 p-3 rounded-lg bg-[#1a1412] border border-zinc-800/50 text-left pointer-events-none z-30 shadow-2xl flex flex-col gap-2"
                           >
-                            <div className="text-xs font-black text-zinc-200 font-mono uppercase tracking-wider">
+                            <div className="text-xs font-extrabold text-zinc-300 font-mono uppercase tracking-wider truncate">
                               {limitWords(record.title)}
                             </div>
-                            <div className="text-[10.5px] text-zinc-400 font-bold font-mono leading-normal">
+                            <div className="text-[10.5px] text-zinc-500 font-semibold font-mono mb-0.5">
                               {record.subtitle}
                             </div>
                             <div className="flex flex-wrap gap-1">

@@ -119,10 +119,10 @@ export default function MixerFader({ activeSection, setActiveSection }) {
       </div>
 
       {/* Main Fader Interface */}
-      <div className="flex-grow flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8 w-full select-none max-w-3xl mx-auto">
+      <div className="flex-1 grid grid-cols-12 items-center gap-6 w-full select-none">
         
-        {/* Fader Track & Knob */}
-        <div className="w-24 flex justify-center py-2 flex-shrink-0">
+        {/* Fader Track & Knob (Col Span 4) */}
+        <div className="col-span-4 flex justify-center py-2">
           <div 
             ref={containerRef}
             className="relative w-8 h-[184px] bg-zinc-950 rounded-lg border border-zinc-800/50 flex justify-center py-4 shadow-inner"
@@ -171,8 +171,8 @@ export default function MixerFader({ activeSection, setActiveSection }) {
           </div>
         </div>
 
-        {/* Channels / Section Labels & Clickable Toggles */}
-        <div className="flex-grow flex flex-col justify-between h-[184px] py-3 pr-2 max-w-xl">
+        {/* Channels / Section Labels & Clickable Toggles (Col Span 8) */}
+        <div className="col-span-8 flex flex-col justify-between h-[184px] py-3 pr-2">
           {sections.map((sec, idx) => {
             const isActive = activeSection === sec;
             
