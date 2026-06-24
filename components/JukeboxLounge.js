@@ -155,7 +155,7 @@ export default function JukeboxLounge() {
                 "Music gives a soul to the universe, wings to the mind, flight to the imagination and life to everything."
               </p>
               <span className="text-[10px] text-zinc-400 font-bold font-mono mt-1.5 uppercase tracking-widest">
-                — Plato // Philosophy
+                — Plato
               </span>
             </div>
           </div>

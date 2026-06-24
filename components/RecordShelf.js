@@ -81,7 +81,7 @@ export default function RecordShelf({ activeRecord, setActiveRecord }) {
                   }
 
                   // Disc sliding animations
-                  const isDiscOut = isHovered || isActive;
+                  const isDiscOut = isHovered;
                   const discY = isDiscOut ? -65 : -20;
                   const discOpacity = isDiscOut ? 1 : 0;
                   const discScale = isDiscOut ? 1 : 0.8;

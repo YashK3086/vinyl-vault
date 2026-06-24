@@ -195,9 +195,15 @@ export default function TurntableDeck({ activeRecord }) {
           </div>
         </div>
         
-        {/* Brand/Model text */}
-        <div className="absolute bottom-5 left-6 font-mono text-[10.5px] uppercase tracking-widest text-zinc-550 select-none font-semibold">
-          SL-1200 PORTFOLIO // DIRECT DRIVE
+        {/* Brand/Model / Active Project Title */}
+        <div className="absolute bottom-5 left-6 max-w-[200px] sm:max-w-[240px] truncate font-mono text-[10.5px] uppercase tracking-widest text-zinc-500 select-none font-bold">
+          {activeRecord ? (
+            <span className="text-amber-600/80 font-black">
+              {activeRecord.title}
+            </span>
+          ) : (
+            "SYSTEM STANDBY"
+          )}
         </div>
 
         {/* LED Indicator Light */}
@@ -218,7 +224,7 @@ export default function TurntableDeck({ activeRecord }) {
         </div>
 
         {/* Speed Selector Buttons */}
-        <div className="absolute bottom-5 left-1/3 flex gap-2.5 z-20">
+        <div className="absolute bottom-5 right-28 flex gap-2.5 z-20">
           <button 
             onClick={() => setRpm(33)}
             disabled={!activeRecord}
@@ -260,7 +266,7 @@ export default function TurntableDeck({ activeRecord }) {
         <div className="w-[88%] aspect-square rounded-full bg-zinc-950 border-[6px] border-zinc-800/50 shadow-[inset_0_0_20px_rgba(0,0,0,0.9)] flex items-center justify-center relative">
           
           {/* Spindle Pin (Center) */}
-          <div className="absolute w-3 h-3 rounded-full bg-zinc-600 border border-zinc-500 z-30 shadow" />
+          <div className="absolute w-3 h-3 rounded-full bg-zinc-600 border border-zinc-500 z-30 shadow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           
           <AnimatePresence mode="wait">
             {!activeRecord ? (
@@ -286,7 +292,7 @@ export default function TurntableDeck({ activeRecord }) {
                 animate={{ y: 0, rotate: 0, opacity: 1, scale: 1 }}
                 exit={{ y: 200, rotate: 45, opacity: 0, scale: 0.8 }}
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                className="absolute inset-2 rounded-full vinyl-grooves bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black border border-zinc-850/50 flex items-center justify-center relative cursor-pointer z-10 overflow-hidden"
+                className="absolute inset-2 rounded-full vinyl-grooves bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black border border-zinc-850/50 flex items-center justify-center cursor-pointer z-10 overflow-hidden"
               >
                 {/* Physics Rotation Controller */}
                 <div

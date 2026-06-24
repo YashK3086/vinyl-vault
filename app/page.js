@@ -339,13 +339,12 @@ export default function Home() {
 
       {/* Retro Store Footer */}
       <footer className="w-full z-10 border-t border-zinc-700 bg-zinc-950 py-6 text-center">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-semibold font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
-            HANDCRAFTED BY YASHVARDHAN KHANNA // © 2026 ALL RIGHTS RESERVED
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-base sm:text-lg font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
+            YASHVARDHAN KHANNA'S VINYL-VAULT
           </p>
-          <p className="text-[10.5px] font-semibold font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-wider flex items-center gap-2 cursor-default">
-            <span className="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-ping" />
-            STATION 360 // NEXT.js + TAILWIND CSS v4 + FRAMER MOTION
+          <p className="text-base sm:text-lg font-black font-mono text-zinc-500 hover:text-zinc-300 transition-colors uppercase tracking-widest cursor-default">
+            STATION 360
           </p>
         </div>
       </footer>
