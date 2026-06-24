@@ -100,8 +100,32 @@ export default function JukeboxLounge() {
                 Streaming Hubs
               </h3>
               
+              {/* Apple Music Platform Link */}
+              <a 
+                href="https://music.apple.com/profile/yashvardhan_k"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-700 hover:border-rose-600/40 flex items-center justify-between group transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center text-rose-500 shadow-inner group-hover:text-rose-400">
+                    <Music className="w-5 h-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-zinc-300">Apple Music</span>
+                    <span className="text-xs text-zinc-500 font-mono font-medium">Open Profile</span>
+                  </div>
+                </div>
+                <Link className="w-4 h-4 text-zinc-500 group-hover:text-zinc-350" />
+              </a>
+
               {/* Spotify Platform Link */}
-              <div className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-700 hover:border-emerald-600/40 flex items-center justify-between group cursor-not-allowed opacity-75 transition-all">
+              <a 
+                href="https://open.spotify.com/user/bjkwxg4hb6c2bls68mvtkgt5i?si=QVqnzYPnR92qqHE_PRtrVQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-700 hover:border-emerald-600/40 flex items-center justify-between group transition-all"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center text-emerald-600 shadow-inner group-hover:text-emerald-400">
                     {/* Inline Spotify SVG */}
@@ -111,25 +135,11 @@ export default function JukeboxLounge() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-sm font-bold text-zinc-300">Spotify Profile</span>
-                    <span className="text-xs text-zinc-500 font-mono font-medium">Offline / Ingesting</span>
+                    <span className="text-xs text-zinc-500 font-mono font-medium">Open Profile</span>
                   </div>
                 </div>
                 <Link className="w-4 h-4 text-zinc-500 group-hover:text-zinc-350" />
-              </div>
-
-              {/* Apple Music Platform Link */}
-              <div className="w-full p-4 rounded-xl bg-zinc-950 border border-zinc-700 hover:border-rose-600/40 flex items-center justify-between group cursor-not-allowed opacity-75 transition-all">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center text-rose-500 shadow-inner group-hover:text-rose-400">
-                    <Music className="w-5 h-5" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold text-zinc-300">Apple Music</span>
-                    <span className="text-xs text-zinc-500 font-mono font-medium">Offline / Ingesting</span>
-                  </div>
-                </div>
-                <Link className="w-4 h-4 text-zinc-500 group-hover:text-zinc-350" />
-              </div>
+              </a>
 
             </div>
 
