@@ -84,15 +84,15 @@ function MixerKnob({ label, value = 0, onChange }) {
 export default function MixerFader({ activeSection, setActiveSection }) {
   const containerRef = useRef(null);
   
-  // Snap heights: 152px total height for the track
-  const trackHeight = 152;
+  // Snap heights: 180px total height for the track (90px per channel spacing)
+  const trackHeight = 180;
   const sections = ["crate-a", "crate-b", "crate-c"];
   
   // Find current index
   const currentIndex = sections.indexOf(activeSection);
   
-  // Motion value for visual fader Y positioning
-  const y = useMotionValue(currentIndex * 76);
+  // Motion value for visual fader Y positioning (90px steps)
+  const y = useMotionValue(currentIndex * 90);
 
   const [hasInteracted, setHasInteracted] = React.useState(false);
   const [gainVal, setGainVal] = React.useState(0);
@@ -116,15 +116,15 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   useEffect(() => {
     if (!sessionStorage.getItem("vinyl-vault-nav-interacted")) {
       const timer = setTimeout(() => {
-        animate(y, 76, { duration: 0.5, ease: "easeInOut" }).then(() => {
+        animate(y, 90, { duration: 0.5, ease: "easeInOut" }).then(() => {
           setTimeout(() => {
-            animate(y, currentIndex * 76, { type: "spring", stiffness: 200, damping: 15 });
+            animate(y, currentIndex * 90, { type: "spring", stiffness: 200, damping: 15 });
           }, 300);
         });
       }, 1500);
       return () => clearTimeout(timer);
     } else {
-      animate(y, currentIndex * 76, {
+      animate(y, currentIndex * 90, {
         type: "spring",
         stiffness: 300,
         damping: 20
@@ -135,12 +135,12 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   // Snapping on drag end
   const handleDragEnd = (event, info) => {
     const dragY = y.get();
-    const closestIndex = Math.min(2, Math.max(0, Math.round(dragY / 76)));
+    const closestIndex = Math.min(2, Math.max(0, Math.round(dragY / 90)));
     
     setActiveSection(sections[closestIndex]);
     markInteracted();
     
-    animate(y, closestIndex * 76, {
+    animate(y, closestIndex * 90, {
       type: "spring",
       stiffness: 300,
       damping: 20
@@ -150,7 +150,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
   const handleTrackClick = (idx) => {
     setActiveSection(sections[idx]);
     markInteracted();
-    animate(y, idx * 76, {
+    animate(y, idx * 90, {
       type: "spring",
       stiffness: 300,
       damping: 20
@@ -214,7 +214,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
       )}
       
       {/* Visual Mixer Strip Branding */}
-      <div className="flex flex-row md:flex-col justify-between md:justify-center items-center gap-3 w-full md:w-auto md:border-r md:border-zinc-850/45 md:pr-6 md:min-h-[180px]">
+      <div className="flex flex-row md:flex-col justify-between md:justify-center items-center gap-3 w-full md:w-auto md:border-r md:border-zinc-850/45 md:pr-6 md:min-h-[210px]">
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-lg bg-zinc-950 border border-zinc-800/50 flex items-center justify-center text-amber-600/80 shadow-inner flex-shrink-0">
             <Volume2 className="w-5 h-5 animate-pulse" />
@@ -240,7 +240,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
       <div className="flex-1 grid grid-cols-12 items-center gap-6 w-full select-none">
         
         {/* Fader Console Module (Col Span 5 on desktop) */}
-        <div className="col-span-12 md:col-span-5 flex items-center justify-center gap-6 py-2 relative pr-0 md:pr-4 md:border-r md:border-zinc-850/45 h-[184px]">
+        <div className="col-span-12 md:col-span-5 flex items-center justify-center gap-6 py-2 relative pr-0 md:pr-4 md:border-r md:border-zinc-850/45 h-[212px]">
           
           {/* Left Flanking: EQ/Gain Knobs */}
           <div className="flex flex-col justify-between h-full py-1">
@@ -252,7 +252,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
           {/* Center: The Fader Track */}
           <div 
             ref={containerRef}
-            className="relative w-8 h-[184px] bg-zinc-950 rounded-lg border border-zinc-800/50 flex justify-center py-4 shadow-inner"
+            className="relative w-8 h-[212px] bg-zinc-950 rounded-lg border border-zinc-800/50 flex justify-center py-4 shadow-inner"
           >
             {/* Center metal slot track */}
             <div className="absolute top-4 bottom-4 w-1 bg-zinc-900 border-x border-zinc-800/50 rounded" />
@@ -343,7 +343,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
         </div>
 
         {/* Channels / Section Labels & Clickable Toggles (Col Span 7 on desktop) */}
-        <div className="col-span-12 md:col-span-7 flex flex-col justify-between h-[184px] py-1.5 pl-0 md:pl-2">
+        <div className="col-span-12 md:col-span-7 flex flex-col justify-between h-[212px] py-1 pl-0 md:pl-2">
           {sections.map((sec, idx) => {
             const isActive = activeSection === sec;
             
@@ -363,7 +363,7 @@ export default function MixerFader({ activeSection, setActiveSection }) {
               <div 
                 key={sec}
                 onClick={() => handleTrackClick(idx)}
-                className={`group flex items-center justify-between p-3.5 sm:p-4 rounded-xl border transition-all duration-300 hover:translate-x-2 cursor-pointer ${
+                className={`group flex items-center justify-between py-2.5 px-4 rounded-xl border transition-all duration-300 hover:translate-x-2 cursor-pointer ${
                   isActive 
                     ? "bg-zinc-950 border-amber-600/30 shadow-md" 
                     : "bg-transparent border-transparent hover:bg-zinc-950/20 hover:border-zinc-800/40"
