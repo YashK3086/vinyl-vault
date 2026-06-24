@@ -45,7 +45,7 @@ export default function HeroSection({ handleCopy, copiedText }) {
           <div className="w-11 h-11 rounded-lg bg-zinc-950 border border-zinc-800 flex items-center justify-center text-amber-600/80 shadow-[0_0_12px_rgba(217,119,6,0.2)] animate-spin-slow">
             <Disc className="w-6 h-6" />
           </div>
-          <span className="font-mono text-sm font-black tracking-widest text-zinc-300">YK / SYSTEM</span>
+          <span className="font-mono text-sm font-black tracking-widest text-zinc-300">YK</span>
         </div>
         
         {/* Contact links / Resume */}
@@ -88,7 +88,7 @@ export default function HeroSection({ handleCopy, copiedText }) {
                 Cloud Architect & DevOps Engineer
               </h3>
               <p className="text-base sm:text-lg text-zinc-400 font-sans leading-relaxed max-w-xl font-medium">
-                SRM Institute of Science & Technology undergraduate specializing in engineering low-latency serverless pipelines, secure cloud orchestration, and automated GitOps infrastructure. Precise system engineering, built to scale and play without skipping.
+                Computer Science and Engineering undergraduate specializing in engineering low-latency serverless pipelines, secure cloud orchestration, and automated GitOps infrastructure. Precise system engineering, built to scale and play without skipping.
               </p>
             </motion.div>
 
@@ -117,11 +117,24 @@ export default function HeroSection({ handleCopy, copiedText }) {
                 <span>{copiedText === "phone" ? "Copied!" : "Get Phone"}</span>
               </button>
 
+              <a 
+                href="https://www.linkedin.com/in/yashvardhan-khanna-985b51353/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-350 hover:text-zinc-200 transition-all cursor-pointer font-mono text-xs font-bold uppercase"
+                title="Open LinkedIn Profile"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+
               <button 
                 onClick={scrollToConsole}
                 className="flex items-center gap-2 px-5 py-2.5 rounded bg-amber-600/10 hover:bg-amber-600/25 border border-amber-600/30 hover:border-amber-600/60 text-amber-500 hover:text-amber-400 transition-all cursor-pointer font-mono text-xs font-bold uppercase shadow-sm"
               >
-                <span>Enter Jukebox Vault</span>
+                <span>ENTER JUKEBOX</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </motion.div>
@@ -129,7 +142,7 @@ export default function HeroSection({ handleCopy, copiedText }) {
 
           {/* Right Column: Roles Header (Like Anant's site style) */}
           <div className="col-span-12 md:col-span-4 flex flex-col md:items-end justify-center text-left md:text-right border-t border-zinc-800/40 md:border-t-0 pt-6 md:pt-0">
-            <span className="text-xs font-black text-zinc-550 font-mono tracking-widest uppercase mb-1">Specialties</span>
+            <span className="text-sm sm:text-base font-black text-zinc-500 font-mono tracking-widest uppercase mb-2">Specialties</span>
             <span className="text-xl sm:text-2xl font-black text-zinc-300 uppercase tracking-widest leading-normal">
               Serverless Dev
             </span>
@@ -144,17 +157,16 @@ export default function HeroSection({ handleCopy, copiedText }) {
         </div>
       </div>
 
-      {/* 4. Bottom Footer/Scroll Down Area */}
       <div className="w-full flex items-center justify-between z-10 max-w-7xl mx-auto pt-6 border-t border-zinc-900/60 select-none">
-        <span className="font-mono text-[10.5px] uppercase tracking-widest text-zinc-600">YK // STATION 360 SOURCE CHANNEL</span>
+        <span className="font-mono text-[10.5px] uppercase tracking-widest text-zinc-650">STATION 360 SOURCE CHANNEL</span>
         
         {/* Scroll indicator animation */}
         <button 
           onClick={scrollToConsole}
-          className="flex items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer group font-mono text-xs font-bold uppercase"
+          className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-350 transition-all cursor-pointer group font-mono text-sm sm:text-base font-extrabold uppercase tracking-wider"
         >
           <span>Scroll to Play</span>
-          <ChevronDown className="w-4 h-4 animate-bounce group-hover:text-amber-500 transition-colors" />
+          <ChevronDown className="w-5 h-5 animate-bounce group-hover:text-amber-500 transition-colors" />
         </button>
       </div>
 
