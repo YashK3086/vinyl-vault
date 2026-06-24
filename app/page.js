@@ -178,6 +178,20 @@ export default function Home() {
               <AwardIcon className="w-5.5 h-5.5 text-zinc-500 hover:text-zinc-300" />
             </a>
 
+            <a 
+              href="https://www.instagram.com/yashvardhan.khanna?igsh=aTBhYTFnamI3NTBw&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-11 h-11 rounded-lg bg-[#1a1412] border border-zinc-700 hover:border-zinc-650 text-zinc-500 hover:text-zinc-300 hover:scale-105 transition-all"
+              aria-label="Instagram Profile"
+            >
+              <svg className="w-5.5 h-5.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+
             {/* Direct access to PDF resume stored locally */}
             <a 
               href="/Resume (7).pdf"
