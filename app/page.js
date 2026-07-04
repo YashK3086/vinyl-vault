@@ -194,7 +194,7 @@ export default function Home() {
 
             {/* Direct access to PDF resume stored locally */}
             <a 
-              href="/Resume (7).pdf"
+              href="/Yashvardhan_Khanna_Resume.pdf"
               target="_blank"
               className="flex items-center gap-2 px-5 py-3 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold hover:shadow-[0_0_18px_rgba(217,119,6,0.25)] hover:scale-105 transition-all text-base sm:text-lg font-mono"
             >
@@ -262,23 +262,23 @@ export default function Home() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
                     
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Full-Stack Engineering</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Next.js, React.js, Node.js, JavaScript, HTML/CSS, Java</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Automation</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Git, GitHub Actions, Jenkins, ArgoCD, Terraform, Docker, Ansible, n8n</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Cloud Orchestration</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EKS, Lambda, S3, Cognito), Terraform, Jenkins, GitOps</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Cloud & Security</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EC2, Lambda, S3, VPC, Cognito, DynamoDB, SageMaker), Prompt Engineering, LLMs, Ethical Hacking</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Data Science & AI</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, PySpark, Librosa Audio Analysis, SageMaker KNN Models</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Data Engineering</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, SQL, PySpark, AWS Glue, Relational Data Modeling (1NF-BCNF), ETL/ELT Pipelines</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Security & Tools</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">ESP32 Cryptography (ChaCha20), LoRa E2EE, ArgoCD, Prometheus</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Practices & Tools</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Agile/Scrum, REST APIs, Microservices, Design Thinking, Slack, Microsoft Teams</span>
                     </div>
 
                   </div>
