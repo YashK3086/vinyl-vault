@@ -47,29 +47,25 @@ export const FAVORITE_BANDS = [
 export const VINYL_VAULT = [
   {
     id: "smart-serverless-music-app",
-    title: "Serverless Music App",
-    subtitle: "Context-Filtered Streaming App",
+    title: "Smart Serverless Web App",
+    subtitle: "Workflow Automation",
     category: "Full-Stack & AI",
     releaseYear: 2024,
     color: "bg-red-600",
     labelColor: "#dc2626", // red-600 hex for SVG styling
-    tags: ["Next.js", "SageMaker", "AWS Glue", "Lambda", "PySpark", "Librosa", "DynamoDB", "Python"],
+    tags: ["Next.js", "SageMaker", "Lambda", "n8n", "AWS Glue", "PySpark"],
     tracks: [
       {
-        name: "A-Side: Feature Extraction Pipeline (PySpark)",
-        desc: "Engineered an audio processing pipeline using AWS Glue & PySpark to execute Librosa audio signal processing (STFT/RMS) for automated feature extraction over rolling 10-second intervals."
+        name: "A-Side: Automated Backend Data Workflows",
+        desc: "Designed an end-to-end SaaS platform connecting a Next.js frontend to automated backend data workflows built with AWS Glue and PySpark, improving file ingestion speed and reducing pipeline latency."
       },
       {
-        name: "A-Side: SageMaker KNN Re-Ranking",
-        desc: "Deployed a SageMaker KNN machine learning model integrated with a serverless Lambda re-ranking architecture, driving real-time personalized user streaming content with a 20% discovery boost."
+        name: "A-Side: SageMaker KNN Integration",
+        desc: "Integrated a SageMaker KNN model to power real-time contextual recommendations within the app."
       },
       {
-        name: "B-Side: Global State Machine",
-        desc: "Optimized full-stack user states via a global Next.js AudioContext state machine, integrating debounced event handling and optimistic UI updates for real-time interface rendering."
-      },
-      {
-        name: "B-Side: Low-Latency Context Filter",
-        desc: "Built a low-latency context filter tracking user session matrices through DynamoDB TTL configurations, maintaining high performance under scaling metrics with sub-second backend execution."
+        name: "B-Side: Global State Management",
+        desc: "Implemented global state management and optimistic UI updates to improve perceived responsiveness."
       }
     ]
   },
@@ -99,25 +95,25 @@ export const VINYL_VAULT = [
   },
   {
     id: "automated-blue-green-pipeline",
-    title: "Blue-Green CI/CD Pipeline",
-    subtitle: "Zero-Downtime Cloud Deployment",
+    title: "Automated Infrastructure",
+    subtitle: "CI/CD Pipeline",
     category: "DevOps & Cloud",
     releaseYear: 2024,
     color: "bg-red-600",
     labelColor: "#dc2626", // red-600 hex
-    tags: ["AWS EKS", "Jenkins", "Terraform", "Argo Rollouts", "GitOps", "Prometheus", "Slack API"],
+    tags: ["AWS EKS", "Jenkins", "Terraform", "GitOps"],
     tracks: [
       {
-        name: "A-Side: GitOps Deployment",
-        desc: "Architected a scalable cloud deployment pipeline using Jenkins, GitOps, and Terraform to guarantee 100% application availability during multi-tenant SaaS application version rollouts."
+        name: "A-Side: Infrastructure as Code",
+        desc: "Built infrastructure-as-code with Terraform and Jenkins to automate environment provisioning and change management."
       },
       {
-        name: "A-Side: Automated Production Assertions",
-        desc: "Programmed automated live production assertions using custom Analysis Templates, dropping rollback execution windows to under 60s when identifying active HTTP faults."
+        name: "A-Side: Custom Validation Checks",
+        desc: "Created custom validation checks to speed up automated rollback during pipeline failures."
       },
       {
-        name: "B-Side: System Telemetry & Alerting",
-        desc: "Integrated automated Slack alerts and Prometheus telemetry, increasing cross-functional agile issue response speed by 40%."
+        name: "B-Side: Pipeline Telemetry",
+        desc: "Routed pipeline telemetry to Slack to improve visibility and reduce time-to-response for cross-functional engineering teams."
       }
     ]
   },
@@ -147,25 +143,25 @@ export const VINYL_VAULT = [
   },
   {
     id: "iot-security-stream-cipher",
-    title: "IoT Security Cipher",
-    subtitle: "256-bit Microcontroller Encryption",
+    title: "IoT Secure Stream Cipher",
+    subtitle: "Protocol",
     category: "Security & IoT",
     releaseYear: 2023,
     color: "bg-red-600",
     labelColor: "#dc2626", // red-600 hex
-    tags: ["ESP32", "ChaCha20", "LoRa", "Cryptography", "C++", "Microcontrollers", "Agile"],
+    tags: ["ESP32", "ChaCha20", "Agile"],
     tracks: [
       {
-        name: "A-Side: Lightweight E2EE Protocol",
-        desc: "Developed a 256-bit lightweight end-to-end encryption protocol for localized data transmission links to safely bypass standard middleware dependencies on resource-constrained microcontrollers."
+        name: "A-Side: 256-bit Encryption Protocol",
+        desc: "Implemented a lightweight 256-bit end-to-end encryption protocol for resource-constrained IoT devices, avoiding traditional blocking middleware."
       },
       {
-        name: "A-Side: Dynamic Nonce Sync Pipeline",
-        desc: "Created a custom 96-bit Dynamic Nonce synchronization pipeline, cutting baseline data overhead by eliminating 20% packet bloat."
+        name: "A-Side: Nonce Synchronization Scheme",
+        desc: "Designed an asynchronous nonce-synchronization scheme to reduce packet overhead."
       },
       {
-        name: "B-Side: Device Energy Optimization",
-        desc: "Achieved an 18% device energy efficiency optimization by shifting complex cryptographic overhead from block configurations into a stream-based deployment model."
+        name: "B-Side: Agile/Scrum Development",
+        desc: "Managed project development in a peer team environment using Agile/Scrum, tracking tasks and cross-node testing targets across structured sprints on MS Planner."
       }
     ]
   },
@@ -195,21 +191,21 @@ export const VINYL_VAULT = [
   },
   {
     id: "corporate-visitor-data-warehouse",
-    title: "Visitor Data Warehouse",
-    subtitle: "BCNF Database System",
+    title: "Corporate Customer",
+    subtitle: "Data Warehouse",
     category: "Data & AI",
     releaseYear: 2023,
     color: "bg-red-600",
     labelColor: "#dc2626", // red-600 hex
-    tags: ["SQL", "Data Warehousing", "ETL Triggers", "Database Tuning", "Schema Design", "PostgreSQL"],
+    tags: ["SQL", "Data Modeling", "ETL"],
     tracks: [
       {
-        name: "A-Side: BCNF Schema Design",
-        desc: "Designed a robust BCNF-normalized data warehouse schema, reducing system data redundancy by 35% while significantly improving query processing throughput."
+        name: "A-Side: BCNF Relational Schema",
+        desc: "Designed a normalized (BCNF) relational schema from first principles to reduce data redundancy and simplify query paths."
       },
       {
-        name: "B-Side: Automated ETL Workflows",
-        desc: "Automated relational state workflows using custom ETL triggers and system database cursors to harden runtime storage access log validation logs."
+        name: "B-Side: Backend Logging & Validation",
+        desc: "Built backend logging and validation workflows using transactional triggers and cursors to support audit requirements."
       }
     ]
   }
@@ -262,9 +258,22 @@ export const EXPERIENCE_CERTIFICATES = {
       desc: "Chaired and organized regional conferences for 200+ delegates, managing public relations and debate logistics."
     },
     {
-      role: "National-level Athlete",
+      role: "National-level Cycle Polo athlete.",
       organization: "Sports Federation",
       desc: "Competed in high-level athletic championships, reinforcing team discipline and endurance under pressure."
+    }
+  ],
+  experience: [
+    {
+      company: "Zetheta Algorithms",
+      role: "Cloud DevOps Engineering Extern",
+      location: "Bangalore, India (Remote)",
+      duration: "Jul 2026 – Present",
+      bullets: [
+        "Contributing to a multi-stage CI/CD pipeline (GitHub Actions, ArgoCD) for a banking-domain project, including integration of automated security scanning steps (SAST/DAST) aligned with common compliance frameworks.",
+        "Assisting in designing a zero-downtime schema migration approach for large PostgreSQL tables using an expand-contract pattern, coordinated with canary-style rollout via Istio.",
+        "Supporting design of a multi-region disaster recovery strategy using AWS Aurora Global Database and DynamoDB cross-region replication, focused on reducing recovery time and data loss windows."
+      ]
     }
   ]
 };

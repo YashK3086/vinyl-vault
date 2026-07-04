@@ -36,7 +36,7 @@ import {
 import ScrollReveal from "./ScrollReveal";
 
 export default function ExperiencePanel() {
-  const { education, certifications, leadershipAchievements } =
+  const { education, certifications, leadershipAchievements, experience } =
     EXPERIENCE_CERTIFICATES;
 
   return (
@@ -198,6 +198,40 @@ export default function ExperiencePanel() {
 
           {/* Right Column: Tour Riders (Col Span 8) */}
           <div className="col-span-1 lg:col-span-8 flex flex-col gap-6 w-full">
+            {/* TOUR HISTORY (Work Experience) */}
+            {experience && experience.length > 0 && (
+              <ScrollReveal delay={0.05}>
+                <div className="w-full rounded-2xl border border-zinc-850 bg-zinc-950/30 p-5 sm:p-6 flex flex-col gap-4 shadow-md relative overflow-hidden">
+                  <div className="absolute top-0 bottom-0 left-0 w-1 bg-amber-600/80 opacity-60 shadow-[0_0_6px_rgba(217,119,6,0.3)]" />
+                  <h3 className="text-xs font-black text-amber-600/80 font-mono tracking-widest uppercase">
+                    TOUR HISTORY & GIG LOG (WORK EXPERIENCE)
+                  </h3>
+                  <div className="flex flex-col gap-5 mt-1">
+                    {experience.map((exp, idx) => (
+                      <div key={idx} className="flex flex-col gap-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                          <h4 className="text-sm font-extrabold text-zinc-200 font-display">
+                            {exp.role} <span className="text-amber-600/80 font-mono">@ {exp.company}</span>
+                          </h4>
+                          <span className="text-[10px] font-bold text-zinc-500 font-mono tracking-wider bg-[#120e0d] px-2 py-0.5 rounded border border-zinc-900 w-fit">
+                            {exp.duration}
+                          </span>
+                        </div>
+                        <ul className="flex flex-col gap-1.5 mt-1">
+                          {exp.bullets.map((bullet, bIdx) => (
+                            <li key={bIdx} className="flex items-start gap-2 text-xs text-zinc-400 font-sans leading-relaxed">
+                              <span className="text-amber-600/80 mt-1 flex-shrink-0">▹</span>
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
             {/* Sheet 1: Stage Hardware Rider (Technical Skills) */}
             <ScrollReveal delay={0.1}>
               <div className="w-full rounded-2xl border border-zinc-850 bg-zinc-950/30 p-5 sm:p-6 flex flex-col gap-4 shadow-md relative overflow-hidden">
@@ -208,170 +242,138 @@ export default function ExperiencePanel() {
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
-                  {/* Cloud & DevOps */}
+                  {/* DevOps & Automation */}
                   <div className="flex flex-col gap-3 p-4 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-800 transition-colors">
                     <div className="flex items-center gap-2 border-b border-zinc-900 pb-2">
                       <Server className="w-4 h-4 text-amber-600/80" />
                       <span className="text-xs sm:text-sm font-extrabold text-zinc-350 font-mono uppercase tracking-wider">
-                        Cloud & DevOps
+                        DevOps & Automation
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <GitBranch className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">GitOps</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Cpu className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Jenkins</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Terminal className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Actions</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <RefreshCw className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">ArgoCD</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Box className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Terraform</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Box className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Docker</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Terminal className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">n8n</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cloud & Security */}
+                  <div className="flex flex-col gap-3 p-4 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-800 transition-colors">
+                    <div className="flex items-center gap-2 border-b border-zinc-900 pb-2">
+                      <Cloud className="w-4 h-4 text-amber-600/80" />
+                      <span className="text-xs sm:text-sm font-extrabold text-zinc-355 font-mono uppercase tracking-wider">
+                        Cloud & Security
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
                         <Cloud className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          AWS
-                        </span>
+                        <span className="text-[11px] font-mono text-zinc-300">AWS</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Box className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Terraform
-                        </span>
+                        <Brain className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">LLMs</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Cpu className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Jenkins
-                        </span>
+                        <Terminal className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Prompt Eng</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <GitBranch className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          GitOps
-                        </span>
+                        <Database className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">DynamoDB</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Brain className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">SageMaker</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <ShieldCheck className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Ethical Hacker</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Full-Stack Dev */}
+                  {/* Data Engineering */}
                   <div className="flex flex-col gap-3 p-4 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-800 transition-colors">
                     <div className="flex items-center gap-2 border-b border-zinc-900 pb-2">
-                      <Cpu className="w-4 h-4 text-amber-600/80" />
+                      <Database className="w-4 h-4 text-amber-600/80" />
                       <span className="text-xs sm:text-sm font-extrabold text-zinc-355 font-mono uppercase tracking-wider">
-                        Full-Stack Dev
+                        Data Engineering
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Layers className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Next.js
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Globe className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          React.js
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
                         <Terminal className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Node.js
-                        </span>
+                        <span className="text-[11px] font-mono text-zinc-300">Python</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Code className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          JS
-                        </span>
+                        <Database className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">SQL</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <FileCode className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          HTML/CSS
-                        </span>
+                        <Database className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">PySpark</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Coffee className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Java
-                        </span>
+                        <Database className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">AWS Glue</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Database className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">ETL/ELT</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Data & AI Systems */}
+                  {/* Practices & Tools */}
                   <div className="flex flex-col gap-3 p-4 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-800 transition-colors">
                     <div className="flex items-center gap-2 border-b border-zinc-900 pb-2">
                       <Workflow className="w-4 h-4 text-amber-600/80" />
                       <span className="text-xs sm:text-sm font-extrabold text-zinc-355 font-mono uppercase tracking-wider">
-                        Data & AI Systems
+                        Practices & Tools
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Terminal className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Python
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Database className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          PySpark
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Waves className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Librosa
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Brain className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          SageMaker
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Security & Tools */}
-                  <div className="flex flex-col gap-3 p-4 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-800 transition-colors">
-                    <div className="flex items-center gap-2 border-b border-zinc-900 pb-2">
-                      <ShieldCheck className="w-4 h-4 text-amber-600/80" />
-                      <span className="text-xs sm:text-sm font-extrabold text-zinc-355 font-mono uppercase tracking-wider">
-                        Security & Tools
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Cpu className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          ESP32 Dev
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Radio className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          LoRaWAN
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <Key className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Crypto
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <RefreshCw className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          ArgoCD
-                        </span>
+                        <Code className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Design Thinking</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
                         <Activity className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Prometheus
-                        </span>
+                        <span className="text-[11px] font-mono text-zinc-300">Agile/Scrum</span>
                       </div>
                       <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
-                        <BarChart3 className="w-3.5 h-3.5 text-amber-650" />
-                        <span className="text-[11px] font-mono text-zinc-300">
-                          Grafana
-                        </span>
+                        <Globe className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">REST APIs</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#120e0d] border border-zinc-900 rounded-lg hover:border-amber-600/30 hover:bg-[#1a1412]/30 transition-all duration-200">
+                        <Server className="w-3.5 h-3.5 text-amber-650" />
+                        <span className="text-[11px] font-mono text-zinc-300">Microservices</span>
                       </div>
                     </div>
                   </div>
