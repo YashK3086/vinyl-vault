@@ -15,18 +15,20 @@ export default function HeroSection({ handleCopy, copiedText }) {
   return (
     <section className="min-h-screen w-full relative flex flex-col justify-between bg-zinc-950 px-6 sm:px-12 py-8 overflow-hidden">
       
-      {/* 1. Ambient Background Glows & Vinyl SVG silhouette */}
-      <div className="absolute inset-0 bg-radial-gradient from-zinc-900 via-zinc-950 to-black pointer-events-none" />
-      <div className="absolute top-1/4 -right-24 w-96 h-96 rounded-full bg-amber-600/5 filter blur-[100px] pointer-events-none animate-pulse-slow" />
+      {/* 1. Ambient Background Glows, Image, & Vinyl SVG silhouette */}
+      <div className="absolute inset-0 bg-cover bg-center opacity-70 pointer-events-none transition-all duration-1000" style={{ backgroundImage: "url('/HERO-PAGE-NEW.jpeg')" }} />
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-transparent to-zinc-950 pointer-events-none z-0" />
+      <div className="absolute top-1/4 -right-24 w-96 h-96 rounded-full bg-amber-600/10 filter blur-[120px] pointer-events-none animate-pulse-slow z-0" />
       
       {/* Giant spinning ambient vinyl vector */}
-      <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[55%] h-[80%] opacity-15 pointer-events-none hidden md:block select-none">
+      <div className="absolute left-[-2%] top-1/2 -translate-y-1/2 w-[70%] h-[100%] opacity-40 pointer-events-none hidden md:block select-none z-0">
         <motion.div
           className="w-full h-full"
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 32, ease: "linear" }}
         >
-          <svg viewBox="0 0 500 500" className="w-full h-full text-amber-600/40 drop-shadow-[0_0_15px_rgba(217,119,6,0.15)]">
+          <svg viewBox="0 0 500 500" className="w-full h-full text-amber-500/80 drop-shadow-[0_0_25px_rgba(217,119,6,0.4)]">
             <circle cx="250" cy="250" r="240" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" />
             <circle cx="250" cy="250" r="225" fill="none" stroke="currentColor" strokeWidth="1.5" />
             <circle cx="250" cy="250" r="195" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />

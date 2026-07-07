@@ -68,7 +68,7 @@ export default function ExperiencePanel() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full z-10">
           {/* Left Column: The Backstage VIP Laminate Pass (Col Span 4) */}
           <ScrollReveal className="col-span-1 lg:col-span-4 flex justify-center w-full lg:h-full">
-            <div className="w-full max-w-[270px] bg-zinc-950 border border-zinc-850 p-5 rounded-2xl relative shadow-2xl flex flex-col items-center justify-between gap-5 text-center font-mono select-none lg:h-full lg:min-h-[820px]">
+            <div className="w-full max-w-[270px] bg-zinc-950 border border-zinc-850 p-5 rounded-2xl relative shadow-2xl flex flex-col items-center justify-start gap-5 text-center font-mono select-none lg:h-full lg:min-h-[750px]">
               <div className="w-full flex flex-col items-center gap-4">
                 {/* Card Lanyard Hang Slot */}
                 <div className="w-10 h-2.5 bg-[#120e0d] border border-zinc-800 rounded-full mb-1 shadow-inner" />
@@ -86,13 +86,11 @@ export default function ExperiencePanel() {
                 <div className="w-full border-t border-dashed border-zinc-850" />
 
                 {/* Photo Slot / Monogram Sticker */}
-                <div className="w-24 h-24 rounded-xl bg-gradient-to-b from-[#1a1412] to-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-650 relative overflow-hidden shadow-inner group hover:border-amber-600/40 transition-all duration-300">
-                  <div className="absolute inset-0.5 rounded-lg border border-dashed border-zinc-850/40" />
-                  <span className="font-display font-black text-4xl text-amber-600/50 glow-text-amber select-none animate-pulse">
-                    YK
-                  </span>
+                <div className="w-40 h-40 rounded-xl bg-gradient-to-b from-[#1a1412] to-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-650 relative overflow-hidden shadow-inner group hover:border-amber-600/40 transition-all duration-300">
+                  <div className="absolute inset-0.5 rounded-lg border border-dashed border-zinc-850/40 z-10 pointer-events-none" />
+                  <img src="/Close-up.jpeg" alt="YK Portrait" className="w-full h-full object-cover transition-all duration-500" />
                   {/* Holographic lines effect */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 z-20 pointer-events-none" />
                 </div>
 
                 {/* Member metadata */}
@@ -147,7 +145,7 @@ export default function ExperiencePanel() {
               </div>
 
               {/* Laminate Authorization Metadata */}
-              <div className="w-full grid grid-cols-2 gap-2 text-left text-[8.5px] text-zinc-550 font-mono mt-1 border-t border-dashed border-zinc-850/60 pt-3">
+              <div className="w-full grid grid-cols-2 gap-2 text-left text-[8.5px] text-zinc-550 font-mono mt-1 border-t border-dashed border-zinc-850/60 pt-3 mb-2">
                 <div>
                   <span className="block font-black text-zinc-600">
                     SECTOR:
@@ -170,26 +168,6 @@ export default function ExperiencePanel() {
                   </span>
                   <span className="font-extrabold text-zinc-400">
                     YK-360-STATION-3080
-                  </span>
-                </div>
-              </div>
-
-              {/* Laminate Footer / Fine Print & Barcode */}
-              <div className="w-full flex flex-col items-center gap-2 border-t border-dashed border-zinc-850/60 pt-3 mt-1">
-                <p className="text-[7.5px] text-zinc-550 uppercase tracking-wider leading-normal">
-                  WARNING: AUTHORIZED ACCESS ONLY. PASS VOID IF TAMPERED.
-                </p>
-                <div className="flex items-center gap-0.5 h-6 bg-[#120e0d] px-2 py-0.5 rounded border border-zinc-900 mt-0.5">
-                  <div className="w-[1px] h-full bg-zinc-700" />
-                  <div className="w-[2px] h-full bg-zinc-700" />
-                  <div className="w-[1px] h-full bg-zinc-700" />
-                  <div className="w-[3px] h-full bg-zinc-700" />
-                  <div className="w-[1px] h-full bg-zinc-700" />
-                  <div className="w-[2px] h-full bg-zinc-700" />
-                  <div className="w-[1px] h-full bg-zinc-700" />
-                  <div className="w-[2.5px] h-full bg-zinc-700" />
-                  <span className="text-[8px] text-zinc-500 ml-1.5 font-black font-mono tracking-widest">
-                    ACCESS---YK
                   </span>
                 </div>
               </div>
@@ -381,7 +359,10 @@ export default function ExperiencePanel() {
               </div>
             </ScrollReveal>
 
-            {/* Sheet 2: Character Comfort & Hospitality Rider (Soft Skills, Sports, Music Hobbies) */}
+          </div>
+
+          {/* Full Width Bottom Row: Character Comfort & Hospitality Rider */}
+          <div className="col-span-1 lg:col-span-12 w-full pt-4">
             <ScrollReveal delay={0.18}>
               <div className="w-full rounded-2xl border border-zinc-850 bg-zinc-950/30 p-5 sm:p-6 flex flex-col gap-4 shadow-md relative overflow-hidden">
                 <div className="absolute top-0 bottom-0 left-0 w-1 bg-amber-600/80 opacity-60 shadow-[0_0_6px_rgba(217,119,6,0.3)]" />
@@ -390,7 +371,7 @@ export default function ExperiencePanel() {
                   ARTIST COMFORT & HOSPITALITY RIDER (CHARACTER OUTLINES)
                 </h3>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-1">
                   {/* Leadership Card */}
                   <div className="flex gap-3 items-start p-3 bg-zinc-950 border border-zinc-900 rounded-xl hover:border-zinc-800 transition-colors">
                     <Award className="w-5 h-5 text-amber-600/80 flex-shrink-0 mt-0.5" />

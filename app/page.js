@@ -230,7 +230,7 @@ export default function Home() {
 
                 {/* Bio summary paragraph */}
                 <p className="text-lg text-zinc-300 leading-relaxed font-medium">
-                  Bridging serverless automation pipelines and secure IoT infrastructures with the rhythmic precision of a vinyl DJ. Building scalable systems that play without skip.
+                  Orchestrating highly available AWS architectures and GitOps pipelines with absolute precision. From scaling Kubernetes clusters to automating multi-stage ETL networks, I build robust, data-driven systems engineered to scale fluidly.
                 </p>
 
                 {/* Contact Grid */}
