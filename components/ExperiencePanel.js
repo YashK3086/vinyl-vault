@@ -99,7 +99,7 @@ export default function ExperiencePanel() {
                     Y. KHANNA
                   </h4>
                   <p className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">
-                    LEAD SYSTEM DEVELOPER
+                    TECHNICAL INTERN – CLOUD & AI
                   </p>
                 </div>
 

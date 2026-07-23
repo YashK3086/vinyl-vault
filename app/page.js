@@ -262,23 +262,23 @@ export default function Home() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
                     
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">DevOps & Automation</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Git, GitHub Actions, Jenkins, ArgoCD, Terraform, Docker, Ansible, n8n</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Cloud, DevOps & Release</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EC2, Lambda, S3, VPC, SageMaker), Docker, Terraform, CI/CD Pipelines, Git, GitHub Actions, Jenkins</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Cloud & Security</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EC2, Lambda, S3, VPC, Cognito, DynamoDB, SageMaker), Prompt Engineering, LLMs, Ethical Hacking</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Core Engineering</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, C++, Java, SQL, Linux, Yaml, Data Structures, Algorithms</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Data Engineering</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, SQL, PySpark, AWS Glue, Relational Data Modeling (1NF-BCNF), ETL/ELT Pipelines</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Architecture & Data Systems</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">PySpark, AWS Glue, PostgreSQL, Relational Data Modeling (1NF-BCNF), REST APIs</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Practices & Tools</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Agile/Scrum, REST APIs, Microservices, Design Thinking, Slack, Microsoft Teams</span>
+                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Experimental AI & Methods</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Responsible AI Workflows, LLM Integration, Prompt Engineering, Predictive Modeling, SDLC, Agile/Scrum</span>
                     </div>
 
                   </div>
