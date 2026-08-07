@@ -86,11 +86,11 @@ export default function HeroSection({ handleCopy, copiedText }) {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="flex flex-col gap-3"
             >
-              <h3 className="text-2xl sm:text-3xl font-bold font-mono text-amber-600/80 uppercase tracking-wide">
-                Cloud Architect & DevOps Engineer
+              <h3 className="text-2xl sm:text-3xl font-bold font-mono text-amber-500 uppercase tracking-wide">
+                Cloud & Data Engineer
               </h3>
-              <p className="text-lg sm:text-xl text-zinc-400 font-sans leading-relaxed max-w-2xl font-medium">
-                Computer Science and Engineering undergraduate specializing in engineering low-latency serverless pipelines, secure cloud orchestration, and automated GitOps infrastructure. Precise system engineering, built to scale and play without skipping.
+              <p className="text-lg sm:text-xl text-zinc-300 font-sans leading-relaxed max-w-2xl font-medium">
+                Specialized in building zero-downtime Blue-Green deployment pipelines, Snowflake data lakes, serverless cloud architectures, and automated Prometheus & Grafana observability infrastructure.
               </p>
             </motion.div>
 
@@ -142,17 +142,17 @@ export default function HeroSection({ handleCopy, copiedText }) {
             </motion.div>
           </div>
 
-          {/* Right Column: Roles Header (Like Anant's site style) */}
+          {/* Right Column: Roles Header */}
           <div className="col-span-12 md:col-span-4 flex flex-col md:items-end justify-center text-left md:text-right border-t border-zinc-800/40 md:border-t-0 pt-6 md:pt-0">
             <span className="text-base sm:text-lg font-black text-zinc-500 font-mono tracking-widest uppercase mb-2">Specialties</span>
-            <span className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-widest leading-normal">
-              Serverless Dev
+            <span className="text-2xl sm:text-3xl font-black text-amber-500 uppercase tracking-widest leading-normal">
+              Blue-Green DevOps
             </span>
-            <span className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1.5">
-              Infrastructure
+            <span className="text-2xl sm:text-3xl font-black text-zinc-200 uppercase tracking-widest leading-normal mt-1.5">
+              Cloud Infrastructure
             </span>
-            <span className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-widest leading-normal mt-1.5">
-              CI/CD Pipelines
+            <span className="text-2xl sm:text-3xl font-black text-zinc-200 uppercase tracking-widest leading-normal mt-1.5">
+              Snowflake & Data ETL
             </span>
           </div>
 

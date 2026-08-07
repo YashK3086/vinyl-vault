@@ -17,8 +17,10 @@ import { Disc, FileText, Sparkles, Phone, Mail, MapPin, Radio, Library, Trophy, 
 
 
 
+import { VINYL_VAULT } from "../data/vault";
+
 export default function Home() {
-  const [activeRecord, setActiveRecord] = useState(null);
+  const [activeRecord, setActiveRecord] = useState(VINYL_VAULT[0]);
   const [activeSection, setActiveSection] = useState("crate-a"); // 'crate-a' | 'crate-b' | 'crate-c'
   const [isLoading, setIsLoading] = useState(true);
   const [copiedText, setCopiedText] = useState("");
@@ -222,15 +224,15 @@ export default function Home() {
                     <h2 className="text-2xl sm:text-3xl font-black text-zinc-300 uppercase tracking-wider">
                       Yashvardhan Khanna
                     </h2>
-                    <span className="text-sm font-bold font-mono text-zinc-500 uppercase tracking-widest mt-0.5">
-                      Cloud Architect & Dev
+                    <span className="text-sm font-bold font-mono text-amber-500 uppercase tracking-widest mt-0.5">
+                      Cloud & Data Engineer
                     </span>
                   </div>
                 </div>
 
                 {/* Bio summary paragraph */}
-                <p className="text-lg text-zinc-300 leading-relaxed font-medium">
-                  Orchestrating highly available AWS architectures and GitOps pipelines with absolute precision. From scaling Kubernetes clusters to automating multi-stage ETL networks, I build robust, data-driven systems engineered to scale fluidly.
+                <p className="text-base sm:text-lg text-zinc-300 leading-relaxed font-medium">
+                  Specialized in architecting high-availability cloud infrastructure, zero-downtime Blue-Green deployment pipelines, and scalable Snowflake data warehousing solutions. From AWS serverless orchestration to automated Prometheus & Grafana observability, I build fault-tolerant, data-driven cloud systems engineered for peak performance.
                 </p>
 
                 {/* Contact Grid */}
@@ -255,30 +257,30 @@ export default function Home() {
                 
                 <div className="flex flex-col gap-3">
                   <span className="text-sm font-black text-zinc-500 font-mono tracking-widest uppercase">
-                    Technical Core Competencies
+                    Technical Core Competencies // Cloud & Data Engineering
                   </span>
                   
                   {/* Tech Badges Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-1">
                     
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Cloud, DevOps & Release</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EC2, Lambda, S3, VPC, SageMaker), Docker, Terraform, CI/CD Pipelines, Git, GitHub Actions, Jenkins</span>
+                      <span className="text-sm font-extrabold text-amber-500 font-mono uppercase">Cloud Infrastructure & DevOps</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">AWS (EC2, Lambda, S3, VPC, EKS, SageMaker), Docker, Terraform, Kubernetes, Blue-Green Deployment, CI/CD Pipelines, Jenkins, GitHub Actions</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Core Engineering</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, C++, Java, SQL, Linux, Yaml, Data Structures, Algorithms</span>
+                      <span className="text-sm font-extrabold text-amber-500 font-mono uppercase">Data Engineering & Snowflake</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Snowflake Data Warehousing, PySpark, AWS Glue ETL, PostgreSQL, Relational Schema Modeling (BCNF), Distributed Data Lakes, SQL Query Optimization</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Architecture & Data Systems</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">PySpark, AWS Glue, PostgreSQL, Relational Data Modeling (1NF-BCNF), REST APIs</span>
+                      <span className="text-sm font-extrabold text-amber-500 font-mono uppercase">Observability & Telemetry</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Prometheus Monitoring, Grafana Visual Dashboards, ZapDats Telemetry Stream Integration, Automated Canary Rollbacks, Log Analytics</span>
                     </div>
 
                     <div className="flex flex-col gap-2 p-4.5 rounded-xl bg-zinc-950 border border-zinc-700 bento-card-hover">
-                      <span className="text-sm font-extrabold text-amber-600/80 font-mono uppercase">Experimental AI & Methods</span>
-                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Responsible AI Workflows, LLM Integration, Prompt Engineering, Predictive Modeling, SDLC, Agile/Scrum</span>
+                      <span className="text-sm font-extrabold text-amber-500 font-mono uppercase">Core Languages & Frameworks</span>
+                      <span className="text-base text-zinc-300 font-semibold leading-relaxed">Python, SQL, C++, Java, Linux Systems, Bash/Shell, Next.js, FastAPI REST APIs, Redis Distributed Caching</span>
                     </div>
 
                   </div>
