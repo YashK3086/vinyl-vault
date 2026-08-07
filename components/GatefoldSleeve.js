@@ -142,9 +142,6 @@ export default function GatefoldSleeve({ activeRecord }) {
                   <span className="text-amber-500 font-black uppercase tracking-wider flex items-center gap-1.5 text-xs">
                     <Zap className="w-4 h-4 text-amber-500" /> Prometheus + Grafana + ZapDats Integration
                   </span>
-                  <span className="bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded text-[10px] font-black uppercase">
-                    100% Zero Downtime
-                  </span>
                 </div>
                 <p className="text-zinc-400 text-xs leading-relaxed font-medium">
                   Configured Prometheus scrape metrics for p99 latency & HTTP 5xx errors, coupled with Grafana visual dashboards and ZapDats telemetry streams to drive automated Canary rollbacks and instant ALB cutovers.
