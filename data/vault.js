@@ -221,9 +221,9 @@ export const EXPERIENCE_CERTIFICATES = {
       location: "Bangalore, India",
       duration: "Jul 21, 2026 – Present",
       bullets: [
-        "Building cloud infrastructure automation, Snowflake data warehousing structures, and enterprise ETL data orchestration pipelines.",
-        "Contributing to automated Blue-Green release planning and GitOps deployment workflows utilizing Terraform, Docker, and Jenkins to enforce strict reliability standards.",
-        "Architecting Prometheus & Grafana observability monitoring stacks to track real-time cluster health, latency, and pipeline execution metrics."
+        "Acquired hands-on exposure to Data Engineering fundamentals, learning cloud data warehousing architecture and data warehousing concepts utilizing Snowflake.",
+        "Gained comprehensive understanding of cloud computing practices, studying infrastructure automation patterns, Terraform deployment configurations, and cloud security frameworks.",
+        "Learned enterprise application containerization, exploring Docker container management, virtualized staging environments, and post-production operational workflows."
       ]
     }
   ]
