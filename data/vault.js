@@ -160,6 +160,35 @@ export const VINYL_VAULT = [
         desc: "Developed SQL analytical views to compute real-time peak visitor volume, facility occupancy metrics, and security anomaly detection, providing facility managers with actionable operational insights."
       }
     ]
+  },
+  {
+    id: "cloud-inventory-management-system",
+    title: "Cloud-Based Inventory Management System (CSPM)",
+    subtitle: "Enterprise Asset Tracking, In-Memory Caching & JIT Replenishment Queue",
+    category: "Full-Stack & Cloud",
+    releaseYear: 2026,
+    color: "bg-cyan-600",
+    labelColor: "#0891b2",
+    repoUrl: "https://github.com/YashK3086/inventory-prj-cloud",
+    tags: ["React 19", "Vite", "Supabase", "PostgreSQL RLS", "Tailwind CSS v4", "Azure Functions", "Recharts", "RFID Simulation", "In-Memory Cache", "Vercel"],
+    tracks: [
+      {
+        name: "A-Side: Enterprise Dashboard & Real-Time RFID Edge Scanner Simulation",
+        desc: "Engineered a cloud-native inventory management dashboard with structured metric cards tracking Total Catalog Units, Real-Time Capital Valuation, Low Stock Threshold Alerts, and Active JIT Tasks. Built a hardware edge scanner simulation mimicking physical warehouse RFID/barcode reader gateways, executing atomic stock decrements with sub-millisecond local cache flushes and live telemetry event streaming."
+      },
+      {
+        name: "A-Side: Asynchronous JIT Reorder Queue & Procurement Workflow Engine",
+        desc: "Designed an asynchronous Just-In-Time reorder queue that automatically enqueues purchase orders when stock breaches safety thresholds, generating standardized PO JSON payloads in background microtasks under 50ms SLA. Implemented a multi-role procurement hub with requisition cart, approval workflows, and one-click stock replenishment actions."
+      },
+      {
+        name: "B-Side: In-Memory Caching Layer & Supabase Multi-Tenant Security",
+        desc: "Implemented a 60-second TTL in-memory read cache achieving 0.06–0.10ms read latency with Read-Your-Own-Writes consistency via instant cache invalidation on mutations. Configured declarative PostgreSQL schemas with strict domain CHECK constraints and Row Level Security (RLS) policies guaranteeing multi-tenant data isolation on Supabase."
+      },
+      {
+        name: "B-Side: System Analytics & Azure Functions Serverless Backend",
+        desc: "Built interactive analytics dashboards using Recharts visualizing stock valuation distribution by infrastructure category, 8-month historical inventory growth trajectories, and category density allocation tables. Deployed Azure Functions serverless backend for JIT reorder trigger processing with automated event-driven inventory replenishment workflows."
+      }
+    ]
   }
 ];
 
