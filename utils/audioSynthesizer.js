@@ -15,11 +15,7 @@ class VinylAudioEngine {
     this.isPlaying = false;
     this.isMuted = false;
     this.speed = 1.0;
-
-    // Jukebox preview state
     this.jukeboxAudio = null;
-    this.jukeboxSynthTimer = null;
-    this.synthNotes = [];
   }
 
   /**
@@ -277,180 +273,66 @@ class VinylAudioEngine {
   }
 
   /**
-   * Plays actual 30-second audio preview of the track via previewAudioUrl (iTunes audio),
-   * falling back to procedural genre synthesis if missing or blocked.
+   * Plays actual 30-second audio preview of the track via previewAudioUrl (iTunes audio).
+   * Strict real-audio playback: will NEVER play fake synthesized beats.
    */
   playTrackPreview(track, onProgress, onEnded) {
     this.stopJukeboxPreview();
-    this.init();
+    if (this.isMuted || !track || !track.previewAudioUrl) {
+      if (onEnded) onEnded();
+      return;
+    }
 
-    if (this.isMuted) return;
+    try {
+      const audio = new Audio(track.previewAudioUrl);
+      this.jukeboxAudio = audio;
 
-    if (track && track.previewAudioUrl) {
-      try {
-        const audio = new Audio(track.previewAudioUrl);
-        this.jukeboxAudio = audio;
-
-        audio.ontimeupdate = () => {
-          if (audio.duration) {
-            const cur = audio.currentTime;
-            const total = audio.duration;
-            const pct = (cur / total) * 100;
-            if (onProgress) onProgress(cur, total, pct);
-          }
-        };
-
-        audio.onended = () => {
-          this.stopJukeboxPreview();
-          if (onEnded) onEnded();
-        };
-
-        audio.onerror = (e) => {
-          console.warn("Real audio preview failed, falling back to synthesis", e);
-          this.startJukeboxSynthesis(track.genre || "Rock", onProgress, onEnded);
-        };
-
-        const promise = audio.play();
-        if (promise !== undefined) {
-          promise.catch((err) => {
-            console.warn("Autoplay error playing preview audio, falling back to synthesis", err);
-            this.startJukeboxSynthesis(track.genre || "Rock", onProgress, onEnded);
-          });
+      audio.ontimeupdate = () => {
+        if (audio.duration) {
+          const cur = audio.currentTime;
+          const total = audio.duration;
+          const pct = (cur / total) * 100;
+          if (onProgress) onProgress(cur, total, pct);
         }
-        return;
-      } catch (err) {
-        console.warn("Error initializing preview Audio element", err);
-      }
-    }
+      };
 
-    // Fallback if no previewAudioUrl is available
-    this.startJukeboxSynthesis(track?.genre || "Rock", onProgress, onEnded);
-  }
-
-  /**
-   * Plays a 30-second rich procedural genre groove for the Jukebox Lounge.
-   * Plays realistic rhythmic drums, bassline, and melodic chords matching the artist's genre.
-   */
-  startJukeboxSynthesis(genre = "Rock", onProgress, onEnded) {
-    this.stopJukeboxPreview();
-    this.init();
-    if (!this.ctx) return;
-
-    if (this.ctx.state === "suspended") {
-      this.ctx.resume();
-    }
-
-    let elapsed = 0;
-    const totalDuration = 30; // 30 seconds
-    const intervalMs = 250; // sixteenth/eighth note ticks
-
-    // Determine scale and tempo based on genre
-    const isMetal = genre.toLowerCase().includes("metal") || genre.toLowerCase().includes("rock");
-    const isHipHop = genre.toLowerCase().includes("hip-hop") || genre.toLowerCase().includes("rap");
-    const isElectronic = genre.toLowerCase().includes("electronic") || genre.toLowerCase().includes("house") || genre.toLowerCase().includes("garage");
-
-    const scale = isMetal 
-      ? [110, 123.47, 130.81, 146.83, 164.81, 220] // A Minor Power scale
-      : isHipHop 
-      ? [130.81, 146.83, 155.56, 174.61, 196, 220] // C Minor Pentatonic
-      : [146.83, 164.81, 196, 220, 261.63, 293.66]; // D Minor Synth scale
-
-    let step = 0;
-
-    this.jukeboxSynthTimer = setInterval(() => {
-      elapsed += (intervalMs / 1000);
-      if (elapsed >= totalDuration) {
+      audio.onended = () => {
         this.stopJukeboxPreview();
         if (onEnded) onEnded();
-        return;
+      };
+
+      audio.onerror = (e) => {
+        console.warn("Audio preview playback failed for:", track.title, e);
+        this.stopJukeboxPreview();
+        if (onEnded) onEnded();
+      };
+
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise.catch((err) => {
+          console.warn("Autoplay block or error playing preview audio for:", track.title, err);
+          this.stopJukeboxPreview();
+          if (onEnded) onEnded();
+        });
       }
-
-      if (onProgress) {
-        onProgress(elapsed, totalDuration, (elapsed / totalDuration) * 100);
-      }
-
-      // 1. Drum pattern (Kick on 0, 8; Snare on 4, 12; Hi-hat on every 2)
-      const currentStep16 = step % 16;
-      const now = this.ctx.currentTime;
-
-      if (currentStep16 === 0 || currentStep16 === 8 || (isElectronic && currentStep16 % 4 === 0)) {
-        // Kick drum
-        const kickOsc = this.ctx.createOscillator();
-        const kickGain = this.ctx.createGain();
-        kickOsc.frequency.setValueAtTime(120, now);
-        kickOsc.frequency.exponentialRampToValueAtTime(35, now + 0.12);
-        kickGain.gain.setValueAtTime(0.4, now);
-        kickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-        kickOsc.connect(kickGain);
-        kickGain.connect(this.ctx.destination);
-        kickOsc.start(now);
-        kickOsc.stop(now + 0.13);
-      }
-
-      if (currentStep16 === 4 || currentStep16 === 12) {
-        // Snare drum / Clap
-        const snareNoise = this.ctx.createBuffer(1, Math.floor(this.ctx.sampleRate * 0.1), this.ctx.sampleRate);
-        const sData = snareNoise.getChannelData(0);
-        for (let i = 0; i < sData.length; i++) sData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (this.ctx.sampleRate * 0.03));
-        const sSource = this.ctx.createBufferSource();
-        sSource.buffer = snareNoise;
-        const sFilter = this.ctx.createBiquadFilter();
-        sFilter.type = "highpass";
-        sFilter.frequency.value = 1200;
-        const sGain = this.ctx.createGain();
-        sGain.gain.setValueAtTime(0.2, now);
-        sGain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
-        sSource.connect(sFilter);
-        sFilter.connect(sGain);
-        sGain.connect(this.ctx.destination);
-        sSource.start(now);
-      }
-
-      // 2. Bassline / Melodic Chords
-      if (currentStep16 % 2 === 0) {
-        const noteIndex = (Math.floor(step / 4) + (currentStep16 % 4)) % scale.length;
-        const freq = scale[noteIndex];
-        const toneOsc = this.ctx.createOscillator();
-        const toneGain = this.ctx.createGain();
-        
-        toneOsc.type = isMetal ? "sawtooth" : isElectronic ? "triangle" : "sine";
-        toneOsc.frequency.setValueAtTime(freq, now);
-
-        const filter = this.ctx.createBiquadFilter();
-        filter.type = isMetal ? "lowpass" : "bandpass";
-        filter.frequency.value = isMetal ? 1800 : 1200;
-        filter.Q.value = 2.0;
-
-        toneGain.gain.setValueAtTime(0.12, now);
-        toneGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
-
-        toneOsc.connect(filter);
-        filter.connect(toneGain);
-        toneGain.connect(this.ctx.destination);
-
-        toneOsc.start(now);
-        toneOsc.stop(now + 0.24);
-      }
-
-      step++;
-    }, intervalMs);
+    } catch (err) {
+      console.warn("Error initializing preview Audio element", err);
+      this.stopJukeboxPreview();
+      if (onEnded) onEnded();
+    }
   }
 
   /**
-   * Stops Jukebox preview (both audio element and procedural synthesizer).
+   * Stops Jukebox track preview.
    */
   stopJukeboxPreview() {
     if (this.jukeboxAudio) {
       try {
         this.jukeboxAudio.pause();
+        this.jukeboxAudio.currentTime = 0;
         this.jukeboxAudio.src = "";
       } catch (e) {}
       this.jukeboxAudio = null;
-    }
-
-    if (this.jukeboxSynthTimer) {
-      clearInterval(this.jukeboxSynthTimer);
-      this.jukeboxSynthTimer = null;
     }
   }
 
