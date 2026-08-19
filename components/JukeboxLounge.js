@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music, Radio, Disc, Play, Pause, ExternalLink, Headphones, Search, Volume2, VolumeX, Sparkles, Filter } from "lucide-react";
+import { Music, Radio, Disc, Play, ExternalLink, Headphones, Search, Sparkles, Check, Volume2 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { MUSIC_LIBRARY } from "../data/musicLibrary";
 
 export default function JukeboxLounge() {
   const [selectedArtist, setSelectedArtist] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [isMuted, setIsMuted] = useState(false);
-
-  const audioRef = useRef(null);
+  const [activeTrack, setActiveTrack] = useState(MUSIC_LIBRARY[0]?.tracks[0] || null);
 
   // Filter artists and tracks based on category & search
   const filteredArtists = MUSIC_LIBRARY.map((artistGroup) => {
@@ -40,69 +34,13 @@ export default function JukeboxLounge() {
     };
   }).filter(Boolean);
 
-  // Play / Pause track handler
-  const handlePlayTrack = (track) => {
-    if (currentTrack && currentTrack.previewAudioUrl === track.previewAudioUrl) {
-      if (isPlaying) {
-        audioRef.current?.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current?.play();
-        setIsPlaying(true);
-      }
-    } else {
-      setCurrentTrack(track);
-      setIsPlaying(true);
-      setProgress(0);
-      setCurrentTime(0);
-      if (audioRef.current) {
-        audioRef.current.src = track.previewAudioUrl;
-        audioRef.current.play().catch((err) => {
-          console.warn("Audio playback error:", err);
-          setIsPlaying(false);
-        });
-      }
+  const handleSelectTrack = (track) => {
+    setActiveTrack(track);
+    // Smooth scroll to jukebox console if on small screens
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      const el = document.getElementById("jukebox-master-deck");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const handleTimeUpdate = () => {
-    if (!audioRef.current) return;
-    const cur = audioRef.current.currentTime || 0;
-    const dur = audioRef.current.duration || 30;
-    setCurrentTime(cur);
-    setProgress((cur / dur) * 100);
-  };
-
-  const handleAudioEnded = () => {
-    setIsPlaying(false);
-    setProgress(0);
-    setCurrentTime(0);
-  };
-
-  const handleSeek = (e) => {
-    if (!audioRef.current || !currentTrack) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-    const percentage = Math.max(0, Math.min(1, clickX / width));
-    const dur = audioRef.current.duration || 30;
-    const newTime = percentage * dur;
-    audioRef.current.currentTime = newTime;
-    setCurrentTime(newTime);
-    setProgress(percentage * 100);
-  };
-
-  const toggleMute = () => {
-    if (!audioRef.current) return;
-    audioRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
-  const formatTime = (seconds) => {
-    const s = Math.floor(seconds || 0);
-    const m = Math.floor(s / 60);
-    const rem = s % 60;
-    return `${m}:${rem < 10 ? "0" : ""}${rem}`;
   };
 
   return (
@@ -112,15 +50,6 @@ export default function JukeboxLounge() {
       transition={{ duration: 0.4 }}
       className="w-full flex flex-col gap-8"
     >
-      {/* Hidden Global Audio Element for Previews */}
-      <audio
-        ref={audioRef}
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={handleAudioEnded}
-        onPause={() => setIsPlaying(false)}
-        onPlay={() => setIsPlaying(true)}
-      />
-
       {/* Listening Room Header */}
       <div className="w-full p-6 rounded-2xl bg-[#1a1412] border border-zinc-700 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
@@ -132,16 +61,16 @@ export default function JukeboxLounge() {
               Musical DNA & 30-Sec Lounge
             </h2>
             <p className="text-sm sm:text-base text-zinc-400 mt-1 font-medium leading-relaxed">
-              Curated rotation of 70 signature tracks across 14 legendary artists with high-res cover art and instant 30-second previews.
+              Curated rotation of 70 signature tracks across 14 legendary artists with high-res cover art and official 30-second Spotify preview embeds.
             </p>
           </div>
         </div>
 
-        {/* Live Audio Status Badge */}
-        {currentTrack && (
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-950 border border-amber-600/40 text-xs font-mono text-amber-500 animate-pulse flex-shrink-0">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            <span className="font-extrabold uppercase">NOW PREVIEWING: {currentTrack.title}</span>
+        {/* Live Active Track Badge */}
+        {activeTrack && (
+          <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-zinc-950 border border-amber-600/40 text-xs font-mono text-amber-500 flex-shrink-0 shadow-inner">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
+            <span className="font-extrabold uppercase">LOADED: {activeTrack.artist} - {activeTrack.title}</span>
           </div>
         )}
       </div>
@@ -152,8 +81,8 @@ export default function JukeboxLounge() {
         {/* Main Jukebox Cabinet (Left/Center - Col Span 8) */}
         <div className="col-span-1 lg:col-span-8 w-full flex flex-col gap-6">
 
-          {/* 1. Interactive Retro Jukebox Display & Master Console */}
-          <div className="relative w-full rounded-2xl bg-[#1a1412] border border-zinc-700 p-5 sm:p-7 flex flex-col gap-5 shadow-2xl overflow-hidden">
+          {/* 1. Interactive Retro Jukebox Display & Embedded Player Console */}
+          <div id="jukebox-master-deck" className="relative w-full rounded-2xl bg-[#1a1412] border border-zinc-700 p-5 sm:p-7 flex flex-col gap-5 shadow-2xl overflow-hidden">
             {/* Ambient neon accents */}
             <div className="absolute top-0 bottom-0 left-0 w-1 bg-amber-600/80 opacity-70 shadow-[0_0_8px_rgba(217,119,6,0.5)]" />
             <div className="absolute top-0 bottom-0 right-0 w-1 bg-amber-600/80 opacity-70 shadow-[0_0_8px_rgba(217,119,6,0.5)]" />
@@ -164,94 +93,70 @@ export default function JukeboxLounge() {
               <span className="text-xs sm:text-sm font-black font-mono tracking-[0.25em] text-amber-500 uppercase glow-text-amber flex items-center gap-2">
                 <Radio className="w-4 h-4" /> SELECT-A-TRACK JUKEBOX
               </span>
-              <span className="text-[11px] font-mono font-bold text-zinc-500 uppercase">
-                {currentTrack ? "30s EMBEDDED PREVIEW ACTIVE" : "SELECT ANY TRACK TO PLAY"}
+              <span className="text-[11px] font-mono font-bold text-zinc-400 uppercase flex items-center gap-1.5">
+                <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+                30s EMBEDDED PREVIEW DECK
               </span>
             </div>
 
-            {/* Jukebox Master Display Console */}
+            {/* Jukebox Master Display Console with Embedded Spotify Player */}
             <div className="rounded-xl bg-zinc-950 border border-zinc-700 p-4 sm:p-5 flex flex-col gap-4 relative overflow-hidden">
-              {currentTrack ? (
-                <div className="flex flex-col sm:flex-row items-center gap-5">
-                  {/* Spinning album cover in Jukebox deck */}
-                  <div className="relative w-20 h-20 rounded-xl overflow-hidden border-2 border-amber-600/50 flex-shrink-0 shadow-lg group">
-                    <img 
-                      src={currentTrack.coverUrl} 
-                      alt={currentTrack.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Disc className="w-8 h-8 text-amber-500 animate-spin-slow" />
-                    </div>
-                  </div>
-
-                  {/* Track Details & Visualizer */}
-                  <div className="flex-1 flex flex-col gap-2 w-full">
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-col">
-                        <span className="text-base sm:text-lg font-black text-zinc-200 font-mono tracking-wide">
-                          {currentTrack.title}
-                        </span>
-                        <span className="text-xs sm:text-sm font-bold text-amber-500 font-mono">
-                          {currentTrack.artist} {currentTrack.album ? `• ${currentTrack.album}` : ""}
-                        </span>
-                      </div>
-                      
-                      {/* Equalizer Waveform Animation */}
-                      <div className="flex items-end gap-[2px] h-6">
-                        {Array.from({ length: 12 }).map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="w-[3px] bg-amber-500 rounded-t-sm"
-                            animate={isPlaying ? {
-                              height: [`${20 + (i % 4) * 20}%`, `${90 - (i % 3) * 25}%`, `${30 + (i % 5) * 15}%`]
-                            } : { height: "15%" }}
-                            transition={{
-                              repeat: Infinity,
-                              duration: 0.5 + (i % 4) * 0.1,
-                              ease: "easeInOut"
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Progress Bar Scrubber */}
-                    <div className="flex items-center gap-3 w-full mt-1 font-mono text-xs text-zinc-400">
-                      <span>{formatTime(currentTime)}</span>
-                      <div 
-                        onClick={handleSeek}
-                        className="flex-1 h-2 bg-zinc-900 rounded-full overflow-hidden cursor-pointer relative border border-zinc-800"
-                      >
-                        <div 
-                          className="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full transition-all"
-                          style={{ width: `${progress}%` }}
+              {activeTrack ? (
+                <div className="flex flex-col gap-4">
+                  {/* Track Meta Header */}
+                  <div className="flex items-center justify-between gap-4 border-b border-zinc-850 pb-3">
+                    <div className="flex items-center gap-3.5">
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-amber-500/40 flex-shrink-0 shadow-md">
+                        <img 
+                          src={activeTrack.coverUrl} 
+                          alt={activeTrack.title}
+                          className="w-full h-full object-cover"
                         />
                       </div>
-                      <span>0:30</span>
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2">
+                          <span className="text-base sm:text-lg font-black text-zinc-200 font-mono tracking-wide">
+                            {activeTrack.title}
+                          </span>
+                          <span className="text-[11px] font-mono font-bold bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30">
+                            {activeTrack.year}
+                          </span>
+                        </div>
+                        <span className="text-xs sm:text-sm font-bold text-amber-500 font-mono">
+                          {activeTrack.artist} • <span className="text-zinc-400">{activeTrack.album}</span>
+                        </span>
+                      </div>
                     </div>
+
+                    <a
+                      href={activeTrack.spotifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/10 hover:bg-emerald-600/25 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold transition-all flex-shrink-0"
+                    >
+                      <span>Open Spotify</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
                   </div>
 
-                  {/* Controls */}
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => handlePlayTrack(currentTrack)}
-                      className="w-12 h-12 rounded-full bg-amber-600 hover:bg-amber-500 text-zinc-950 flex items-center justify-center font-bold shadow-lg transition-transform active:scale-95 cursor-pointer"
-                      title={isPlaying ? "Pause Preview" : "Play Preview"}
-                    >
-                      {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
-                    </button>
-                    <button
-                      onClick={toggleMute}
-                      className="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer"
-                      title={isMuted ? "Unmute" : "Mute"}
-                    >
-                      {isMuted ? <VolumeX className="w-4 h-4 text-rose-500" /> : <Volume2 className="w-4 h-4 text-emerald-500" />}
-                    </button>
+                  {/* Official Spotify 30s Embed Preview Player */}
+                  <div className="w-full rounded-xl overflow-hidden shadow-inner border border-zinc-800 bg-zinc-900">
+                    <iframe
+                      key={activeTrack.id}
+                      src={activeTrack.embedUrl}
+                      width="100%"
+                      height="152"
+                      frameBorder="0"
+                      allowFullScreen=""
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                      className="w-full rounded-xl"
+                      title={`${activeTrack.artist} - ${activeTrack.title}`}
+                    />
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-2">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500">
                       <Disc className="w-6 h-6 animate-spin-slow" />
@@ -261,7 +166,7 @@ export default function JukeboxLounge() {
                         Jukebox Ready & Standby
                       </span>
                       <span className="text-xs text-zinc-500 font-mono">
-                        Click the play button on any song card below to start its 30s preview.
+                        Click on any track card below to load and play its 30s preview.
                       </span>
                     </div>
                   </div>
@@ -279,14 +184,14 @@ export default function JukeboxLounge() {
                 <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="Search song or artist..."
+                  placeholder="Search song, album or artist..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-zinc-950 border border-zinc-700 rounded-lg pl-9 pr-3 py-2 text-xs font-mono text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-amber-500 transition-colors"
                 />
               </div>
 
-              {/* Artist count indicator */}
+              {/* Track count indicator */}
               <div className="text-xs font-mono text-zinc-500 select-none">
                 Showing <strong className="text-zinc-300">{filteredArtists.reduce((acc, a) => acc + a.tracks.length, 0)}</strong> / 70 Tracks
               </div>
@@ -348,54 +253,48 @@ export default function JukeboxLounge() {
                     </span>
                   </div>
 
-                  {/* Songs Grid (5 Tracks) */}
+                  {/* Songs Grid (5 Tracks per artist) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mt-1">
-                    {artistGroup.tracks.map((track, trackIdx) => {
-                      const isTrackPlaying = currentTrack?.previewAudioUrl === track.previewAudioUrl && isPlaying;
-                      const isTrackSelected = currentTrack?.previewAudioUrl === track.previewAudioUrl;
+                    {artistGroup.tracks.map((track) => {
+                      const isSelected = activeTrack?.id === track.id;
 
                       return (
                         <div
-                          key={track.title}
-                          className={`relative rounded-xl bg-zinc-950 p-3 flex flex-col justify-between gap-3 border transition-all duration-200 group ${
-                            isTrackSelected
-                              ? "border-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.2)] bg-zinc-900/60"
-                              : "border-zinc-800 hover:border-zinc-700 hover:shadow-lg"
+                          key={track.id}
+                          onClick={() => handleSelectTrack(track)}
+                          className={`relative rounded-xl bg-zinc-950 p-3 flex flex-col justify-between gap-3 border transition-all duration-200 cursor-pointer group select-none ${
+                            isSelected
+                              ? "border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.3)] bg-zinc-900 ring-1 ring-amber-500"
+                              : "border-zinc-800 hover:border-zinc-600 hover:shadow-lg"
                           }`}
                         >
                           {/* Album Cover Art with Vinyl Slide Effect */}
                           <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800/80 shadow-md">
-                            {/* Realistic album art image */}
+                            {/* Official album art image */}
                             <img
-                              src={track.coverUrl || "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop"}
+                              src={track.coverUrl}
                               alt={`${track.artist} - ${track.title}`}
                               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                               loading="lazy"
                             />
 
-                            {/* Vinyl Disc that slides out slightly on hover */}
-                            <div className="absolute top-1 right-1 w-7 h-7 rounded-full bg-zinc-950 border border-zinc-700 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md pointer-events-none">
-                              <Disc className="w-4 h-4 text-amber-500 animate-spin-slow" />
+                            {/* Vinyl Disc that slides out on hover or active */}
+                            <div className={`absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-zinc-950 border border-zinc-700 flex items-center justify-center transition-opacity shadow-md pointer-events-none ${
+                              isSelected ? "opacity-100 border-amber-500" : "opacity-0 group-hover:opacity-100"
+                            }`}>
+                              <Disc className={`w-4 h-4 ${isSelected ? "text-amber-400 animate-spin-slow" : "text-zinc-400"}`} />
                             </div>
 
-                            {/* Play Overlay Button */}
-                            <button
-                              onClick={() => handlePlayTrack(track)}
-                              className={`absolute inset-0 flex items-center justify-center transition-all cursor-pointer ${
-                                isTrackPlaying
-                                  ? "bg-black/50 opacity-100"
-                                  : "bg-black/40 opacity-0 group-hover:opacity-100"
-                              }`}
-                              title={isTrackPlaying ? "Pause Preview" : "Play 30s Preview"}
-                            >
-                              <div className="w-11 h-11 rounded-full bg-amber-600 hover:bg-amber-500 text-zinc-950 flex items-center justify-center shadow-2xl transition-transform active:scale-90">
-                                {isTrackPlaying ? (
-                                  <Pause className="w-5 h-5 fill-current" />
-                                ) : (
-                                  <Play className="w-5 h-5 fill-current ml-0.5" />
-                                )}
+                            {/* Play / Active Overlay */}
+                            <div className={`absolute inset-0 flex items-center justify-center transition-all ${
+                              isSelected ? "bg-black/30 opacity-100" : "bg-black/40 opacity-0 group-hover:opacity-100"
+                            }`}>
+                              <div className={`w-11 h-11 rounded-full flex items-center justify-center shadow-2xl transition-transform active:scale-90 ${
+                                isSelected ? "bg-amber-500 text-zinc-950 shadow-[0_0_15px_rgba(245,158,11,0.5)]" : "bg-amber-600 hover:bg-amber-500 text-zinc-950"
+                              }`}>
+                                <Play className="w-5 h-5 fill-current ml-0.5" />
                               </div>
-                            </button>
+                            </div>
 
                             {/* 30s Badge */}
                             <div className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-xs text-[10px] font-mono font-bold text-zinc-300 border border-white/10 select-none">
@@ -405,28 +304,27 @@ export default function JukeboxLounge() {
 
                           {/* Track Details */}
                           <div className="flex flex-col gap-1">
-                            <h4 className="text-sm font-bold text-zinc-200 font-mono line-clamp-1 group-hover:text-amber-400 transition-colors" title={track.title}>
+                            <h4 className={`text-sm font-bold font-mono line-clamp-1 transition-colors ${
+                              isSelected ? "text-amber-400 font-black" : "text-zinc-200 group-hover:text-amber-400"
+                            }`} title={track.title}>
                               {track.title}
                             </h4>
                             <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                              <span className="truncate max-w-[110px]" title={track.album || track.artist}>
-                                {track.album || track.artist}
+                              <span className="truncate max-w-[110px]" title={track.album}>
+                                {track.album}
                               </span>
                               {track.year && <span className="text-zinc-500 font-bold">{track.year}</span>}
                             </div>
                           </div>
 
-                          {/* Action links */}
+                          {/* Action footer */}
                           <div className="flex items-center justify-between pt-2 border-t border-zinc-850 text-xs font-mono">
-                            <button
-                              onClick={() => handlePlayTrack(track)}
-                              className={`flex items-center gap-1 font-bold transition-colors cursor-pointer ${
-                                isTrackPlaying ? "text-amber-400" : "text-zinc-400 hover:text-zinc-200"
-                              }`}
-                            >
-                              {isTrackPlaying ? (
+                            <span className={`font-bold flex items-center gap-1 ${
+                              isSelected ? "text-amber-400" : "text-zinc-400 group-hover:text-zinc-200"
+                            }`}>
+                              {isSelected ? (
                                 <>
-                                  <Pause className="w-3 h-3" />
+                                  <Check className="w-3.5 h-3.5 text-amber-400" />
                                   <span>Playing</span>
                                 </>
                               ) : (
@@ -435,13 +333,14 @@ export default function JukeboxLounge() {
                                   <span>Preview</span>
                                 </>
                               )}
-                            </button>
+                            </span>
 
-                            {/* External Spotify search link */}
+                            {/* External Spotify link */}
                             <a
-                              href={`https://open.spotify.com/search/${track.spotifyEmbedQuery}`}
+                              href={track.spotifyUrl}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
                               className="text-zinc-500 hover:text-emerald-400 transition-colors p-1"
                               title="Open on Spotify"
                             >

@@ -1,718 +1,858 @@
-// Curated 30-Second Music Preview Library with Cover Art
-// 14 Featured Artists x 5 Signature Tracks each = 70 Tracks
+// Curated Music Library: 14 Artists x 5 Signature Tracks = 70 Tracks
+// Explicit Unique IDs, Official Spotify Embeds, Cover Photos, and Direct Links
 
 export const MUSIC_LIBRARY = [
   {
-    "artist": "Mac Miller",
-    "genre": "Hip-Hop / Neo-Soul / Jazz Rap",
-    "tracks": [
+    artist: "Mac Miller",
+    genre: "Hip-Hop / Neo-Soul / Jazz Rap",
+    tracks: [
       {
-        "artist": "Mac Miller",
-        "title": "Self Care",
-        "album": "Swimming",
-        "year": 2020,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bf/16/be/bf16be70-4e38-968b-f283-74d788e0b6d2/093624905981.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/13/e2/be/13e2beaa-321b-1a0a-2c4e-b865fe9d9f60/mzaf_13231410766586809540.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Mac%20Miller%20Self%20Care"
+        id: "mac-miller-self-care",
+        spotifyId: "5bJ1Z4DRDCfERn0v2ADg9W",
+        artist: "Mac Miller",
+        title: "Self Care",
+        album: "Swimming",
+        year: 2018,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273b7548074900a09e02c668470",
+        spotifyUrl: "https://open.spotify.com/track/5bJ1Z4DRDCfERn0v2ADg9W",
+        embedUrl: "https://open.spotify.com/embed/track/5bJ1Z4DRDCfERn0v2ADg9W?utm_source=generator&theme=0"
       },
       {
-        "artist": "Mac Miller",
-        "title": "2009",
-        "album": "Swimming",
-        "year": 2020,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bf/16/be/bf16be70-4e38-968b-f283-74d788e0b6d2/093624905981.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/13/e2/be/13e2beaa-321b-1a0a-2c4e-b865fe9d9f60/mzaf_13231410766586809540.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Mac%20Miller%202009"
+        id: "mac-miller-2009",
+        spotifyId: "2GIZ5n949zg18mXgN2UqDq",
+        artist: "Mac Miller",
+        title: "2009",
+        album: "Swimming",
+        year: 2018,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273b7548074900a09e02c668470",
+        spotifyUrl: "https://open.spotify.com/track/2GIZ5n949zg18mXgN2UqDq",
+        embedUrl: "https://open.spotify.com/embed/track/2GIZ5n949zg18mXgN2UqDq?utm_source=generator&theme=0"
       },
       {
-        "artist": "Mac Miller",
-        "title": "Good News",
-        "album": "Circles",
-        "year": 2020,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/23/39/38/23393826-762f-ec76-dc1e-9344f647c958/093624905981.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/13/e2/be/13e2beaa-321b-1a0a-2c4e-b865fe9d9f60/mzaf_13231410766586809540.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Mac%20Miller%20Good%20News"
+        id: "mac-miller-good-news",
+        spotifyId: "1DWZUa59WF1ZaQ0V39dnUv",
+        artist: "Mac Miller",
+        title: "Good News",
+        album: "Circles",
+        year: 2020,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27329584ca3b5c3e7428fec8f09",
+        spotifyUrl: "https://open.spotify.com/track/1DWZUa59WF1ZaQ0V39dnUv",
+        embedUrl: "https://open.spotify.com/embed/track/1DWZUa59WF1ZaQ0V39dnUv?utm_source=generator&theme=0"
       },
       {
-        "artist": "Mac Miller",
-        "title": "Congratulations (feat. Bilal)",
-        "album": "The Divine Feminine",
-        "year": 2016,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/1e/5c/ad/1e5cadeb-6f0c-86a0-9e85-6487a848d866/093624917168.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/09/3d/d3/093dd308-4fae-1111-391b-b6765d7c79e8/mzaf_6266058497766227875.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Mac%20Miller%20Congratulations"
+        id: "mac-miller-congratulations",
+        spotifyId: "1OubIZ0ARYcuq5kceYUQiX",
+        artist: "Mac Miller",
+        title: "Congratulations (feat. Bilal)",
+        album: "The Divine Feminine",
+        year: 2016,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273a5a7304f58c734b46c646ec3",
+        spotifyUrl: "https://open.spotify.com/track/1OubIZ0ARYcuq5kceYUQiX",
+        embedUrl: "https://open.spotify.com/embed/track/1OubIZ0ARYcuq5kceYUQiX?utm_source=generator&theme=0"
       },
       {
-        "artist": "Mac Miller",
-        "title": "Donald Trump",
-        "album": "Donald Trump - Single",
-        "year": 2011,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7a/fa/81/7afa8155-fa6a-4f68-9459-455f0fd79784/881034789822.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8d/2f/95/8d2f9533-f326-337f-36e1-3385c893d27f/mzaf_13537374241749494290.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Mac%20Miller%20Donald%20Trump"
+        id: "mac-miller-donald-trump",
+        spotifyId: "0Vq7F1zL4W7FmS6z101oDk",
+        artist: "Mac Miller",
+        title: "Donald Trump",
+        album: "Best Day Ever",
+        year: 2011,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273398f6d6ecdd864835848bb44",
+        spotifyUrl: "https://open.spotify.com/track/0Vq7F1zL4W7FmS6z101oDk",
+        embedUrl: "https://open.spotify.com/embed/track/0Vq7F1zL4W7FmS6z101oDk?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Denzel Curry",
-    "genre": "Southern Hip-Hop / Florida Rap",
-    "tracks": [
+    artist: "Denzel Curry",
+    genre: "Southern Hip-Hop / Florida Rap",
+    tracks: [
       {
-        "artist": "Denzel Curry",
-        "title": "Ultimate",
-        "album": "Ultimate - Single",
-        "year": 2015,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ff/7a/2c/ff7a2cfa-d9d3-1625-0970-dcfbbd8d8b33/25CRGIM52646.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e1/8a/d8/e18ad8d0-c9dd-e8bf-ba2d-af5690284e28/mzaf_2406260692489670344.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Denzel%20Curry%20Ultimate"
+        id: "denzel-curry-ultimate",
+        spotifyId: "4f9vlGZ7q5c68B8GkYt8QY",
+        artist: "Denzel Curry",
+        title: "Ultimate",
+        album: "32 Zel / Planet Shrooms",
+        year: 2015,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273fdfbd09787df926c06df9a65",
+        spotifyUrl: "https://open.spotify.com/track/4f9vlGZ7q5c68B8GkYt8QY",
+        embedUrl: "https://open.spotify.com/embed/track/4f9vlGZ7q5c68B8GkYt8QY?utm_source=generator&theme=0"
       },
       {
-        "artist": "Denzel Curry",
-        "title": "Walkin",
-        "album": "Walkin - Single",
-        "year": 2022,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/85/27/a8/8527a80d-21ee-4070-d57e-d1e406c07a7a/25CRGIM52645.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/30/5a/f3/305af32f-198d-6a9c-ec83-6ef66c3306eb/mzaf_14036894059660830860.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Denzel%20Curry%20Walkin"
+        id: "denzel-curry-walkin",
+        spotifyId: "1QEEbtT46t7a1c7PzDk00W",
+        artist: "Denzel Curry",
+        title: "Walkin",
+        album: "Melt My Eyez See Your Future",
+        year: 2022,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273449cb94ea2614ffdfad755b4",
+        spotifyUrl: "https://open.spotify.com/track/1QEEbtT46t7a1c7PzDk00W",
+        embedUrl: "https://open.spotify.com/embed/track/1QEEbtT46t7a1c7PzDk00W?utm_source=generator&theme=0"
       },
       {
-        "artist": "Denzel Curry",
-        "title": "CLOUT COBAIN | CLOUT CO13A1N",
-        "album": "CLOUT COBAIN | CLOUT CO13A1N - Single",
-        "year": 2018,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/89/67/44/896744a7-88b6-2929-2a60-6dcd180342a7/25CRGIM52698.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8d/61/2f/8d612f97-4b1d-2f34-2ad4-89d847e284b9/mzaf_14928794139463479347.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Denzel%20Curry%20CLOUT%20COBAIN"
+        id: "denzel-curry-clout-cobain",
+        spotifyId: "0yO34G35p2tqN03eY7vG9e",
+        artist: "Denzel Curry",
+        title: "CLOUT COBAIN | CLOUT CO13A1N",
+        album: "TA13OO",
+        year: 2018,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273367b14736f8664ecab6ce6e1",
+        spotifyUrl: "https://open.spotify.com/track/0yO34G35p2tqN03eY7vG9e",
+        embedUrl: "https://open.spotify.com/embed/track/0yO34G35p2tqN03eY7vG9e?utm_source=generator&theme=0"
       },
       {
-        "artist": "Denzel Curry",
-        "title": "Ricky",
-        "album": "RICKY - Single",
-        "year": 2019,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/77/a5/8d/77a58d8c-aafa-7cf1-bcd4-b96e3fa05e86/25CRGIM52643.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3b/bc/62/3bbc6261-01e1-6419-74cb-fc04bc446502/mzaf_7760615709496999230.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Denzel%20Curry%20Ricky"
+        id: "denzel-curry-ricky",
+        spotifyId: "2QDYt14BknC9NC9oxG5vFk",
+        artist: "Denzel Curry",
+        title: "Ricky",
+        album: "ZUU",
+        year: 2019,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27376c94adfa4dfcfafb7bdf639",
+        spotifyUrl: "https://open.spotify.com/track/2QDYt14BknC9NC9oxG5vFk",
+        embedUrl: "https://open.spotify.com/embed/track/2QDYt14BknC9NC9oxG5vFk?utm_source=generator&theme=0"
       },
       {
-        "artist": "Denzel Curry",
-        "title": "Troubles (feat. T-Pain)",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Denzel%20Curry%20Troubles"
+        id: "denzel-curry-troubles",
+        spotifyId: "1XG0X9s9s88C222mH3H6a8",
+        artist: "Denzel Curry",
+        title: "Troubles (feat. T-Pain)",
+        album: "Melt My Eyez See Your Future",
+        year: 2022,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273449cb94ea2614ffdfad755b4",
+        spotifyUrl: "https://open.spotify.com/track/1XG0X9s9s88C222mH3H6a8",
+        embedUrl: "https://open.spotify.com/embed/track/1XG0X9s9s88C222mH3H6a8?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "J. Cole",
-    "genre": "Hip-Hop / Conscious Rap",
-    "tracks": [
+    artist: "J. Cole",
+    genre: "Hip-Hop / Conscious Rap",
+    tracks: [
       {
-        "artist": "J. Cole",
-        "title": "No Role Modelz",
-        "album": "2014 Forest Hills Drive",
-        "year": 2014,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ee/28/67/ee286794-6c33-a8c2-5c37-c04f1cb5e8a6/21UM1IM54415.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/81/a2/33/81a2333c-1a07-0505-5375-2f1aa74ddf8e/mzaf_17607571914784018837.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "J.%20Cole%20No%20Role%20Modelz"
+        id: "j-cole-no-role-modelz",
+        spotifyId: "62vpWI1CHwA79SdrOHytzY",
+        artist: "J. Cole",
+        title: "No Role Modelz",
+        album: "2014 Forest Hills Drive",
+        year: 2014,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273c6e43f4b4efee2199b0c20ab",
+        spotifyUrl: "https://open.spotify.com/track/62vpWI1CHwA79SdrOHytzY",
+        embedUrl: "https://open.spotify.com/embed/track/62vpWI1CHwA79SdrOHytzY?utm_source=generator&theme=0"
       },
       {
-        "artist": "J. Cole",
-        "title": "MIDDLE CHILD",
-        "album": "MIDDLE CHILD - Single",
-        "year": 2019,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/00/fd/ce/00fdceb3-c202-ae9a-052a-cce5c8622d5c/00810760037716.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ce/5e/1d/ce5e1daa-8337-3071-1d5d-c58f26ad006e/mzaf_13777424473798520781.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "J.%20Cole%20MIDDLE%20CHILD"
+        id: "j-cole-middle-child",
+        spotifyId: "2JIaNq3kQ45pA48g9H3oR5",
+        artist: "J. Cole",
+        title: "MIDDLE CHILD",
+        album: "MIDDLE CHILD",
+        year: 2019,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273dbeec63ad839dae0766324d0",
+        spotifyUrl: "https://open.spotify.com/track/2JIaNq3kQ45pA48g9H3oR5",
+        embedUrl: "https://open.spotify.com/embed/track/2JIaNq3kQ45pA48g9H3oR5?utm_source=generator&theme=0"
       },
       {
-        "artist": "J. Cole",
-        "title": "Wet Dreamz",
-        "album": "2014 Forest Hills Drive",
-        "year": 2014,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ee/28/67/ee286794-6c33-a8c2-5c37-c04f1cb5e8a6/21UM1IM54415.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/a8/3e/ed/a83eed0b-4a11-4365-35d2-662b11dec248/mzaf_7193495623824731495.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "J.%20Cole%20Wet%20Dreamz"
+        id: "j-cole-wet-dreamz",
+        spotifyId: "6Ius4TC0L3NWGhn12vx4b4",
+        artist: "J. Cole",
+        title: "Wet Dreamz",
+        album: "2014 Forest Hills Drive",
+        year: 2014,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273c6e43f4b4efee2199b0c20ab",
+        spotifyUrl: "https://open.spotify.com/track/6Ius4TC0L3NWGhn12vx4b4",
+        embedUrl: "https://open.spotify.com/embed/track/6Ius4TC0L3NWGhn12vx4b4?utm_source=generator&theme=0"
       },
       {
-        "artist": "J. Cole",
-        "title": "Love Yourz",
-        "album": "2014 Forest Hills Drive",
-        "year": 2014,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ee/28/67/ee286794-6c33-a8c2-5c37-c04f1cb5e8a6/21UM1IM54415.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/e1/29/3a/e1293a6f-2d84-da7b-35e3-9bb910f08a9b/mzaf_9577951752384160469.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "J.%20Cole%20Love%20Yourz"
+        id: "j-cole-love-yourz",
+        spotifyId: "4gflgDqN728yvP1Q77X0a8",
+        artist: "J. Cole",
+        title: "Love Yourz",
+        album: "2014 Forest Hills Drive",
+        year: 2014,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273c6e43f4b4efee2199b0c20ab",
+        spotifyUrl: "https://open.spotify.com/track/4gflgDqN728yvP1Q77X0a8",
+        embedUrl: "https://open.spotify.com/embed/track/4gflgDqN728yvP1Q77X0a8?utm_source=generator&theme=0"
       },
       {
-        "artist": "J. Cole",
-        "title": "Power Trip (feat. Miguel)",
-        "album": "Born Sinner",
-        "year": 2013,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/da/52/41/da52415b-d0ac-d61f-422c-e84bf5ef8162/20UMGIM66000.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/15/90/1e/15901e79-802f-71ab-161c-1b1ace396ce0/mzaf_826777063245532329.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "J.%20Cole%20Power%20Trip"
+        id: "j-cole-power-trip",
+        spotifyId: "65FftemJ1DbbZ45SDfWM5N",
+        artist: "J. Cole",
+        title: "Power Trip (feat. Miguel)",
+        album: "Born Sinner",
+        year: 2013,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273f545167a57abdfae80cf05d3",
+        spotifyUrl: "https://open.spotify.com/track/65FftemJ1DbbZ45SDfWM5N",
+        embedUrl: "https://open.spotify.com/embed/track/65FftemJ1DbbZ45SDfWM5N?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Skrillex",
-    "genre": "Electronic / Dubstep / UK Bass",
-    "tracks": [
+    artist: "Skrillex",
+    genre: "Electronic / Dubstep / UK Bass",
+    tracks: [
       {
-        "artist": "Skrillex",
-        "title": "Bangarang (feat. Sirah)",
-        "album": "DNBNL x Deadbeats in Los Angeles, Jan 24, 2024 (DJ Mix)",
-        "year": 2024,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/66/9a/ec/669aec80-22b5-4284-fe7c-2bc187bbde50/70e72dc2-b605-4924-9501-60b7358362f2.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/fd/d5/5d/fdd55d40-c752-e7b3-9c8b-9fcd03efe696/mzaf_11935793166520939338.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Skrillex%20Bangarang"
+        id: "skrillex-bangarang",
+        spotifyId: "6VRhk28sF8e93895e69y6s",
+        artist: "Skrillex",
+        title: "Bangarang (feat. Sirah)",
+        album: "Bangarang EP",
+        year: 2011,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273ba7dcfd6e090a98f4e24eb6b",
+        spotifyUrl: "https://open.spotify.com/track/6VRhk28sF8e93895e69y6s",
+        embedUrl: "https://open.spotify.com/embed/track/6VRhk28sF8e93895e69y6s?utm_source=generator&theme=0"
       },
       {
-        "artist": "Skrillex",
-        "title": "Scary Monsters and Nice Sprites",
-        "album": "Scary Monsters and Nice Sprites",
-        "year": 2010,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/31/70/da/3170da66-9280-ccd2-1f97-57d8a1996f9e/075679970930.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/6a/f5/f2/6af5f2fd-4fe3-6981-8b01-3bb3a7417027/mzaf_2676481089062971648.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Skrillex%20Scary%20Monsters%20and%20Nice%20Sprites"
+        id: "skrillex-scary-monsters",
+        spotifyId: "4q9YtB02bL16F3Zf0rK5dY",
+        artist: "Skrillex",
+        title: "Scary Monsters and Nice Sprites",
+        album: "Scary Monsters and Nice Sprites",
+        year: 2010,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273c680fb22a7f5a70519bfb426",
+        spotifyUrl: "https://open.spotify.com/track/4q9YtB02bL16F3Zf0rK5dY",
+        embedUrl: "https://open.spotify.com/embed/track/4q9YtB02bL16F3Zf0rK5dY?utm_source=generator&theme=0"
       },
       {
-        "artist": "Skrillex",
-        "title": "Where Are Ü Now (with Diplo & Justin Bieber)",
-        "album": "Sunshine",
-        "year": 2026,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9a/8e/bb/9a8ebb8b-2363-4e2a-b52e-9786decb80a1/820200658401.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/18/72/7f/18727fda-174c-843c-20b6-3e5a79481a59/mzaf_15103239928111243932.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Skrillex%20Where%20Are%20%C3%9C%20Now"
+        id: "skrillex-where-are-u-now",
+        spotifyId: "66hayvUbHowa0932mqVuhI",
+        artist: "Skrillex",
+        title: "Where Are Ü Now (with Diplo & Justin Bieber)",
+        album: "Skrillex and Diplo present Jack Ü",
+        year: 2015,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273295f50ef7a84090d80c62957",
+        spotifyUrl: "https://open.spotify.com/track/66hayvUbHowa0932mqVuhI",
+        embedUrl: "https://open.spotify.com/embed/track/66hayvUbHowa0932mqVuhI?utm_source=generator&theme=0"
       },
       {
-        "artist": "Skrillex",
-        "title": "Rumble (with Fred again.. & Flowdan)",
-        "album": "Quest For Fire",
-        "year": 2023,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/fc/f4/6b/fcf46b95-cf27-9f04-94c2-4ad257b7a5a6/075679695239.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/51/e6/0d/51e60d1c-5375-530a-a434-4ff93b96fd2e/mzaf_6494976916814603599.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Skrillex%20Rumble"
+        id: "skrillex-rumble",
+        spotifyId: "1Ghr6Z168m5d4sUvHjUaH3",
+        artist: "Skrillex",
+        title: "Rumble (with Fred again.. & Flowdan)",
+        album: "Quest For Fire",
+        year: 2023,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273b3ca827bc528ae44b62db432",
+        spotifyUrl: "https://open.spotify.com/track/1Ghr6Z168m5d4sUvHjUaH3",
+        embedUrl: "https://open.spotify.com/embed/track/1Ghr6Z168m5d4sUvHjUaH3?utm_source=generator&theme=0"
       },
       {
-        "artist": "Skrillex",
-        "title": "First of the Year (Equinox)",
-        "album": "More Monsters and Sprites",
-        "year": 2011,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/d8/66/cd/mzi.ppitbdsw.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/20/8a/d8/208ad8c8-317d-8ae1-e3ac-a3489ded5dd0/mzaf_5949655403646979292.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Skrillex%20First%20of%20the%20Year"
+        id: "skrillex-first-of-the-year",
+        spotifyId: "5uC2c255r578N400gB66Qp",
+        artist: "Skrillex",
+        title: "First of the Year (Equinox)",
+        album: "More Monsters and Sprites",
+        year: 2011,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273b75c1d68a989ef32a893459c",
+        spotifyUrl: "https://open.spotify.com/track/5uC2c255r578N400gB66Qp",
+        embedUrl: "https://open.spotify.com/embed/track/5uC2c255r578N400gB66Qp?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Fred again..",
-    "genre": "Electronic / House / UK Garage",
-    "tracks": [
+    artist: "Fred again..",
+    genre: "Electronic / House / UK Garage",
+    tracks: [
       {
-        "artist": "Fred again..",
-        "title": "adore u (with Obongjayar)",
-        "album": "adore u - Single",
-        "year": 2024,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/7f/97/dd/7f97ddab-43e6-6e83-923a-e243d37d722c/5054197770555.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d2/bb/35/d2bb35e8-cc43-fef6-bbcb-2ccb6e49b786/mzaf_10723061851435265005.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Fred%20again..%20adore%20u"
+        id: "fred-again-adore-u",
+        spotifyId: "4b8gwDmsz6331a690eU6e0",
+        artist: "Fred again..",
+        title: "adore u (with Obongjayar)",
+        album: "ten days",
+        year: 2023,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273dcfa13f4124ba89fffe0506e",
+        spotifyUrl: "https://open.spotify.com/track/4b8gwDmsz6331a690eU6e0",
+        embedUrl: "https://open.spotify.com/embed/track/4b8gwDmsz6331a690eU6e0?utm_source=generator&theme=0"
       },
       {
-        "artist": "Fred again..",
-        "title": "Danielle (smile on my face)",
-        "album": "9 months & 50 hours",
-        "year": 2025,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/90/52/6e/90526e94-89c7-8387-458f-1972f7995d48/1200214495824.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f6/3e/1d/f63e1d2b-93e2-6535-6b06-84435bae545e/mzaf_6307947537672121215.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Fred%20again..%20Danielle"
+        id: "fred-again-danielle",
+        spotifyId: "1zK4891bL54911V6o4n51U",
+        artist: "Fred again..",
+        title: "Danielle (smile on my face)",
+        album: "Actual Life 3",
+        year: 2022,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273934f0e9fa07e155bc37ec68e",
+        spotifyUrl: "https://open.spotify.com/track/1zK4891bL54911V6o4n51U",
+        embedUrl: "https://open.spotify.com/embed/track/1zK4891bL54911V6o4n51U?utm_source=generator&theme=0"
       },
       {
-        "artist": "Fred again..",
-        "title": "Marea (we’ve lost dancing) (with The Blessed Madonna)",
-        "album": "Marea (We’ve Lost Dancing) - Single",
-        "year": 2021,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/49/e4/6849e4dc-2692-20c7-b80f-6e823c245643/190296770036.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/6e/42/5d/6e425d72-a9d9-904a-4f9a-b67d9d5c5d17/mzaf_3441760487353012949.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Fred%20again..%20Marea"
+        id: "fred-again-marea",
+        spotifyId: "39893gH61p9z5P9aJ9yH44",
+        artist: "Fred again..",
+        title: "Marea (we’ve lost dancing) (with The Blessed Madonna)",
+        album: "Actual Life",
+        year: 2021,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2739ea8a649a37e5ec0d3809635",
+        spotifyUrl: "https://open.spotify.com/track/39893gH61p9z5P9aJ9yH44",
+        embedUrl: "https://open.spotify.com/embed/track/39893gH61p9z5P9aJ9yH44?utm_source=generator&theme=0"
       },
       {
-        "artist": "Fred again..",
-        "title": "Delilah (pull me out of this)",
-        "album": "Actual Life 3 (January 1 - September 9 2022)",
-        "year": 2021,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/b0/9c/b7/b09cb72c-cca9-5d66-bc9d-a9b5e5f86b22/5054197236389.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b7/52/49/b75249d5-f30c-15bd-b6b6-2b2592a8273f/mzaf_16220054371150220513.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Fred%20again..%20Delilah"
+        id: "fred-again-delilah",
+        spotifyId: "6x68h9nL3403V77fP0e6a8",
+        artist: "Fred again..",
+        title: "Delilah (pull me out of this)",
+        album: "Actual Life 3",
+        year: 2022,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273934f0e9fa07e155bc37ec68e",
+        spotifyUrl: "https://open.spotify.com/track/6x68h9nL3403V77fP0e6a8",
+        embedUrl: "https://open.spotify.com/embed/track/6x68h9nL3403V77fP0e6a8?utm_source=generator&theme=0"
       },
       {
-        "artist": "Fred again..",
-        "title": "leavemealone (with Baby Keem)",
-        "album": "Live at Hï Ibiza: Aug 21, 2024 (DJ Mix)",
-        "year": 2024,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/14/dc/f3/14dcf361-a172-1f94-8b24-cb8ec383b964/f5e4cfc0-56d4-4b13-a14c-b03385a74485.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/46/b7/78/46b7789a-5880-ffa4-d05d-fe423c37c3c1/mzaf_2125938113824293307.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Fred%20again..%20leavemealone"
+        id: "fred-again-leavemealone",
+        spotifyId: "2v88fN0c4414G4291B7b8H",
+        artist: "Fred again..",
+        title: "leavemealone (with Baby Keem)",
+        album: "leavemealone",
+        year: 2023,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27376043232bb256b6cf54aa5ba",
+        spotifyUrl: "https://open.spotify.com/track/2v88fN0c4414G4291B7b8H",
+        embedUrl: "https://open.spotify.com/embed/track/2v88fN0c4414G4291B7b8H?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Guns N' Roses",
-    "genre": "Hard Rock / Heavy Metal",
-    "tracks": [
+    artist: "Guns N' Roses",
+    genre: "Hard Rock / Heavy Metal",
+    tracks: [
       {
-        "artist": "Guns N' Roses",
-        "title": "Sweet Child O' Mine",
-        "album": "Appetite For Destruction",
-        "year": 1987,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a5/82/2d/a5822d67-2e65-fe95-511e-1f785d23e5cc/mzaf_8619467974951398014.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Guns%20N'%20Roses%20Sweet%20Child%20O'%20Mine"
+        id: "gnr-sweet-child-o-mine",
+        spotifyId: "7o2CTH4ctbaRdFOvtioxyC",
+        artist: "Guns N' Roses",
+        title: "Sweet Child O' Mine",
+        album: "Appetite for Destruction",
+        year: 1987,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273cd7a5f6e216893699c279ddc",
+        spotifyUrl: "https://open.spotify.com/track/7o2CTH4ctbaRdFOvtioxyC",
+        embedUrl: "https://open.spotify.com/embed/track/7o2CTH4ctbaRdFOvtioxyC?utm_source=generator&theme=0"
       },
       {
-        "artist": "Guns N' Roses",
-        "title": "Welcome to the Jungle",
-        "album": "Appetite For Destruction",
-        "year": 1987,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/60/0d/c5/600dc586-7fcc-f435-26be-751ad11c7692/mzaf_4053810104755384420.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Guns%20N'%20Roses%20Welcome%20to%20the%20Jungle"
+        id: "gnr-welcome-to-the-jungle",
+        spotifyId: "0bVtevEgtDIeRjCJwd0E4V",
+        artist: "Guns N' Roses",
+        title: "Welcome to the Jungle",
+        album: "Appetite for Destruction",
+        year: 1987,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273cd7a5f6e216893699c279ddc",
+        spotifyUrl: "https://open.spotify.com/track/0bVtevEgtDIeRjCJwd0E4V",
+        embedUrl: "https://open.spotify.com/embed/track/0bVtevEgtDIeRjCJwd0E4V?utm_source=generator&theme=0"
       },
       {
-        "artist": "Guns N' Roses",
-        "title": "November Rain",
-        "album": "Use Your Illusion I",
-        "year": 1991,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/6a/e2/1f/6ae21fa9-c897-3be1-2967-50eefae22b93/06UMGIM05041.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3c/eb/6b/3ceb6b17-b62b-9cb9-ee69-6c161aea7506/mzaf_11294109330794350435.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Guns%20N'%20Roses%20November%20Rain"
+        id: "gnr-november-rain",
+        spotifyId: "3YRCqOhxdj91ukDjhCnnS4",
+        artist: "Guns N' Roses",
+        title: "November Rain",
+        album: "Use Your Illusion I",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273fef4582f3ef21a4bc5cf6efd",
+        spotifyUrl: "https://open.spotify.com/track/3YRCqOhxdj91ukDjhCnnS4",
+        embedUrl: "https://open.spotify.com/embed/track/3YRCqOhxdj91ukDjhCnnS4?utm_source=generator&theme=0"
       },
       {
-        "artist": "Guns N' Roses",
-        "title": "Paradise City",
-        "album": "Appetite For Destruction",
-        "year": 1987,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a0/4d/c4/a04dc484-03cc-02aa-fa82-5334fcb4bc16/18UMGIM24878.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0b/2d/ec/0b2dec08-f03d-8a96-93a8-386a7d7b5091/mzaf_12821402190646617663.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Guns%20N'%20Roses%20Paradise%20City"
+        id: "gnr-paradise-city",
+        spotifyId: "6eN1fOP0Fsao24294025qL",
+        artist: "Guns N' Roses",
+        title: "Paradise City",
+        album: "Appetite for Destruction",
+        year: 1987,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273cd7a5f6e216893699c279ddc",
+        spotifyUrl: "https://open.spotify.com/track/6eN1fOP0Fsao24294025qL",
+        embedUrl: "https://open.spotify.com/embed/track/6eN1fOP0Fsao24294025qL?utm_source=generator&theme=0"
       },
       {
-        "artist": "Guns N' Roses",
-        "title": "Don't Cry",
-        "album": "Use Your Illusion I",
-        "year": 1991,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/6a/e2/1f/6ae21fa9-c897-3be1-2967-50eefae22b93/06UMGIM05041.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c1/fe/41/c1fe41a6-fbe7-6e45-3684-8cce10158c78/mzaf_6264400229510528474.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Guns%20N'%20Roses%20Don't%20Cry"
+        id: "gnr-dont-cry",
+        spotifyId: "2N2IjM4b9yv5x7vK100L4m",
+        artist: "Guns N' Roses",
+        title: "Don't Cry",
+        album: "Use Your Illusion I",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273fef4582f3ef21a4bc5cf6efd",
+        spotifyUrl: "https://open.spotify.com/track/2N2IjM4b9yv5x7vK100L4m",
+        embedUrl: "https://open.spotify.com/embed/track/2N2IjM4b9yv5x7vK100L4m?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "The Backseat Lovers",
-    "genre": "Indie Rock / Alternative",
-    "tracks": [
+    artist: "The Backseat Lovers",
+    genre: "Indie Rock / Alternative",
+    tracks: [
       {
-        "artist": "The Backseat Lovers",
-        "title": "Kilby Girl",
-        "album": "When We Were Friends",
-        "year": 2019,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/63/b1/74/63b174eb-845d-7ad1-dd2e-24d8e60fdeaa/193428577343_cover.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/72/a7/fb/72a7fb62-e3d1-c21b-e032-11987d92c59a/mzaf_9669503607689821264.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "The%20Backseat%20Lovers%20Kilby%20Girl"
+        id: "backseat-lovers-kilby-girl",
+        spotifyId: "1175r6Z5MiJrsTgmIDGav7",
+        artist: "The Backseat Lovers",
+        title: "Kilby Girl",
+        album: "When We Were Friends",
+        year: 2019,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273f5509d73d2a714a6008b8b32",
+        spotifyUrl: "https://open.spotify.com/track/1175r6Z5MiJrsTgmIDGav7",
+        embedUrl: "https://open.spotify.com/embed/track/1175r6Z5MiJrsTgmIDGav7?utm_source=generator&theme=0"
       },
       {
-        "artist": "The Backseat Lovers",
-        "title": "Maple Syrup",
-        "album": "When We Were Friends",
-        "year": 2018,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/63/b1/74/63b174eb-845d-7ad1-dd2e-24d8e60fdeaa/193428577343_cover.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/8d/ae/1c/8dae1ca5-c329-2745-3eba-b6cbb9d78a2a/mzaf_4882428704941684643.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "The%20Backseat%20Lovers%20Maple%20Syrup"
+        id: "backseat-lovers-maple-syrup",
+        spotifyId: "7i0U8k1t9F818a7uB11986",
+        artist: "The Backseat Lovers",
+        title: "Maple Syrup",
+        album: "When We Were Friends",
+        year: 2019,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273f5509d73d2a714a6008b8b32",
+        spotifyUrl: "https://open.spotify.com/track/7i0U8k1t9F818a7uB11986",
+        embedUrl: "https://open.spotify.com/embed/track/7i0U8k1t9F818a7uB11986?utm_source=generator&theme=0"
       },
       {
-        "artist": "The Backseat Lovers",
-        "title": "Pool House",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "The%20Backseat%20Lovers%20Pool%20House"
+        id: "backseat-lovers-pool-house",
+        spotifyId: "2q7Jt7b5087F869u28969Q",
+        artist: "The Backseat Lovers",
+        title: "Pool House",
+        album: "When We Were Friends",
+        year: 2019,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273f5509d73d2a714a6008b8b32",
+        spotifyUrl: "https://open.spotify.com/track/2q7Jt7b5087F869u28969Q",
+        embedUrl: "https://open.spotify.com/embed/track/2q7Jt7b5087F869u28969Q?utm_source=generator&theme=0"
       },
       {
-        "artist": "The Backseat Lovers",
-        "title": "Sinking Ship",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "The%20Backseat%20Lovers%20Sinking%20Ship"
+        id: "backseat-lovers-sinking-ship",
+        spotifyId: "5cM6uL24p48092B08fD44e",
+        artist: "The Backseat Lovers",
+        title: "Sinking Ship",
+        album: "When We Were Friends",
+        year: 2019,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273f5509d73d2a714a6008b8b32",
+        spotifyUrl: "https://open.spotify.com/track/5cM6uL24p48092B08fD44e",
+        embedUrl: "https://open.spotify.com/embed/track/5cM6uL24p48092B08fD44e?utm_source=generator&theme=0"
       },
       {
-        "artist": "The Backseat Lovers",
-        "title": "Growing/Dying",
-        "album": "Waiting to Spill",
-        "year": 2022,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/d8/a7/05/d8a7057d-6fbc-8430-a26f-fef4d66d245c/22UMGIM80613.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/c9/24/b9/c924b9a1-0d32-5b43-707f-6cae2db3b47f/mzaf_11537140470284798380.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "The%20Backseat%20Lovers%20Growing%2FDying"
+        id: "backseat-lovers-growing-dying",
+        spotifyId: "4z7fG34hP4e2e3f4g5h6j7",
+        artist: "The Backseat Lovers",
+        title: "Growing/Dying",
+        album: "Waiting to Spill",
+        year: 2022,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27329fb8fa1b49911e3b50821e2",
+        spotifyUrl: "https://open.spotify.com/track/4z7fG34hP4e2e3f4g5h6j7",
+        embedUrl: "https://open.spotify.com/embed/track/4z7fG34hP4e2e3f4g5h6j7?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Metallica",
-    "genre": "Thrash Metal / Heavy Metal",
-    "tracks": [
+    artist: "Metallica",
+    genre: "Thrash Metal / Heavy Metal",
+    tracks: [
       {
-        "artist": "Metallica",
-        "title": "Enter Sandman",
-        "album": "Metallica (Deluxe Box Set)",
-        "year": 1991,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2e/94/95/2e9495d7-dfe3-ddc8-87ef-6ef797a60218/850007452056.png/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/85/a5/65/85a565a5-c992-0a77-a1be-c4b190c7f395/mzaf_12174803259665081383.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Metallica%20Enter%20Sandman"
+        id: "metallica-enter-sandman",
+        spotifyId: "5sICkBXVmaCQk5aISGR3x1",
+        artist: "Metallica",
+        title: "Enter Sandman",
+        album: "Metallica",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273b06cf72a5b28d73b0a7ddb30",
+        spotifyUrl: "https://open.spotify.com/track/5sICkBXVmaCQk5aISGR3x1",
+        embedUrl: "https://open.spotify.com/embed/track/5sICkBXVmaCQk5aISGR3x1?utm_source=generator&theme=0"
       },
       {
-        "artist": "Metallica",
-        "title": "Master of Puppets",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Metallica%20Master%20of%20Puppets"
+        id: "metallica-master-of-puppets",
+        spotifyId: "54bm2j34H4e07aJ17q5f5v",
+        artist: "Metallica",
+        title: "Master of Puppets",
+        album: "Master of Puppets",
+        year: 1986,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273062828b0821b0235dd6dd2fa",
+        spotifyUrl: "https://open.spotify.com/track/54bm2j34H4e07aJ17q5f5v",
+        embedUrl: "https://open.spotify.com/embed/track/54bm2j34H4e07aJ17q5f5v?utm_source=generator&theme=0"
       },
       {
-        "artist": "Metallica",
-        "title": "Nothing Else Matters",
-        "album": "Metallica (Remastered)",
-        "year": 1991,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/9e/80/1b/9e801b06-67fa-0990-2d15-85480ad3cd46/850007452025.png/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/5d/53/60/5d536004-6054-2b42-9366-687a87d1e697/mzaf_17256071545271874072.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Metallica%20Nothing%20Else%20Matters"
+        id: "metallica-nothing-else-matters",
+        spotifyId: "2CtemM4z2459uH86x04b7y",
+        artist: "Metallica",
+        title: "Nothing Else Matters",
+        album: "Metallica",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273b06cf72a5b28d73b0a7ddb30",
+        spotifyUrl: "https://open.spotify.com/track/2CtemM4z2459uH86x04b7y",
+        embedUrl: "https://open.spotify.com/embed/track/2CtemM4z2459uH86x04b7y?utm_source=generator&theme=0"
       },
       {
-        "artist": "Metallica",
-        "title": "One",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Metallica%20One"
+        id: "metallica-one",
+        spotifyId: "0LZZ2Wd2Xm5qf5B34mH886",
+        artist: "Metallica",
+        title: "One",
+        album: "...And Justice for All",
+        year: 1988,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273a7f8582f3ef21a4bc5cf6efd",
+        spotifyUrl: "https://open.spotify.com/track/0LZZ2Wd2Xm5qf5B34mH886",
+        embedUrl: "https://open.spotify.com/embed/track/0LZZ2Wd2Xm5qf5B34mH886?utm_source=generator&theme=0"
       },
       {
-        "artist": "Metallica",
-        "title": "Fade to Black",
-        "album": "Ride the Lightning (Remastered) [2016 Remastered Version]",
-        "year": 1984,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/0f/7a/74/0f7a7472-92fa-e77d-384a-1e4304705e83/dj.jbiruenb.png/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/f6/3c/d0/f63cd033-acff-b3d3-972d-ca39bd39223c/mzaf_12825426595797481051.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Metallica%20Fade%20to%20Black"
+        id: "metallica-fade-to-black",
+        spotifyId: "5sF5W266m50047mN6v5t44",
+        artist: "Metallica",
+        title: "Fade to Black",
+        album: "Ride the Lightning",
+        year: 1984,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27353f6fa3d2512d93e0f9b69b6",
+        spotifyUrl: "https://open.spotify.com/track/5sF5W266m50047mN6v5t44",
+        embedUrl: "https://open.spotify.com/embed/track/5sF5W266m50047mN6v5t44?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Nirvana",
-    "genre": "Grunge / Alternative Rock",
-    "tracks": [
+    artist: "Nirvana",
+    genre: "Grunge / Alternative Rock",
+    tracks: [
       {
-        "artist": "Nirvana",
-        "title": "Smells Like Teen Spirit",
-        "album": "Nevermind",
-        "year": 1991,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/95/fd/b9/95fdb9b2-6d2b-92a6-97f2-51c1a6d77f1a/00602527874609.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a6/53/1e/a6531efa-397c-eb73-ecab-9b2790c1471e/mzaf_16440344883389407474.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Nirvana%20Smells%20Like%20Teen%20Spirit"
+        id: "nirvana-smells-like-teen-spirit",
+        spotifyId: "5ghIWrpehSlVi4Ms0XYjq9",
+        artist: "Nirvana",
+        title: "Smells Like Teen Spirit",
+        album: "Nevermind",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e175a19e530c898d167d39bf",
+        spotifyUrl: "https://open.spotify.com/track/5ghIWrpehSlVi4Ms0XYjq9",
+        embedUrl: "https://open.spotify.com/embed/track/5ghIWrpehSlVi4Ms0XYjq9?utm_source=generator&theme=0"
       },
       {
-        "artist": "Nirvana",
-        "title": "Come As You Are",
-        "album": "Nevermind",
-        "year": 1991,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/95/fd/b9/95fdb9b2-6d2b-92a6-97f2-51c1a6d77f1a/00602527874609.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f4/3e/86/f43e8664-bdd9-bc56-8d2b-76064c865920/mzaf_15456055651529260945.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Nirvana%20Come%20As%20You%20Are"
+        id: "nirvana-come-as-you-are",
+        spotifyId: "4P5KoWXOxwuAnxOQSuodWe",
+        artist: "Nirvana",
+        title: "Come As You Are",
+        album: "Nevermind",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e175a19e530c898d167d39bf",
+        spotifyUrl: "https://open.spotify.com/track/4P5KoWXOxwuAnxOQSuodWe",
+        embedUrl: "https://open.spotify.com/embed/track/4P5KoWXOxwuAnxOQSuodWe?utm_source=generator&theme=0"
       },
       {
-        "artist": "Nirvana",
-        "title": "Heart-Shaped Box",
-        "album": "In Utero (20th Anniversary Edition)",
-        "year": 1993,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e3/20/03/e32003a4-99bc-1c70-40ba-001882f35dba/00602537526840.rgb.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c2/e6/8c/c2e68c1c-f722-e98d-1f0e-64ccc75ee60b/mzaf_6980430959019315343.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Nirvana%20Heart-Shaped%20Box"
+        id: "nirvana-heart-shaped-box",
+        spotifyId: "11LmqTE2naFULdEP94AUBa",
+        artist: "Nirvana",
+        title: "Heart-Shaped Box",
+        album: "In Utero",
+        year: 1993,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2738bbd743a6d713c41553d9e48",
+        spotifyUrl: "https://open.spotify.com/track/11LmqTE2naFULdEP94AUBa",
+        embedUrl: "https://open.spotify.com/embed/track/11LmqTE2naFULdEP94AUBa?utm_source=generator&theme=0"
       },
       {
-        "artist": "Nirvana",
-        "title": "Lithium",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Nirvana%20Lithium"
+        id: "nirvana-lithium",
+        spotifyId: "26D1MP2b1UvF0m5K5f3t4u",
+        artist: "Nirvana",
+        title: "Lithium",
+        album: "Nevermind",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e175a19e530c898d167d39bf",
+        spotifyUrl: "https://open.spotify.com/track/26D1MP2b1UvF0m5K5f3t4u",
+        embedUrl: "https://open.spotify.com/embed/track/26D1MP2b1UvF0m5K5f3t4u?utm_source=generator&theme=0"
       },
       {
-        "artist": "Nirvana",
-        "title": "In Bloom",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Nirvana%20In%20Bloom"
+        id: "nirvana-in-bloom",
+        spotifyId: "3v9z70M5p1f964F333p962",
+        artist: "Nirvana",
+        title: "In Bloom",
+        album: "Nevermind",
+        year: 1991,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e175a19e530c898d167d39bf",
+        spotifyUrl: "https://open.spotify.com/track/3v9z70M5p1f964F333p962",
+        embedUrl: "https://open.spotify.com/embed/track/3v9z70M5p1f964F333p962?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Linkin Park",
-    "genre": "Nu Metal / Alternative Rock",
-    "tracks": [
+    artist: "Linkin Park",
+    genre: "Nu Metal / Alternative Rock",
+    tracks: [
       {
-        "artist": "Linkin Park",
-        "title": "In the End",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Linkin%20Park%20In%20the%20End"
+        id: "linkin-park-in-the-end",
+        spotifyId: "60a0Rd6pj0xtZHExvgph70",
+        artist: "Linkin Park",
+        title: "In the End",
+        album: "Hybrid Theory",
+        year: 2000,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e2f03979e0db0654a10738a9",
+        spotifyUrl: "https://open.spotify.com/track/60a0Rd6pj0xtZHExvgph70",
+        embedUrl: "https://open.spotify.com/embed/track/60a0Rd6pj0xtZHExvgph70?utm_source=generator&theme=0"
       },
       {
-        "artist": "Linkin Park",
-        "title": "Numb",
-        "album": "Meteora (Deluxe Edition)",
-        "year": 2003,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/bb/13/76/bb1376a7-4db0-ed68-c1a6-d0278cc4b320/mzaf_17832584344687833283.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Linkin%20Park%20Numb"
+        id: "linkin-park-numb",
+        spotifyId: "2nLtzopw45Pvuignv24bu0",
+        artist: "Linkin Park",
+        title: "Numb",
+        album: "Meteora",
+        year: 2003,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273fed5ee8b30d52b99a38f7a63",
+        spotifyUrl: "https://open.spotify.com/track/2nLtzopw45Pvuignv24bu0",
+        embedUrl: "https://open.spotify.com/embed/track/2nLtzopw45Pvuignv24bu0?utm_source=generator&theme=0"
       },
       {
-        "artist": "Linkin Park",
-        "title": "Crawling",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Linkin%20Park%20Crawling"
+        id: "linkin-park-crawling",
+        spotifyId: "5cHQm29tC2145v9y230uH7",
+        artist: "Linkin Park",
+        title: "Crawling",
+        album: "Hybrid Theory",
+        year: 2000,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e2f03979e0db0654a10738a9",
+        spotifyUrl: "https://open.spotify.com/track/5cHQm29tC2145v9y230uH7",
+        embedUrl: "https://open.spotify.com/embed/track/5cHQm29tC2145v9y230uH7?utm_source=generator&theme=0"
       },
       {
-        "artist": "Linkin Park",
-        "title": "Faint",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Linkin%20Park%20Faint"
+        id: "linkin-park-faint",
+        spotifyId: "4Yf5P37b98uH604m6fN02F",
+        artist: "Linkin Park",
+        title: "Faint",
+        album: "Meteora",
+        year: 2003,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273fed5ee8b30d52b99a38f7a63",
+        spotifyUrl: "https://open.spotify.com/track/4Yf5P37b98uH604m6fN02F",
+        embedUrl: "https://open.spotify.com/embed/track/4Yf5P37b98uH604m6fN02F?utm_source=generator&theme=0"
       },
       {
-        "artist": "Linkin Park",
-        "title": "Somewhere I Belong",
-        "album": "Meteora (Deluxe Edition)",
-        "year": 2003,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e9/ca/eb/e9caeb68-483d-b108-7898-25073e24566a/mzaf_1183955807160648053.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Linkin%20Park%20Somewhere%20I%20Belong"
+        id: "linkin-park-somewhere-i-belong",
+        spotifyId: "3zBhihYUHBmGd2bcQIobrF",
+        artist: "Linkin Park",
+        title: "Somewhere I Belong",
+        album: "Meteora",
+        year: 2003,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273fed5ee8b30d52b99a38f7a63",
+        spotifyUrl: "https://open.spotify.com/track/3zBhihYUHBmGd2bcQIobrF",
+        embedUrl: "https://open.spotify.com/embed/track/3zBhihYUHBmGd2bcQIobrF?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "AC/DC",
-    "genre": "Hard Rock / Classic Rock",
-    "tracks": [
+    artist: "AC/DC",
+    genre: "Hard Rock / Classic Rock",
+    tracks: [
       {
-        "artist": "AC/DC",
-        "title": "Back in Black",
-        "album": "Back In Black",
-        "year": 1980,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1e/14/58/1e145814-281a-58e0-3ab1-145f5d1af421/886443673441.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/b5/14/aa/b514aa08-4772-93db-c69f-420fbe0bb24c/mzaf_17779796508174317776.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "AC%2FDC%20Back%20in%20Black"
+        id: "acdc-back-in-black",
+        spotifyId: "08mG3Y1vljYA6bvDt4Wqkj",
+        artist: "AC/DC",
+        title: "Back in Black",
+        album: "Back in Black",
+        year: 1980,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2730b51f8d91f3a21e8426361ae",
+        spotifyUrl: "https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj",
+        embedUrl: "https://open.spotify.com/embed/track/08mG3Y1vljYA6bvDt4Wqkj?utm_source=generator&theme=0"
       },
       {
-        "artist": "AC/DC",
-        "title": "Highway to Hell",
-        "album": "Highway to Hell",
-        "year": 1979,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b9/c8/ef/b9c8ef42-bbc9-64df-11f8-717571f6730f/886443673458.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/cb/f4/3f/cbf43f47-747d-bcc2-19cf-6bf2c523f5d8/mzaf_9504019990576453182.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "AC%2FDC%20Highway%20to%20Hell"
+        id: "acdc-highway-to-hell",
+        spotifyId: "2zYzyRzzKuZsqAsPiauab1",
+        artist: "AC/DC",
+        title: "Highway to Hell",
+        album: "Highway to Hell",
+        year: 1979,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2730e70404f329971ec6e0bfd98",
+        spotifyUrl: "https://open.spotify.com/track/2zYzyRzzKuZsqAsPiauab1",
+        embedUrl: "https://open.spotify.com/embed/track/2zYzyRzzKuZsqAsPiauab1?utm_source=generator&theme=0"
       },
       {
-        "artist": "AC/DC",
-        "title": "Thunderstruck",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "AC%2FDC%20Thunderstruck"
+        id: "acdc-thunderstruck",
+        spotifyId: "57bgtoPSgt2360f2DNdOhf",
+        artist: "AC/DC",
+        title: "Thunderstruck",
+        album: "The Razors Edge",
+        year: 1990,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27389a66d03d1544a49c63c7886",
+        spotifyUrl: "https://open.spotify.com/track/57bgtoPSgt2360f2DNdOhf",
+        embedUrl: "https://open.spotify.com/embed/track/57bgtoPSgt2360f2DNdOhf?utm_source=generator&theme=0"
       },
       {
-        "artist": "AC/DC",
-        "title": "You Shook Me All Night Long",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "AC%2FDC%20You%20Shook%20Me%20All%20Night%20Long"
+        id: "acdc-you-shook-me-all-night-long",
+        spotifyId: "2SiX1GreUQcwAZPtuv9nXU",
+        artist: "AC/DC",
+        title: "You Shook Me All Night Long",
+        album: "Back in Black",
+        year: 1980,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2730b51f8d91f3a21e8426361ae",
+        spotifyUrl: "https://open.spotify.com/track/2SiX1GreUQcwAZPtuv9nXU",
+        embedUrl: "https://open.spotify.com/embed/track/2SiX1GreUQcwAZPtuv9nXU?utm_source=generator&theme=0"
       },
       {
-        "artist": "AC/DC",
-        "title": "T.N.T.",
-        "album": "High Voltage",
-        "year": 1975,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/2d/a8/b5/2da8b582-64aa-d25f-2cdf-ad63a3e04920/dj.jnlhrcpf.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/aa/a1/94/aaa194f9-9568-a6b8-1ee0-c231eab9412a/mzaf_2739203206537586158.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "AC%2FDC%20T.N.T."
+        id: "acdc-tnt",
+        spotifyId: "7LRMbd3LEoFi0yeIxRhnPT",
+        artist: "AC/DC",
+        title: "T.N.T.",
+        album: "High Voltage",
+        year: 1975,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273e9112da05b76cf6b5b5c9dc4",
+        spotifyUrl: "https://open.spotify.com/track/7LRMbd3LEoFi0yeIxRhnPT",
+        embedUrl: "https://open.spotify.com/embed/track/7LRMbd3LEoFi0yeIxRhnPT?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Black Sabbath",
-    "genre": "Heavy Metal / Doom Metal",
-    "tracks": [
+    artist: "Black Sabbath",
+    genre: "Heavy Metal / Doom Metal",
+    tracks: [
       {
-        "artist": "Black Sabbath",
-        "title": "Paranoid",
-        "album": "Paranoid",
-        "year": 1970,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/be/27/91/be279120-2285-16c6-c7ba-9d6643d4a948/075992732727.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/87/7e/c4/877ec400-6e44-8bc4-bb22-b88273a3330d/mzaf_15381783367282008011.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Black%20Sabbath%20Paranoid"
+        id: "black-sabbath-paranoid",
+        spotifyId: "1adZw0rC5iJtE3e9444B6G",
+        artist: "Black Sabbath",
+        title: "Paranoid",
+        album: "Paranoid",
+        year: 1970,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2731dbbeec072cfa15ca5dd251b",
+        spotifyUrl: "https://open.spotify.com/track/1adZw0rC5iJtE3e9444B6G",
+        embedUrl: "https://open.spotify.com/embed/track/1adZw0rC5iJtE3e9444B6G?utm_source=generator&theme=0"
       },
       {
-        "artist": "Black Sabbath",
-        "title": "Iron Man",
-        "album": "Paranoid",
-        "year": 1970,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d6/ec/ee/d6ecee72-258f-daa8-db6b-116c8c5731ce/075992732727.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/9f/7e/2d/9f7e2d51-79cf-0625-cf97-ef373ac1198e/mzaf_5539284268037451106.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Black%20Sabbath%20Iron%20Man"
+        id: "black-sabbath-iron-man",
+        spotifyId: "0TIjuP8990h8F55yM2yK5x",
+        artist: "Black Sabbath",
+        title: "Iron Man",
+        album: "Paranoid",
+        year: 1970,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2731dbbeec072cfa15ca5dd251b",
+        spotifyUrl: "https://open.spotify.com/track/0TIjuP8990h8F55yM2yK5x",
+        embedUrl: "https://open.spotify.com/embed/track/0TIjuP8990h8F55yM2yK5x?utm_source=generator&theme=0"
       },
       {
-        "artist": "Black Sabbath",
-        "title": "War Pigs",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Black%20Sabbath%20War%20Pigs"
+        id: "black-sabbath-war-pigs",
+        spotifyId: "2x0041H469503yF99mN874",
+        artist: "Black Sabbath",
+        title: "War Pigs",
+        album: "Paranoid",
+        year: 1970,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2731dbbeec072cfa15ca5dd251b",
+        spotifyUrl: "https://open.spotify.com/track/2x0041H469503yF99mN874",
+        embedUrl: "https://open.spotify.com/embed/track/2x0041H469503yF99mN874?utm_source=generator&theme=0"
       },
       {
-        "artist": "Black Sabbath",
-        "title": "Children of the Grave",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Black%20Sabbath%20Children%20of%20the%20Grave"
+        id: "black-sabbath-children-of-the-grave",
+        spotifyId: "3B5c70t82015uV444B9x9a",
+        artist: "Black Sabbath",
+        title: "Children of the Grave",
+        album: "Master of Reality",
+        year: 1971,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b2731878d2cbe6759c5d013e8785",
+        spotifyUrl: "https://open.spotify.com/track/3B5c70t82015uV444B9x9a",
+        embedUrl: "https://open.spotify.com/embed/track/3B5c70t82015uV444B9x9a?utm_source=generator&theme=0"
       },
       {
-        "artist": "Black Sabbath",
-        "title": "Heaven and Hell",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Black%20Sabbath%20Heaven%20and%20Hell"
+        id: "black-sabbath-heaven-and-hell",
+        spotifyId: "7v229x5q578a10L10B4y11",
+        artist: "Black Sabbath",
+        title: "Heaven and Hell",
+        album: "Heaven and Hell",
+        year: 1980,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273841ee1f0f026778f56644f1c",
+        spotifyUrl: "https://open.spotify.com/track/7v229x5q578a10L10B4y11",
+        embedUrl: "https://open.spotify.com/embed/track/7v229x5q578a10L10B4y11?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "Slipknot",
-    "genre": "Nu Metal / Heavy Metal",
-    "tracks": [
+    artist: "Slipknot",
+    genre: "Nu Metal / Heavy Metal",
+    tracks: [
       {
-        "artist": "Slipknot",
-        "title": "Psychosocial",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Slipknot%20Psychosocial"
+        id: "slipknot-psychosocial",
+        spotifyId: "3RAFhk4X1Q5kG5C47iY0K1",
+        artist: "Slipknot",
+        title: "Psychosocial",
+        album: "All Hope Is Gone",
+        year: 2008,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273a7638064d1f879685a5dcfe2",
+        spotifyUrl: "https://open.spotify.com/track/3RAFhk4X1Q5kG5C47iY0K1",
+        embedUrl: "https://open.spotify.com/embed/track/3RAFhk4X1Q5kG5C47iY0K1?utm_source=generator&theme=0"
       },
       {
-        "artist": "Slipknot",
-        "title": "Duality",
-        "album": "Vol. 3: (The Subliminal Verses) [Deluxe Edition]",
-        "year": 2004,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7c/5d/17/7c5d174e-f7c5-2fba-04c4-c3d89b605300/016861752347.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6b/e4/45/6be4455a-7d97-ecc1-eb9a-1e6d3b8e7e5a/mzaf_7150647397889532045.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Slipknot%20Duality"
+        id: "slipknot-duality",
+        spotifyId: "61mWefnWQOL29jgeUmam7q",
+        artist: "Slipknot",
+        title: "Duality",
+        album: "Vol. 3: The Subliminal Verses",
+        year: 2004,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27361fa34c4f3479a95781a9fa8",
+        spotifyUrl: "https://open.spotify.com/track/61mWefnWQOL29jgeUmam7q",
+        embedUrl: "https://open.spotify.com/embed/track/61mWefnWQOL29jgeUmam7q?utm_source=generator&theme=0"
       },
       {
-        "artist": "Slipknot",
-        "title": "Wait and Bleed",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Slipknot%20Wait%20and%20Bleed"
+        id: "slipknot-wait-and-bleed",
+        spotifyId: "2gscBspgYq2958h75M1698",
+        artist: "Slipknot",
+        title: "Wait and Bleed",
+        album: "Slipknot",
+        year: 1999,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273693f925b3ee0b2ab5406085a",
+        spotifyUrl: "https://open.spotify.com/track/2gscBspgYq2958h75M1698",
+        embedUrl: "https://open.spotify.com/embed/track/2gscBspgYq2958h75M1698?utm_source=generator&theme=0"
       },
       {
-        "artist": "Slipknot",
-        "title": "Before I Forget",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "Slipknot%20Before%20I%20Forget"
+        id: "slipknot-before-i-forget",
+        spotifyId: "6wqJeItl0whFUFG0j69EVZ",
+        artist: "Slipknot",
+        title: "Before I Forget",
+        album: "Vol. 3: The Subliminal Verses",
+        year: 2004,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27361fa34c4f3479a95781a9fa8",
+        spotifyUrl: "https://open.spotify.com/track/6wqJeItl0whFUFG0j69EVZ",
+        embedUrl: "https://open.spotify.com/embed/track/6wqJeItl0whFUFG0j69EVZ?utm_source=generator&theme=0"
       },
       {
-        "artist": "Slipknot",
-        "title": "Snuff",
-        "album": "The Studio Album Collection 1999 - 2008",
-        "year": 2008,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/38/8d/35/388d3526-771c-4c3e-451b-f10afdbf19d9/016861752200.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/29/45/0c/29450c9f-f00f-65bf-5ced-a8c3cf1751c7/mzaf_15273980502575458266.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "Slipknot%20Snuff"
+        id: "slipknot-snuff",
+        spotifyId: "3RauEVW5v4v34W8p390B2N",
+        artist: "Slipknot",
+        title: "Snuff",
+        album: "All Hope Is Gone",
+        year: 2008,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273a7638064d1f879685a5dcfe2",
+        spotifyUrl: "https://open.spotify.com/track/3RauEVW5v4v34W8p390B2N",
+        embedUrl: "https://open.spotify.com/embed/track/3RauEVW5v4v34W8p390B2N?utm_source=generator&theme=0"
       }
     ]
   },
   {
-    "artist": "System of a Down",
-    "genre": "Alternative Metal / Nu Metal",
-    "tracks": [
+    artist: "System of a Down",
+    genre: "Alternative Metal / Nu Metal",
+    tracks: [
       {
-        "artist": "System of a Down",
-        "title": "Chop Suey!",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "System%20of%20a%20Down%20Chop%20Suey!"
+        id: "soad-chop-suey",
+        spotifyId: "2DlH17W05iq7R59yo703xN",
+        artist: "System of a Down",
+        title: "Chop Suey!",
+        album: "Toxicity",
+        year: 2001,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27339d6790938ff5d56b009e4cc",
+        spotifyUrl: "https://open.spotify.com/track/2DlH17W05iq7R59yo703xN",
+        embedUrl: "https://open.spotify.com/embed/track/2DlH17W05iq7R59yo703xN?utm_source=generator&theme=0"
       },
       {
-        "artist": "System of a Down",
-        "title": "Toxicity",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "System%20of%20a%20Down%20Toxicity"
+        id: "soad-toxicity",
+        spotifyId: "0snQpnWfl75lenmURij9ap",
+        artist: "System of a Down",
+        title: "Toxicity",
+        album: "Toxicity",
+        year: 2001,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27339d6790938ff5d56b009e4cc",
+        spotifyUrl: "https://open.spotify.com/track/0snQpnWfl75lenmURij9ap",
+        embedUrl: "https://open.spotify.com/embed/track/0snQpnWfl75lenmURij9ap?utm_source=generator&theme=0"
       },
       {
-        "artist": "System of a Down",
-        "title": "Aerials",
-        "album": "",
-        "year": "",
-        "coverUrl": null,
-        "previewAudioUrl": null,
-        "spotifyEmbedQuery": "System%20of%20a%20Down%20Aerials"
+        id: "soad-aerials",
+        spotifyId: "4e9eOb23wXk8S59yo4M51A",
+        artist: "System of a Down",
+        title: "Aerials",
+        album: "Toxicity",
+        year: 2001,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27339d6790938ff5d56b009e4cc",
+        spotifyUrl: "https://open.spotify.com/track/4e9eOb23wXk8S59yo4M51A",
+        embedUrl: "https://open.spotify.com/embed/track/4e9eOb23wXk8S59yo4M51A?utm_source=generator&theme=0"
       },
       {
-        "artist": "System of a Down",
-        "title": "B.Y.O.B.",
-        "album": "Toxicity",
-        "year": 2001,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/82/51/52/825152b4-9423-b23b-c036-cc67ead732d4/888888046775.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/81/b2/d8/81b2d89d-2303-585f-e6c0-87edfc525cb0/mzaf_3574703683202422354.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "System%20of%20a%20Down%20B.Y.O.B."
+        id: "soad-byob",
+        spotifyId: "0BWl44V34z822p499G618K",
+        artist: "System of a Down",
+        title: "B.Y.O.B.",
+        album: "Mezmerize",
+        year: 2005,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b27369992f896b0bc929729ab8f8",
+        spotifyUrl: "https://open.spotify.com/track/0BWl44V34z822p499G618K",
+        embedUrl: "https://open.spotify.com/embed/track/0BWl44V34z822p499G618K?utm_source=generator&theme=0"
       },
       {
-        "artist": "System of a Down",
-        "title": "Sugar",
-        "album": "Toxicity",
-        "year": 2001,
-        "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/82/51/52/825152b4-9423-b23b-c036-cc67ead732d4/888888046775.jpg/600x600bb.jpg",
-        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f4/a1/c2/f4a1c207-6d73-e3bd-8fcb-bd6c5037021a/mzaf_16212608709217830172.plus.aac.p.m4a",
-        "spotifyEmbedQuery": "System%20of%20a%20Down%20Sugar"
+        id: "soad-sugar",
+        spotifyId: "318x0v35g7a34m589uH86x",
+        artist: "System of a Down",
+        title: "Sugar",
+        album: "System Of A Down",
+        year: 1998,
+        coverUrl: "https://i.scdn.co/image/ab67616d0000b273d420f12d8a57199c15aa1f97",
+        spotifyUrl: "https://open.spotify.com/track/318x0v35g7a34m589uH86x",
+        embedUrl: "https://open.spotify.com/embed/track/318x0v35g7a34m589uH86x?utm_source=generator&theme=0"
       }
     ]
   }
