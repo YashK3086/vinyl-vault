@@ -120,7 +120,10 @@ class VinylAudioEngine {
 
   /**
    * Starts playing turntable surface static.
+   * Also aliased as play() for backward compatibility with TurntableDeck.
    */
+  play() { return this.start(); }
+
   start() {
     this.init();
     if (!this.ctx || this.isPlaying) return;
@@ -140,7 +143,10 @@ class VinylAudioEngine {
 
   /**
    * Stops playing turntable surface static.
+   * Also aliased as pause() for backward compatibility with TurntableDeck.
    */
+  pause() { return this.stop(); }
+
   stop() {
     if (!this.ctx || !this.isPlaying) return;
 
@@ -148,6 +154,34 @@ class VinylAudioEngine {
     this.mainGain.gain.cancelScheduledValues(this.ctx.currentTime);
     this.mainGain.gain.setValueAtTime(this.mainGain.gain.value, this.ctx.currentTime);
     this.mainGain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.8);
+  }
+
+  /**
+   * Needle lift whoosh sound (subtle sweep upward).
+   */
+  triggerNeedleLift() {
+    this.init();
+    if (!this.ctx || this.isMuted) return;
+    if (this.ctx.state === "suspended") this.ctx.resume();
+
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = "highpass";
+    filter.frequency.setValueAtTime(4000, this.ctx.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(1000, this.ctx.currentTime + 0.1);
+
+    const gain = this.ctx.createGain();
+    gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
+
+    const src = this.ctx.createBufferSource();
+    const buf = this.ctx.createBuffer(1, Math.floor(this.ctx.sampleRate * 0.12), this.ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1);
+    src.buffer = buf;
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+    src.start(0);
   }
 
   /**
