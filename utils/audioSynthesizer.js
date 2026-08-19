@@ -277,6 +277,58 @@ class VinylAudioEngine {
   }
 
   /**
+   * Plays actual 30-second audio preview of the track via previewAudioUrl (iTunes audio),
+   * falling back to procedural genre synthesis if missing or blocked.
+   */
+  playTrackPreview(track, onProgress, onEnded) {
+    this.stopJukeboxPreview();
+    this.init();
+
+    if (this.isMuted) return;
+
+    if (track && track.previewAudioUrl) {
+      try {
+        const audio = new Audio(track.previewAudioUrl);
+        audio.crossOrigin = "anonymous";
+        this.jukeboxAudio = audio;
+
+        audio.ontimeupdate = () => {
+          if (audio.duration) {
+            const cur = audio.currentTime;
+            const total = audio.duration;
+            const pct = (cur / total) * 100;
+            if (onProgress) onProgress(cur, total, pct);
+          }
+        };
+
+        audio.onended = () => {
+          this.stopJukeboxPreview();
+          if (onEnded) onEnded();
+        };
+
+        audio.onerror = (e) => {
+          console.warn("Real audio preview failed, falling back to synthesis", e);
+          this.startJukeboxSynthesis(track.genre || "Rock", onProgress, onEnded);
+        };
+
+        const promise = audio.play();
+        if (promise !== undefined) {
+          promise.catch((err) => {
+            console.warn("Autoplay error playing preview audio, falling back to synthesis", err);
+            this.startJukeboxSynthesis(track.genre || "Rock", onProgress, onEnded);
+          });
+        }
+        return;
+      } catch (err) {
+        console.warn("Error initializing preview Audio element", err);
+      }
+    }
+
+    // Fallback if no previewAudioUrl is available
+    this.startJukeboxSynthesis(track?.genre || "Rock", onProgress, onEnded);
+  }
+
+  /**
    * Plays a 30-second rich procedural genre groove for the Jukebox Lounge.
    * Plays realistic rhythmic drums, bassline, and melodic chords matching the artist's genre.
    */

@@ -60,8 +60,8 @@ export default function JukeboxLounge() {
     setPlaybackProgress(0);
     setElapsedSeconds(0);
 
-    vinylAudioEngine.startJukeboxSynthesis(
-      track.genre || "Rock",
+    vinylAudioEngine.playTrackPreview(
+      track,
       (cur, total, pct) => {
         setElapsedSeconds(Math.floor(cur));
         setPlaybackProgress(pct);
