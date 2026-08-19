@@ -215,6 +215,81 @@ class VinylAudioEngine {
   }
 
   /**
+   * Synthesizes a realistic DJ vinyl scratch ("chick-a chick-a") sound effect
+   * triggered specifically when the user clicks/touches and drags the vinyl.
+   * @param {number} direction - 1 for forward/down drag, -1 for backward/up drag
+   * @param {number} intensity - multiplier based on drag speed
+   */
+  triggerScratch(direction = 1, intensity = 1.0) {
+    this.init();
+    if (!this.ctx || this.isMuted) return;
+
+    if (this.ctx.state === "suspended") {
+      this.ctx.resume();
+    }
+
+    const now = this.ctx.currentTime;
+    const duration = 0.08 + Math.random() * 0.04; // 80ms - 120ms quick scratch burst
+    const sampleRate = this.ctx.sampleRate;
+    const bufferSize = Math.floor(sampleRate * duration);
+    const buffer = this.ctx.createBuffer(1, bufferSize, sampleRate);
+    const data = buffer.getChannelData(0);
+
+    // 1. Generate scratch friction noise (textured vinyl slip)
+    for (let i = 0; i < bufferSize; i++) {
+      const progress = i / bufferSize;
+      const envelope = Math.sin(progress * Math.PI); // Smooth bell curve
+      const noise = (Math.random() * 2 - 1) * 0.35;
+      data[i] = noise * envelope;
+    }
+
+    const noiseSource = this.ctx.createBufferSource();
+    noiseSource.buffer = buffer;
+
+    // Resonant bandpass filter that sweeps rapidly to simulate groove speed change
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = "bandpass";
+    filter.Q.value = 3.5 + Math.random() * 1.5;
+
+    const startFreq = direction >= 0 ? 600 : 2800;
+    const endFreq = direction >= 0 ? 2400 + Math.random() * 600 : 500 + Math.random() * 300;
+
+    filter.frequency.setValueAtTime(startFreq, now);
+    filter.frequency.exponentialRampToValueAtTime(Math.max(100, endFreq), now + duration);
+
+    // 2. Add an expressive tonal formant oscillator (the "chick-a" formant glide)
+    const tonalOsc = this.ctx.createOscillator();
+    tonalOsc.type = direction >= 0 ? "sawtooth" : "triangle";
+    const baseTone = direction >= 0 ? 180 : 380;
+    const endTone = direction >= 0 ? 420 + Math.random() * 80 : 140 + Math.random() * 40;
+    tonalOsc.frequency.setValueAtTime(baseTone, now);
+    tonalOsc.frequency.exponentialRampToValueAtTime(Math.max(60, endTone), now + duration);
+
+    const tonalGain = this.ctx.createGain();
+    tonalGain.gain.setValueAtTime(0.08 * intensity, now);
+    tonalGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    const mainScratchGain = this.ctx.createGain();
+    mainScratchGain.gain.setValueAtTime(0.45 * intensity, now);
+    mainScratchGain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+
+    // Connect noise path
+    noiseSource.connect(filter);
+    filter.connect(mainScratchGain);
+
+    // Connect tonal path
+    tonalOsc.connect(tonalGain);
+    tonalGain.connect(mainScratchGain);
+
+    // Route to destination
+    mainScratchGain.connect(this.ctx.destination);
+
+    noiseSource.start(now);
+    tonalOsc.start(now);
+    tonalOsc.stop(now + duration);
+  }
+
+  /**
    * Sets speed ratio (pitch adjustment for 33 vs 45 RPM).
    * @param {number} rpm - 33 or 45
    */

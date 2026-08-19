@@ -22,8 +22,14 @@ export default function TurntableDeck({ activeRecord }) {
   const [tonearmAngle, setTonearmAngle] = useState(0); // Rest position
   const [tonearmY, setTonearmY] = useState(0); // Lift height offset
   const [sheenAngle, setSheenAngle] = useState(120);
+  const [isScratching, setIsScratching] = useState(false);
 
   const plinthRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const lastPosRef = useRef({ x: 0, y: 0 });
+  const lastScratchTimeRef = useRef(0);
+  const rotationRef = useRef(rotation);
+  rotationRef.current = rotation;
 
   // 1. Sync speed ratio pitch with Audio Engine
   useEffect(() => {
@@ -35,17 +41,14 @@ export default function TurntableDeck({ activeRecord }) {
     let animationFrameId;
     let currentSpeed = 0;
     
-    // Target degrees per frame (60 FPS base)
-    // 33 RPM: ~3.3 degrees per frame
-    // 45 RPM: ~4.5 degrees per frame
     const targetSpeed = rpm === 33 ? 3.3 : 4.5;
     const accel = 0.06; // smooth motor acceleration
     const decel = 0.035; // direct drive drag drift stop
     let running = true;
-    let localRotation = rotation;
+    let localRotation = rotationRef.current;
 
     const tick = () => {
-      if (isPlaying) {
+      if (isPlaying && !isDraggingRef.current) {
         if (currentSpeed < targetSpeed) {
           currentSpeed = Math.min(targetSpeed, currentSpeed + accel);
         }
@@ -55,12 +58,14 @@ export default function TurntableDeck({ activeRecord }) {
         }
       }
 
-      if (currentSpeed > 0) {
+      if (currentSpeed > 0 && !isDraggingRef.current) {
         localRotation = (localRotation + currentSpeed) % 360;
         setRotation(localRotation);
+      } else {
+        localRotation = rotationRef.current;
       }
 
-      if (running && (isPlaying || currentSpeed > 0)) {
+      if (running && (isPlaying || currentSpeed > 0 || isDraggingRef.current)) {
         animationFrameId = requestAnimationFrame(tick);
       }
     };
@@ -72,6 +77,70 @@ export default function TurntableDeck({ activeRecord }) {
       cancelAnimationFrame(animationFrameId);
     };
   }, [isPlaying, rpm]);
+
+  // Global mouse/touch release handler for scratching
+  useEffect(() => {
+    const handleGlobalPointerUp = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        setIsScratching(false);
+      }
+    };
+
+    window.addEventListener("pointerup", handleGlobalPointerUp);
+    window.addEventListener("touchend", handleGlobalPointerUp);
+    return () => {
+      window.removeEventListener("pointerup", handleGlobalPointerUp);
+      window.removeEventListener("touchend", handleGlobalPointerUp);
+    };
+  }, []);
+
+  // Vinyl Drag & Scratch Handlers (chick-a chick-a sound on touch/drag)
+  const handleVinylPointerDown = (e) => {
+    if (!activeRecord) return;
+    isDraggingRef.current = true;
+    setIsScratching(true);
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    lastPosRef.current = { x: clientX, y: clientY };
+    lastScratchTimeRef.current = performance.now();
+    vinylAudioEngine.triggerScratch(1, 0.9);
+  };
+
+  const handleVinylPointerMove = (e) => {
+    if (!isDraggingRef.current || !activeRecord) return;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    const deltaY = clientY - lastPosRef.current.y;
+    const deltaX = clientX - lastPosRef.current.x;
+    const distance = Math.hypot(deltaX, deltaY);
+
+    if (distance > 3) {
+      const now = performance.now();
+      const timeDelta = Math.max(1, now - lastScratchTimeRef.current);
+      const dragSpeed = distance / timeDelta;
+
+      // Adjust rotation with dragging movement
+      const rotDelta = (deltaY + deltaX) * 1.5;
+      setRotation((prev) => (prev + rotDelta) % 360);
+
+      // Play "chick-a chick-a" scratch sound if interval elapsed or fast movement
+      if (timeDelta > 65 || distance > 12) {
+        const direction = deltaY >= 0 ? 1 : -1;
+        const intensity = Math.min(1.4, Math.max(0.6, dragSpeed * 0.8));
+        vinylAudioEngine.triggerScratch(direction, intensity);
+        lastScratchTimeRef.current = now;
+      }
+
+      lastPosRef.current = { x: clientX, y: clientY };
+    }
+  };
+
+  const handleVinylPointerUp = () => {
+    isDraggingRef.current = false;
+    setIsScratching(false);
+  };
 
   // 3. Staggered Needle-Drop state coordination on Record Selection
   useEffect(() => {
@@ -292,7 +361,11 @@ export default function TurntableDeck({ activeRecord }) {
                 animate={{ y: 0, rotate: 0, opacity: 1, scale: 1 }}
                 exit={{ y: 200, rotate: 45, opacity: 0, scale: 0.8 }}
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                className="absolute inset-2 rounded-full vinyl-grooves bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black border border-zinc-850/50 flex items-center justify-center cursor-pointer z-10 overflow-hidden"
+                onPointerDown={handleVinylPointerDown}
+                onPointerMove={handleVinylPointerMove}
+                onPointerUp={handleVinylPointerUp}
+                className="absolute inset-2 rounded-full vinyl-grooves bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-950 to-black border border-zinc-850/50 flex items-center justify-center cursor-grab active:cursor-grabbing z-10 overflow-hidden select-none touch-none"
+                title="Click & Drag to Scratch Vinyl!"
               >
                 {/* Physics Rotation Controller */}
                 <div

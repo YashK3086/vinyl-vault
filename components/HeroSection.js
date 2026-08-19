@@ -53,7 +53,7 @@ export default function HeroSection({ handleCopy, copiedText }) {
         {/* Contact links / Resume */}
         <div className="flex items-center gap-4">
           <a 
-            href="/Yashvardhan_Khanna_Resume.pdf"
+            href="/MAIN_RESUME_1.pdf"
             target="_blank"
             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-600/80 hover:bg-amber-600 text-zinc-950 font-extrabold shadow-[0_0_12px_rgba(217,119,6,0.15)] hover:scale-102 active:scale-98 transition-all text-xs font-mono uppercase tracking-wider"
           >
