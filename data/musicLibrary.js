@@ -1,5 +1,3 @@
-// Curated 70-Track Music Library — Real iTunes Album Artwork
-// 14 Artists x 5 Signature Tracks — 2026-08-19T16:13:06.342Z
 export const MUSIC_LIBRARY = [
   {
     "artist": "Mac Miller",
@@ -104,7 +102,7 @@ export const MUSIC_LIBRARY = [
         "album": "TA13OO",
         "year": 2018,
         "coverUrl": "https://upload.wikimedia.org/wikipedia/en/c/c5/Denzel_Curry_-_TA13OO.jpg",
-        "previewAudioUrl": "",
+        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8d/61/2f/8d612f97-4b1d-2f34-2ad4-89d847e284b9/mzaf_14928794139463479347.plus.aac.p.m4a",
         "genre": "Southern Hip-Hop / Florida Rap",
         "spotifyUrl": "https://open.spotify.com/search/Denzel%20Curry%20CLOUT%20COBAIN%20%7C%20CLOUT%20CO13A1N",
         "appleMusicUrl": "https://music.apple.com/us/search?term=Denzel%20Curry%20CLOUT%20COBAIN%20%7C%20CLOUT%20CO13A1N"
@@ -128,7 +126,7 @@ export const MUSIC_LIBRARY = [
         "album": "Melt My Eyez See Your Future",
         "year": 2022,
         "coverUrl": "https://upload.wikimedia.org/wikipedia/en/c/c5/Denzel_Curry_-_TA13OO.jpg",
-        "previewAudioUrl": "",
+        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4a/61/43/4a614396-75e6-d818-7a5e-89460c5ace6b/mzaf_16245804662931135329.plus.aac.p.m4a",
         "genre": "Southern Hip-Hop / Florida Rap",
         "spotifyUrl": "https://open.spotify.com/search/Denzel%20Curry%20Troubles%20(feat.%20T-Pain)",
         "appleMusicUrl": "https://music.apple.com/us/search?term=Denzel%20Curry%20Troubles%20(feat.%20T-Pain)"
@@ -664,7 +662,7 @@ export const MUSIC_LIBRARY = [
         "album": "Meteora",
         "year": 2003,
         "coverUrl": "https://upload.wikimedia.org/wikipedia/en/2/2a/Linkin_Park_-_Hybrid_Theory.jpg",
-        "previewAudioUrl": "",
+        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e9/ca/eb/e9caeb68-483d-b108-7898-25073e24566a/mzaf_1183955807160648053.plus.aac.p.m4a",
         "genre": "Nu Metal / Alternative Rock",
         "spotifyUrl": "https://open.spotify.com/search/Linkin%20Park%20Somewhere%20I%20Belong",
         "appleMusicUrl": "https://music.apple.com/us/search?term=Linkin%20Park%20Somewhere%20I%20Belong"
@@ -719,7 +717,7 @@ export const MUSIC_LIBRARY = [
         "album": "Back in Black",
         "year": 1980,
         "coverUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Back_in_black.jpg/220px-Back_in_black.jpg",
-        "previewAudioUrl": "",
+        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/15/98/ff/1598ffb5-b218-805b-4be5-7770b48ff010/mzaf_7188128852968904387.plus.aac.p.m4a",
         "genre": "Hard Rock / Classic Rock",
         "spotifyUrl": "https://open.spotify.com/search/AC%2FDC%20You%20Shook%20Me%20All%20Night%20Long",
         "appleMusicUrl": "https://music.apple.com/us/search?term=AC%2FDC%20You%20Shook%20Me%20All%20Night%20Long"
@@ -786,7 +784,7 @@ export const MUSIC_LIBRARY = [
         "album": "Master of Reality",
         "year": 1971,
         "coverUrl": "https://upload.wikimedia.org/wikipedia/en/8/82/Black_Sabbath_Paranoid.jpg",
-        "previewAudioUrl": "",
+        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/2e/d9/2a/2ed92a60-5afc-b6e5-9e2d-5dd6f5dc6598/mzaf_15011872908044302536.plus.aac.p.m4a",
         "genre": "Heavy Metal / Doom Metal",
         "spotifyUrl": "https://open.spotify.com/search/Black%20Sabbath%20Children%20of%20the%20Grave",
         "appleMusicUrl": "https://music.apple.com/us/search?term=Black%20Sabbath%20Children%20of%20the%20Grave"
@@ -841,7 +839,7 @@ export const MUSIC_LIBRARY = [
         "album": "Slipknot",
         "year": 1999,
         "coverUrl": "https://upload.wikimedia.org/wikipedia/en/f/f0/Slipknot_-_All_Hope_Is_Gone.jpg",
-        "previewAudioUrl": "",
+        "previewAudioUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/51/73/4c/51734c1f-9780-3791-4b20-212d44618c3c/mzaf_10732756011048494616.plus.aac.p.m4a",
         "genre": "Nu Metal / Heavy Metal",
         "spotifyUrl": "https://open.spotify.com/search/Slipknot%20Wait%20and%20Bleed",
         "appleMusicUrl": "https://music.apple.com/us/search?term=Slipknot%20Wait%20and%20Bleed"

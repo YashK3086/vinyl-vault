@@ -289,7 +289,6 @@ class VinylAudioEngine {
     if (track && track.previewAudioUrl) {
       try {
         const audio = new Audio(track.previewAudioUrl);
-        audio.crossOrigin = "anonymous";
         this.jukeboxAudio = audio;
 
         audio.ontimeupdate = () => {
