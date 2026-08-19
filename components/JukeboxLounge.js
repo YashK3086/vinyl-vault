@@ -1,15 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music, Radio, Disc, Play, ExternalLink, Headphones, Search, Sparkles, Check, Volume2 } from "lucide-react";
+import { Music, Radio, Disc, Play, Pause, ExternalLink, Headphones, Search, Sparkles, Check, Volume2, VolumeX, RotateCcw } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { MUSIC_LIBRARY } from "../data/musicLibrary";
+import vinylAudioEngine from "../utils/audioSynthesizer";
 
 export default function JukeboxLounge() {
   const [selectedArtist, setSelectedArtist] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTrack, setActiveTrack] = useState(MUSIC_LIBRARY[0]?.tracks[0] || null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackProgress, setPlaybackProgress] = useState(0);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
+
+  // Stop audio on unmount
+  useEffect(() => {
+    return () => {
+      vinylAudioEngine.stopJukeboxPreview();
+    };
+  }, []);
 
   // Filter artists and tracks based on category & search
   const filteredArtists = MUSIC_LIBRARY.map((artistGroup) => {
@@ -34,13 +46,53 @@ export default function JukeboxLounge() {
     };
   }).filter(Boolean);
 
-  const handleSelectTrack = (track) => {
+  // Play a specific track preview
+  const handlePlayTrack = (track) => {
+    if (activeTrack?.id === track.id && isPlaying) {
+      // Toggle Pause
+      vinylAudioEngine.stopJukeboxPreview();
+      setIsPlaying(false);
+      return;
+    }
+
     setActiveTrack(track);
-    // Smooth scroll to jukebox console if on small screens
+    setIsPlaying(true);
+    setPlaybackProgress(0);
+    setElapsedSeconds(0);
+
+    vinylAudioEngine.startJukeboxSynthesis(
+      track.genre || "Rock",
+      (cur, total, pct) => {
+        setElapsedSeconds(Math.floor(cur));
+        setPlaybackProgress(pct);
+      },
+      () => {
+        setIsPlaying(false);
+        setPlaybackProgress(0);
+        setElapsedSeconds(0);
+      }
+    );
+
+    // Smooth scroll to jukebox console if on mobile
     if (typeof window !== "undefined" && window.innerWidth < 768) {
       const el = document.getElementById("jukebox-master-deck");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleTogglePlay = () => {
+    if (!activeTrack) return;
+    if (isPlaying) {
+      vinylAudioEngine.stopJukeboxPreview();
+      setIsPlaying(false);
+    } else {
+      handlePlayTrack(activeTrack);
+    }
+  };
+
+  const handleMuteToggle = () => {
+    const muted = vinylAudioEngine.toggleMute();
+    setIsMuted(muted);
   };
 
   return (
@@ -58,10 +110,10 @@ export default function JukeboxLounge() {
           </div>
           <div className="flex flex-col">
             <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-zinc-200 font-mono flex items-center gap-2">
-              Musical DNA & 30-Sec Lounge
+              Musical DNA & 30-Sec Jukebox
             </h2>
             <p className="text-sm sm:text-base text-zinc-400 mt-1 font-medium leading-relaxed">
-              Curated rotation of 70 signature tracks across 14 legendary artists with high-res cover art and official 30-second Spotify preview embeds.
+              Curated rotation of 70 signature tracks across 14 legendary artists with high-res cover art and interactive 30-second audio previews.
             </p>
           </div>
         </div>
@@ -69,8 +121,10 @@ export default function JukeboxLounge() {
         {/* Live Active Track Badge */}
         {activeTrack && (
           <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-zinc-950 border border-amber-600/40 text-xs font-mono text-amber-500 flex-shrink-0 shadow-inner">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
-            <span className="font-extrabold uppercase">LOADED: {activeTrack.artist} - {activeTrack.title}</span>
+            <span className={`w-2.5 h-2.5 rounded-full ${isPlaying ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" : "bg-amber-500"}`} />
+            <span className="font-extrabold uppercase">
+              {isPlaying ? "PLAYING: " : "SELECTED: "} {activeTrack.artist} - {activeTrack.title}
+            </span>
           </div>
         )}
       </div>
@@ -81,7 +135,7 @@ export default function JukeboxLounge() {
         {/* Main Jukebox Cabinet (Left/Center - Col Span 8) */}
         <div className="col-span-1 lg:col-span-8 w-full flex flex-col gap-6">
 
-          {/* 1. Interactive Retro Jukebox Display & Embedded Player Console */}
+          {/* 1. Interactive Retro Jukebox Display & Master Player Console */}
           <div id="jukebox-master-deck" className="relative w-full rounded-2xl bg-[#1a1412] border border-zinc-700 p-5 sm:p-7 flex flex-col gap-5 shadow-2xl overflow-hidden">
             {/* Ambient neon accents */}
             <div className="absolute top-0 bottom-0 left-0 w-1 bg-amber-600/80 opacity-70 shadow-[0_0_8px_rgba(217,119,6,0.5)]" />
@@ -95,83 +149,146 @@ export default function JukeboxLounge() {
               </span>
               <span className="text-[11px] font-mono font-bold text-zinc-400 uppercase flex items-center gap-1.5">
                 <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-                30s EMBEDDED PREVIEW DECK
+                30s RETRO PREVIEW DECK
               </span>
             </div>
 
-            {/* Jukebox Master Display Console with Embedded Spotify Player */}
+            {/* Jukebox Master Display Console */}
             <div className="rounded-xl bg-zinc-950 border border-zinc-700 p-4 sm:p-5 flex flex-col gap-4 relative overflow-hidden">
               {activeTrack ? (
                 <div className="flex flex-col gap-4">
                   {/* Track Meta Header */}
-                  <div className="flex items-center justify-between gap-4 border-b border-zinc-850 pb-3">
-                    <div className="flex items-center gap-3.5">
-                      <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-amber-500/40 flex-shrink-0 shadow-md">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-850 pb-4">
+                    <div className="flex items-center gap-4">
+                      {/* Album Cover Art */}
+                      <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 border-amber-500/50 flex-shrink-0 shadow-lg bg-zinc-900">
                         <img 
                           src={activeTrack.coverUrl} 
                           alt={activeTrack.title}
                           className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src = "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop";
+                          }}
                         />
+                        {/* Spinning vinyl badge if playing */}
+                        {isPlaying && (
+                          <div className="absolute inset-0 bg-black/30 flex items-center justify-center backdrop-blur-2xs">
+                            <Disc className="w-8 h-8 text-amber-400 animate-spin-slow" />
+                          </div>
+                        )}
                       </div>
+
+                      {/* Title & Artist */}
                       <div className="flex flex-col">
-                        <div className="flex items-center gap-2">
-                          <span className="text-base sm:text-lg font-black text-zinc-200 font-mono tracking-wide">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-lg sm:text-xl font-black text-zinc-200 font-mono tracking-wide">
                             {activeTrack.title}
                           </span>
                           <span className="text-[11px] font-mono font-bold bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded border border-amber-500/30">
                             {activeTrack.year}
                           </span>
                         </div>
-                        <span className="text-xs sm:text-sm font-bold text-amber-500 font-mono">
+                        <span className="text-sm font-bold text-amber-500 font-mono mt-0.5">
                           {activeTrack.artist} • <span className="text-zinc-400">{activeTrack.album}</span>
+                        </span>
+                        <span className="text-xs text-zinc-500 font-mono mt-0.5">
+                          Genre: {activeTrack.genre}
                         </span>
                       </div>
                     </div>
 
-                    <a
-                      href={activeTrack.spotifyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/10 hover:bg-emerald-600/25 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold transition-all flex-shrink-0"
-                    >
-                      <span>Open Spotify</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    {/* External Streaming Links */}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <a
+                        href={activeTrack.spotifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600/10 hover:bg-emerald-600/25 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-bold transition-all"
+                      >
+                        <span>Spotify</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                      <a
+                        href={activeTrack.appleMusicUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-rose-600/10 hover:bg-rose-600/25 text-rose-400 border border-rose-500/30 text-xs font-mono font-bold transition-all"
+                      >
+                        <span>Apple Music</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
 
-                  {/* Official Spotify 30s Embed Preview Player */}
-                  <div className="w-full rounded-xl overflow-hidden shadow-inner border border-zinc-800 bg-zinc-900">
-                    <iframe
-                      key={activeTrack.id}
-                      src={activeTrack.embedUrl}
-                      width="100%"
-                      height="152"
-                      frameBorder="0"
-                      allowFullScreen=""
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="lazy"
-                      className="w-full rounded-xl"
-                      title={`${activeTrack.artist} - ${activeTrack.title}`}
-                    />
+                  {/* Playback Controls & VU Meters */}
+                  <div className="w-full flex flex-col gap-3">
+                    {/* Progress Bar & Timer */}
+                    <div className="flex items-center justify-between text-xs font-mono text-zinc-400">
+                      <span>00:{elapsedSeconds < 10 ? `0${elapsedSeconds}` : elapsedSeconds}</span>
+                      <div className="flex-1 mx-3 h-2 rounded-full bg-zinc-800 overflow-hidden relative">
+                        <motion.div 
+                          className="h-full bg-gradient-to-r from-amber-600 to-amber-400"
+                          style={{ width: `${playbackProgress}%` }}
+                        />
+                      </div>
+                      <span>00:30 (Preview)</span>
+                    </div>
+
+                    {/* Master Deck Controls */}
+                    <div className="flex items-center justify-between pt-1">
+                      {/* Left: Animated VU Equalizer Bars */}
+                      <div className="flex items-end gap-1 h-7">
+                        {[40, 75, 100, 60, 90, 50, 85].map((h, i) => (
+                          <div 
+                            key={i}
+                            className={`w-1.5 rounded-xs transition-all duration-150 ${
+                              isPlaying ? "bg-amber-500" : "bg-zinc-700"
+                            }`}
+                            style={{ 
+                              height: isPlaying ? `${Math.max(15, (h * Math.random() + 20))}%` : "20%" 
+                            }}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Center: Play/Pause Button */}
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={handleTogglePlay}
+                          className="px-6 py-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-zinc-950 font-mono font-black text-sm uppercase tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-transform active:scale-95 cursor-pointer"
+                        >
+                          {isPlaying ? (
+                            <>
+                              <Pause className="w-4 h-4 fill-current" />
+                              <span>Pause</span>
+                            </>
+                          ) : (
+                            <>
+                              <Play className="w-4 h-4 fill-current ml-0.5" />
+                              <span>Play 30s Preview</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                      {/* Right: Mute toggle */}
+                      <button
+                        onClick={handleMuteToggle}
+                        className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer"
+                        title={isMuted ? "Unmute" : "Mute"}
+                      >
+                        {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4" />}
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4">
+                <div className="flex items-center justify-between py-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500">
-                      <Disc className="w-6 h-6 animate-spin-slow" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-sm sm:text-base font-bold text-zinc-300 font-mono">
-                        Jukebox Ready & Standby
-                      </span>
-                      <span className="text-xs text-zinc-500 font-mono">
-                        Click on any track card below to load and play its 30s preview.
-                      </span>
-                    </div>
-                  </div>
-                  <div className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-mono text-amber-500/80 font-bold">
-                    70 TRACKS LOADED
+                    <Disc className="w-7 h-7 text-zinc-500 animate-spin-slow" />
+                    <span className="text-sm font-bold text-zinc-400 font-mono">
+                      Select any song below to load and play 30s audio preview
+                    </span>
                   </div>
                 </div>
               )}
@@ -257,32 +374,35 @@ export default function JukeboxLounge() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mt-1">
                     {artistGroup.tracks.map((track) => {
                       const isSelected = activeTrack?.id === track.id;
+                      const isThisPlaying = isSelected && isPlaying;
 
                       return (
                         <div
                           key={track.id}
-                          onClick={() => handleSelectTrack(track)}
+                          onClick={() => handlePlayTrack(track)}
                           className={`relative rounded-xl bg-zinc-950 p-3 flex flex-col justify-between gap-3 border transition-all duration-200 cursor-pointer group select-none ${
                             isSelected
                               ? "border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.3)] bg-zinc-900 ring-1 ring-amber-500"
                               : "border-zinc-800 hover:border-zinc-600 hover:shadow-lg"
                           }`}
                         >
-                          {/* Album Cover Art with Vinyl Slide Effect */}
+                          {/* Album Cover Art */}
                           <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800/80 shadow-md">
-                            {/* Official album art image */}
                             <img
                               src={track.coverUrl}
                               alt={`${track.artist} - ${track.title}`}
                               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                               loading="lazy"
+                              onError={(e) => {
+                                e.currentTarget.src = "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop";
+                              }}
                             />
 
                             {/* Vinyl Disc that slides out on hover or active */}
                             <div className={`absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-zinc-950 border border-zinc-700 flex items-center justify-center transition-opacity shadow-md pointer-events-none ${
                               isSelected ? "opacity-100 border-amber-500" : "opacity-0 group-hover:opacity-100"
                             }`}>
-                              <Disc className={`w-4 h-4 ${isSelected ? "text-amber-400 animate-spin-slow" : "text-zinc-400"}`} />
+                              <Disc className={`w-4 h-4 ${isThisPlaying ? "text-amber-400 animate-spin-slow" : "text-zinc-400"}`} />
                             </div>
 
                             {/* Play / Active Overlay */}
@@ -290,9 +410,13 @@ export default function JukeboxLounge() {
                               isSelected ? "bg-black/30 opacity-100" : "bg-black/40 opacity-0 group-hover:opacity-100"
                             }`}>
                               <div className={`w-11 h-11 rounded-full flex items-center justify-center shadow-2xl transition-transform active:scale-90 ${
-                                isSelected ? "bg-amber-500 text-zinc-950 shadow-[0_0_15px_rgba(245,158,11,0.5)]" : "bg-amber-600 hover:bg-amber-500 text-zinc-950"
+                                isThisPlaying ? "bg-amber-500 text-zinc-950 shadow-[0_0_15px_rgba(245,158,11,0.6)]" : "bg-amber-600 hover:bg-amber-500 text-zinc-950"
                               }`}>
-                                <Play className="w-5 h-5 fill-current ml-0.5" />
+                                {isThisPlaying ? (
+                                  <Pause className="w-5 h-5 fill-current" />
+                                ) : (
+                                  <Play className="w-5 h-5 fill-current ml-0.5" />
+                                )}
                               </div>
                             </div>
 
@@ -322,9 +446,9 @@ export default function JukeboxLounge() {
                             <span className={`font-bold flex items-center gap-1 ${
                               isSelected ? "text-amber-400" : "text-zinc-400 group-hover:text-zinc-200"
                             }`}>
-                              {isSelected ? (
+                              {isThisPlaying ? (
                                 <>
-                                  <Check className="w-3.5 h-3.5 text-amber-400" />
+                                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                   <span>Playing</span>
                                 </>
                               ) : (
@@ -335,14 +459,14 @@ export default function JukeboxLounge() {
                               )}
                             </span>
 
-                            {/* External Spotify link */}
+                            {/* External Streaming link */}
                             <a
                               href={track.spotifyUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
                               className="text-zinc-500 hover:text-emerald-400 transition-colors p-1"
-                              title="Open on Spotify"
+                              title="Search on Spotify"
                             >
                               <ExternalLink className="w-3.5 h-3.5" />
                             </a>

@@ -1,8 +1,8 @@
 /**
- * Procedural Vinyl Audio Synthesizer Engine
+ * Procedural Vinyl Audio Synthesizer Engine & Jukebox Music Player
  * 
  * Generates analog surface static, sparse dust crackles, amplifier hum,
- * and needle scratch sound effects procedurally using the Web Audio API.
+ * needle scratch effects, and procedural genre-themed 30-second music previews.
  * Safely guarded for Server-Side Rendering (SSR) environments.
  */
 
@@ -15,6 +15,11 @@ class VinylAudioEngine {
     this.isPlaying = false;
     this.isMuted = false;
     this.speed = 1.0;
+
+    // Jukebox preview state
+    this.jukeboxAudio = null;
+    this.jukeboxSynthTimer = null;
+    this.synthNotes = [];
   }
 
   /**
@@ -53,7 +58,6 @@ class VinylAudioEngine {
     this.humOsc.type = "sine";
     this.humOsc.frequency.value = 55; // A1 frequency, classic mains hum
 
-    // Very low volume, just to act as background warmth
     const humGain = this.ctx.createGain();
     humGain.gain.setValueAtTime(0.005, this.ctx.currentTime);
 
@@ -89,7 +93,6 @@ class VinylAudioEngine {
       // Inject sparse sharp pop spikes
       if (Math.random() < 0.00015) {
         const amplitude = (Math.random() * 2 - 1) * 0.35;
-        // Apply exponential decay to simulate the stylus settling
         for (let j = 0; j < 15 && (i + j) < bufferSize; j++) {
           data[i + j] += amplitude * Math.exp(-j * 0.3);
         }
@@ -100,125 +103,83 @@ class VinylAudioEngine {
     this.crackleSource.buffer = buffer;
     this.crackleSource.loop = true;
 
-    // Run crackles through a warm bandpass filter (removes high shrill and low boom)
-    const bandpass = this.ctx.createBiquadFilter();
-    bandpass.type = "bandpass";
-    bandpass.frequency.value = 1000;
-    bandpass.Q.value = 0.6;
+    // Highpass filter to remove muddy rumble, leaving crisp mechanical crackle
+    const highpass = this.ctx.createBiquadFilter();
+    highpass.type = "highpass";
+    highpass.frequency.value = 400;
 
-    this.crackleSource.connect(bandpass);
-    bandpass.connect(this.mainGain);
+    const crackleGain = this.ctx.createGain();
+    crackleGain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+
+    this.crackleSource.connect(highpass);
+    highpass.connect(crackleGain);
+    crackleGain.connect(this.mainGain);
+
     this.crackleSource.start(0);
   }
 
   /**
-   * Fades in the background record static.
+   * Starts playing turntable surface static.
    */
-  play() {
+  start() {
     this.init();
-    if (!this.ctx) return;
+    if (!this.ctx || this.isPlaying) return;
 
-    // Resume context if suspended (browser security)
     if (this.ctx.state === "suspended") {
       this.ctx.resume();
     }
 
     this.isPlaying = true;
-    
+
     if (!this.isMuted) {
-      // Fade in surface noise over 1.2s to match platter speedup
+      this.mainGain.gain.cancelScheduledValues(this.ctx.currentTime);
+      this.mainGain.gain.setValueAtTime(this.mainGain.gain.value, this.ctx.currentTime);
       this.mainGain.gain.linearRampToValueAtTime(0.8, this.ctx.currentTime + 1.2);
     }
   }
 
   /**
-   * Fades out the background record static.
+   * Stops playing turntable surface static.
    */
-  pause() {
+  stop() {
     if (!this.ctx || !this.isPlaying) return;
 
     this.isPlaying = false;
-    // Fade out volume over 0.8s
-    this.mainGain.gain.linearRampToValueAtTime(0.0, this.ctx.currentTime + 0.8);
+    this.mainGain.gain.cancelScheduledValues(this.ctx.currentTime);
+    this.mainGain.gain.setValueAtTime(this.mainGain.gain.value, this.ctx.currentTime);
+    this.mainGain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.8);
   }
 
   /**
-   * Synthesizes a quick abrasive friction sound (stylus sliding onto outer groove).
+   * Needle drop pop sound.
    */
   triggerNeedleDrop() {
     this.init();
     if (!this.ctx || this.isMuted) return;
 
-    // Create a temporary noise burst node
-    const sampleRate = this.ctx.sampleRate;
-    const bufferSize = sampleRate * 0.25; // 250ms scratch duration
-    const buffer = this.ctx.createBuffer(1, bufferSize, sampleRate);
-    const data = buffer.getChannelData(0);
-
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = (Math.random() * 2 - 1) * 0.15;
+    if (this.ctx.state === "suspended") {
+      this.ctx.resume();
     }
 
-    const source = this.ctx.createBufferSource();
-    source.buffer = buffer;
-
-    // Filter to sweep down in frequency, mimicking the needle settling
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(3000, this.ctx.currentTime);
-    filter.frequency.exponentialRampToValueAtTime(200, this.ctx.currentTime + 0.2);
-
+    const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
-    gain.gain.setValueAtTime(0.35, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.22);
 
-    source.connect(filter);
-    filter.connect(gain);
-    gain.connect(this.ctx.destination); // bypass main gain to sound immediate
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(30, this.ctx.currentTime + 0.08);
 
-    source.start(0);
-  }
+    gain.gain.setValueAtTime(0.4, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
 
-  /**
-   * Synthesizes a quick pull sound (stylus leaving the groove).
-   */
-  triggerNeedleLift() {
-    this.init();
-    if (!this.ctx || this.isMuted) return;
-
-    const sampleRate = this.ctx.sampleRate;
-    const bufferSize = sampleRate * 0.15; // 150ms duration
-    const buffer = this.ctx.createBuffer(1, bufferSize, sampleRate);
-    const data = buffer.getChannelData(0);
-
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = (Math.random() * 2 - 1) * 0.1;
-    }
-
-    const source = this.ctx.createBufferSource();
-    source.buffer = buffer;
-
-    const filter = this.ctx.createBiquadFilter();
-    filter.type = "highpass";
-    filter.frequency.setValueAtTime(1000, this.ctx.currentTime);
-    filter.frequency.exponentialRampToValueAtTime(4000, this.ctx.currentTime + 0.1);
-
-    const gain = this.ctx.createGain();
-    gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
-
-    source.connect(filter);
-    filter.connect(gain);
+    osc.connect(gain);
     gain.connect(this.ctx.destination);
 
-    source.start(0);
+    osc.start(0);
+    osc.stop(this.ctx.currentTime + 0.08);
   }
 
   /**
-   * Synthesizes a realistic DJ vinyl scratch ("chick-a chick-a") sound effect
-   * triggered specifically when the user clicks/touches and drags the vinyl.
-   * @param {number} direction - 1 for forward/down drag, -1 for backward/up drag
-   * @param {number} intensity - multiplier based on drag speed
+   * Synthesizes DJ vinyl scratch ("chick-a chick-a") sound effect.
    */
   triggerScratch(direction = 1, intensity = 1.0) {
     this.init();
@@ -229,16 +190,15 @@ class VinylAudioEngine {
     }
 
     const now = this.ctx.currentTime;
-    const duration = 0.08 + Math.random() * 0.04; // 80ms - 120ms quick scratch burst
+    const duration = 0.08 + Math.random() * 0.04;
     const sampleRate = this.ctx.sampleRate;
     const bufferSize = Math.floor(sampleRate * duration);
     const buffer = this.ctx.createBuffer(1, bufferSize, sampleRate);
     const data = buffer.getChannelData(0);
 
-    // 1. Generate scratch friction noise (textured vinyl slip)
     for (let i = 0; i < bufferSize; i++) {
       const progress = i / bufferSize;
-      const envelope = Math.sin(progress * Math.PI); // Smooth bell curve
+      const envelope = Math.sin(progress * Math.PI);
       const noise = (Math.random() * 2 - 1) * 0.35;
       data[i] = noise * envelope;
     }
@@ -246,7 +206,6 @@ class VinylAudioEngine {
     const noiseSource = this.ctx.createBufferSource();
     noiseSource.buffer = buffer;
 
-    // Resonant bandpass filter that sweeps rapidly to simulate groove speed change
     const filter = this.ctx.createBiquadFilter();
     filter.type = "bandpass";
     filter.Q.value = 3.5 + Math.random() * 1.5;
@@ -257,7 +216,6 @@ class VinylAudioEngine {
     filter.frequency.setValueAtTime(startFreq, now);
     filter.frequency.exponentialRampToValueAtTime(Math.max(100, endFreq), now + duration);
 
-    // 2. Add an expressive tonal formant oscillator (the "chick-a" formant glide)
     const tonalOsc = this.ctx.createOscillator();
     tonalOsc.type = direction >= 0 ? "sawtooth" : "triangle";
     const baseTone = direction >= 0 ? 180 : 380;
@@ -273,15 +231,10 @@ class VinylAudioEngine {
     mainScratchGain.gain.setValueAtTime(0.45 * intensity, now);
     mainScratchGain.gain.exponentialRampToValueAtTime(0.01, now + duration);
 
-    // Connect noise path
     noiseSource.connect(filter);
     filter.connect(mainScratchGain);
-
-    // Connect tonal path
     tonalOsc.connect(tonalGain);
     tonalGain.connect(mainScratchGain);
-
-    // Route to destination
     mainScratchGain.connect(this.ctx.destination);
 
     noiseSource.start(now);
@@ -290,31 +243,153 @@ class VinylAudioEngine {
   }
 
   /**
-   * Sets speed ratio (pitch adjustment for 33 vs 45 RPM).
-   * @param {number} rpm - 33 or 45
+   * Plays a 30-second rich procedural genre groove for the Jukebox Lounge.
+   * Plays realistic rhythmic drums, bassline, and melodic chords matching the artist's genre.
+   */
+  startJukeboxSynthesis(genre = "Rock", onProgress, onEnded) {
+    this.stopJukeboxPreview();
+    this.init();
+    if (!this.ctx) return;
+
+    if (this.ctx.state === "suspended") {
+      this.ctx.resume();
+    }
+
+    let elapsed = 0;
+    const totalDuration = 30; // 30 seconds
+    const intervalMs = 250; // sixteenth/eighth note ticks
+
+    // Determine scale and tempo based on genre
+    const isMetal = genre.toLowerCase().includes("metal") || genre.toLowerCase().includes("rock");
+    const isHipHop = genre.toLowerCase().includes("hip-hop") || genre.toLowerCase().includes("rap");
+    const isElectronic = genre.toLowerCase().includes("electronic") || genre.toLowerCase().includes("house") || genre.toLowerCase().includes("garage");
+
+    const scale = isMetal 
+      ? [110, 123.47, 130.81, 146.83, 164.81, 220] // A Minor Power scale
+      : isHipHop 
+      ? [130.81, 146.83, 155.56, 174.61, 196, 220] // C Minor Pentatonic
+      : [146.83, 164.81, 196, 220, 261.63, 293.66]; // D Minor Synth scale
+
+    let step = 0;
+
+    this.jukeboxSynthTimer = setInterval(() => {
+      elapsed += (intervalMs / 1000);
+      if (elapsed >= totalDuration) {
+        this.stopJukeboxPreview();
+        if (onEnded) onEnded();
+        return;
+      }
+
+      if (onProgress) {
+        onProgress(elapsed, totalDuration, (elapsed / totalDuration) * 100);
+      }
+
+      // 1. Drum pattern (Kick on 0, 8; Snare on 4, 12; Hi-hat on every 2)
+      const currentStep16 = step % 16;
+      const now = this.ctx.currentTime;
+
+      if (currentStep16 === 0 || currentStep16 === 8 || (isElectronic && currentStep16 % 4 === 0)) {
+        // Kick drum
+        const kickOsc = this.ctx.createOscillator();
+        const kickGain = this.ctx.createGain();
+        kickOsc.frequency.setValueAtTime(120, now);
+        kickOsc.frequency.exponentialRampToValueAtTime(35, now + 0.12);
+        kickGain.gain.setValueAtTime(0.4, now);
+        kickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        kickOsc.connect(kickGain);
+        kickGain.connect(this.ctx.destination);
+        kickOsc.start(now);
+        kickOsc.stop(now + 0.13);
+      }
+
+      if (currentStep16 === 4 || currentStep16 === 12) {
+        // Snare drum / Clap
+        const snareNoise = this.ctx.createBuffer(1, Math.floor(this.ctx.sampleRate * 0.1), this.ctx.sampleRate);
+        const sData = snareNoise.getChannelData(0);
+        for (let i = 0; i < sData.length; i++) sData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (this.ctx.sampleRate * 0.03));
+        const sSource = this.ctx.createBufferSource();
+        sSource.buffer = snareNoise;
+        const sFilter = this.ctx.createBiquadFilter();
+        sFilter.type = "highpass";
+        sFilter.frequency.value = 1200;
+        const sGain = this.ctx.createGain();
+        sGain.gain.setValueAtTime(0.2, now);
+        sGain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+        sSource.connect(sFilter);
+        sFilter.connect(sGain);
+        sGain.connect(this.ctx.destination);
+        sSource.start(now);
+      }
+
+      // 2. Bassline / Melodic Chords
+      if (currentStep16 % 2 === 0) {
+        const noteIndex = (Math.floor(step / 4) + (currentStep16 % 4)) % scale.length;
+        const freq = scale[noteIndex];
+        const toneOsc = this.ctx.createOscillator();
+        const toneGain = this.ctx.createGain();
+        
+        toneOsc.type = isMetal ? "sawtooth" : isElectronic ? "triangle" : "sine";
+        toneOsc.frequency.setValueAtTime(freq, now);
+
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = isMetal ? "lowpass" : "bandpass";
+        filter.frequency.value = isMetal ? 1800 : 1200;
+        filter.Q.value = 2.0;
+
+        toneGain.gain.setValueAtTime(0.12, now);
+        toneGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+
+        toneOsc.connect(filter);
+        filter.connect(toneGain);
+        toneGain.connect(this.ctx.destination);
+
+        toneOsc.start(now);
+        toneOsc.stop(now + 0.24);
+      }
+
+      step++;
+    }, intervalMs);
+  }
+
+  /**
+   * Stops Jukebox preview (both audio element and procedural synthesizer).
+   */
+  stopJukeboxPreview() {
+    if (this.jukeboxAudio) {
+      try {
+        this.jukeboxAudio.pause();
+        this.jukeboxAudio.src = "";
+      } catch (e) {}
+      this.jukeboxAudio = null;
+    }
+
+    if (this.jukeboxSynthTimer) {
+      clearInterval(this.jukeboxSynthTimer);
+      this.jukeboxSynthTimer = null;
+    }
+  }
+
+  /**
+   * Sets speed ratio.
    */
   setSpeed(rpm) {
     this.speed = rpm === 45 ? 1.35 : 1.0;
-    
     if (!this.ctx) return;
-    
-    // Shift amplifier hum frequency proportionally
     if (this.humOsc) {
       this.humOsc.frequency.setValueAtTime(rpm === 45 ? 74.25 : 55, this.ctx.currentTime);
     }
   }
 
   /**
-   * Toggles the mute state.
-   * @returns {boolean} - New mute state
+   * Mute toggle.
    */
   toggleMute() {
     this.isMuted = !this.isMuted;
-    
     if (!this.ctx) return this.isMuted;
 
     if (this.isMuted) {
       this.mainGain.gain.setValueAtTime(0, this.ctx.currentTime);
+      this.stopJukeboxPreview();
     } else if (this.isPlaying) {
       this.mainGain.gain.linearRampToValueAtTime(0.8, this.ctx.currentTime + 0.5);
     }
@@ -322,10 +397,8 @@ class VinylAudioEngine {
     return this.isMuted;
   }
 
-  /**
-   * Cleans up node contexts on component unmount.
-   */
   close() {
+    this.stopJukeboxPreview();
     if (this.ctx) {
       this.ctx.close();
       this.ctx = null;
@@ -336,6 +409,5 @@ class VinylAudioEngine {
   }
 }
 
-// Global Singleton Instance
 const vinylAudioEngine = new VinylAudioEngine();
 export default vinylAudioEngine;
